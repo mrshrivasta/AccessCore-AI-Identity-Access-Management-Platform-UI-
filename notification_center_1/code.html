@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notifications Center | AccessCore AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#31353b",
+                        "outline-variant": "#434655",
+                        "inverse-surface": "#e0e2ea",
+                        "surface-tint": "#b4c5ff",
+                        "on-surface": "#e0e2ea",
+                        "on-primary": "#002a78",
+                        "secondary-container": "#404752",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1c2025",
+                        "error-container": "#93000a",
+                        "on-secondary": "#2a313b",
+                        "outline": "#8d90a0",
+                        "surface": "#101419",
+                        "surface-dim": "#101419",
+                        "on-background": "#e0e2ea",
+                        "surface-container-low": "#181c21",
+                        "on-tertiary-container": "#f7edff",
+                        "primary": "#b4c5ff",
+                        "inverse-on-surface": "#2d3136",
+                        "secondary": "#c0c7d3",
+                        "surface-bright": "#36393f",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container-lowest": "#0a0e13",
+                        "inverse-primary": "#0053db",
+                        "on-tertiary-fixed": "#25005a",
+                        "tertiary": "#d2bbff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary": "#3f008e",
+                        "on-secondary-container": "#afb5c2",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "surface-variant": "#31353b",
+                        "secondary-fixed": "#dce3f0",
+                        "on-secondary-fixed-variant": "#404752",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#8343f4",
+                        "surface-container-high": "#262a30",
+                        "on-surface-variant": "#c3c6d7",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "on-secondary-fixed": "#151c25",
+                        "on-primary-container": "#eeefff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "background": "#101419",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "tertiary-fixed": "#eaddff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #101419;
+            color: #e0e2ea;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .status-orb-critical {
+            filter: drop-shadow(0 0 4px #93000a);
+        }
+        .status-orb-warning {
+            filter: drop-shadow(0 0 4px #b45309);
+        }
+        .status-orb-info {
+            filter: drop-shadow(0 0 4px #2563eb);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="bg-slate-950/80 backdrop-blur-xl fixed top-0 w-full z-50 flex justify-between items-center px-6 py-3 w-full border-b border-white/5 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-slate-100 font-manrope">AccessCore AI</span>
+<div class="hidden md:flex gap-6 font-manrope tracking-tight font-semibold">
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Identity</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Access</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Audit</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-800/50 transition-all duration-200 rounded text-slate-400">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 hover:bg-slate-800/50 transition-all duration-200 rounded text-slate-400">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 bg-surface-container-highest rounded-full border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User avatar for security administrator with a professional headshot against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt5LYQLbEaaLbBdECj6WXge9CfENxQ29cxqR1l7kzkxEHlOfcskB1lG7Nk9HihR4g4T4iQ7_b4UaIgU6_1bE64PX4TqyMzSnqo0GPUg8e6qlAxUYs52ITmtzV8aq-ltkIt6QfleApyX-DOuf5L96SKwnBmdudxvYeVUH9RGgOabcTfdF3UOhMVaaXTOP4pmkzgwpRQ_51Z6A2XynsW8so1Ht4Y-x6bvYuTQMhsgP3pmTCi09DomFjTTkBuNNG8QDrQXgz_HNfyBk4"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 bg-slate-900 border-r border-white/5 pt-20 z-40">
+<div class="px-6 py-4">
+<h2 class="text-lg font-black text-blue-500 font-manrope">Sentinel Core</h2>
+<p class="text-xs text-outline font-medium">IAM Infrastructure</p>
+</div>
+<div class="flex flex-col mt-4">
+<a class="text-slate-500 py-3 px-6 flex items-center gap-3 hover:bg-slate-800/30 hover:text-slate-300 transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined">security</span>
+<span>Security Center</span>
+</a>
+<a class="bg-slate-800/50 text-blue-400 border-l-2 border-blue-500 py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span>Notifications</span>
+</a>
+<a class="text-slate-500 py-3 px-6 flex items-center gap-3 hover:bg-slate-800/30 hover:text-slate-300 transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined">settings_suggest</span>
+<span>Alert Config</span>
+</a>
+<a class="text-slate-500 py-3 px-6 flex items-center gap-3 hover:bg-slate-800/30 hover:text-slate-300 transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Audit Logs</span>
+</a>
+<a class="text-slate-500 py-3 px-6 flex items-center gap-3 hover:bg-slate-800/30 hover:text-slate-300 transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined">vpn_key</span>
+<span>API Keys</span>
+</a>
+</div>
+<div class="mt-auto pb-8">
+<div class="px-6 mb-6">
+<div class="bg-blue-500/10 text-blue-500 text-[10px] uppercase tracking-widest font-bold py-1 px-3 rounded inline-block">
+                    System Status: Secure
+                </div>
+</div>
+<a class="text-slate-500 py-2 px-6 flex items-center gap-3 hover:bg-slate-800/30 hover:text-slate-300 transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span>Support</span>
+</a>
+<a class="text-slate-500 py-2 px-6 flex items-center gap-3 hover:bg-slate-800/30 hover:text-slate-300 transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span>Documentation</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-24 lg:pl-72 pr-6 pb-12 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h1 class="text-4xl font-extrabold tracking-tight font-headline text-on-surface mb-2">Notifications Center</h1>
+<p class="text-outline font-body">Manage and monitor security-related activities across your IAM infrastructure.</p>
+</div>
+<button class="flex items-center gap-2 text-primary hover:text-primary-fixed-dim transition-colors font-label font-semibold text-sm">
+<span class="material-symbols-outlined text-lg">done_all</span>
+                    Mark all as read
+                </button>
+</header>
+<!-- Layout Grid -->
+<div class="grid grid-cols-12 gap-8 items-start">
+<!-- Filters & Notifications List -->
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<!-- Filter Bar -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide no-scrollbar">
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full text-xs font-semibold font-label shadow-[0_0_15px_rgba(37,99,235,0.2)]">All</button>
+<button class="bg-surface-container-low text-on-surface hover:bg-surface-container-high px-4 py-2 rounded-full text-xs font-semibold font-label transition-colors">Unread</button>
+<button class="bg-surface-container-low text-on-surface hover:bg-surface-container-high px-4 py-2 rounded-full text-xs font-semibold font-label transition-colors flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-error status-orb-critical"></span> Critical
+                        </button>
+<button class="bg-surface-container-low text-on-surface hover:bg-surface-container-high px-4 py-2 rounded-full text-xs font-semibold font-label transition-colors flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 status-orb-warning"></span> Warning
+                        </button>
+<button class="bg-surface-container-low text-on-surface hover:bg-surface-container-high px-4 py-2 rounded-full text-xs font-semibold font-label transition-colors flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary status-orb-info"></span> Info
+                        </button>
+</div>
+<!-- Notification List -->
+<div class="space-y-4">
+<!-- Critical Alert Card -->
+<div class="bg-surface-container-high rounded-xl p-6 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)] border-l-4 border-error group relative">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">report</span>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-base font-bold font-headline text-on-surface">Anomalous Login Detected</h3>
+<span class="text-[10px] font-bold text-error bg-error/10 px-2 py-0.5 rounded">CRITICAL</span>
+</div>
+<p class="text-sm text-outline-variant font-body mb-4 leading-relaxed">Multiple failed login attempts detected for administrative account 'admin_sys' from an unrecognized IP address in Singapore.</p>
+<div class="flex items-center gap-4">
+<button class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded text-xs font-bold font-label transition-transform active:scale-95">View Details</button>
+<button class="text-outline hover:text-on-surface text-xs font-bold font-label transition-colors">Dismiss</button>
+</div>
+</div>
+</div>
+<span class="text-xs text-outline font-label whitespace-nowrap">2 minutes ago</span>
+</div>
+</div>
+<!-- Warning Alert Card -->
+<div class="bg-surface-container-high rounded-xl p-6 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)] border-l-4 border-amber-500">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-amber-500" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-base font-bold font-headline text-on-surface">SSO Configuration Updated</h3>
+<span class="text-[10px] font-bold text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">WARNING</span>
+</div>
+<p class="text-sm text-outline-variant font-body mb-4 leading-relaxed">Identity provider certificate for 'Okta_Prod' is set to expire in 15 days. Immediate renewal recommended.</p>
+<div class="flex items-center gap-4">
+<button class="bg-secondary-container/20 text-secondary px-4 py-1.5 rounded text-xs font-bold font-label transition-transform active:scale-95">Update Cert</button>
+<button class="text-outline hover:text-on-surface text-xs font-bold font-label transition-colors">Dismiss</button>
+</div>
+</div>
+</div>
+<span class="text-xs text-outline font-label whitespace-nowrap">1 hour ago</span>
+</div>
+</div>
+<!-- Info Alert Card -->
+<div class="bg-surface-container-high rounded-xl p-6 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)] border-l-4 border-primary">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-base font-bold font-headline text-on-surface">New Role Created</h3>
+<span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded">INFO</span>
+</div>
+<p class="text-sm text-outline-variant font-body mb-4 leading-relaxed">User 'Sarah Chen' created a new IAM role: 'Financial_Auditor_L2' with read-only permissions.</p>
+<div class="flex items-center gap-4">
+<button class="bg-secondary-container/20 text-secondary px-4 py-1.5 rounded text-xs font-bold font-label transition-transform active:scale-95">Audit Role</button>
+<button class="text-outline hover:text-on-surface text-xs font-bold font-label transition-colors">Dismiss</button>
+</div>
+</div>
+</div>
+<span class="text-xs text-outline font-label whitespace-nowrap">3 hours ago</span>
+</div>
+</div>
+<!-- Info Alert Card 2 -->
+<div class="bg-surface-container-high/40 rounded-xl p-6 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)] border-l-4 border-outline opacity-70">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-outline">check_circle</span>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-base font-bold font-headline text-outline">System Patch Applied</h3>
+<span class="text-[10px] font-bold text-outline bg-outline/10 px-2 py-0.5 rounded">RESOLVED</span>
+</div>
+<p class="text-sm text-outline-variant font-body mb-4 leading-relaxed">Security patch v2.4.1 has been successfully deployed to all production nodes.</p>
+</div>
+</div>
+<span class="text-xs text-outline font-label whitespace-nowrap">Yesterday</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Stats Sidebar -->
+<aside class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-surface-container rounded-xl p-6 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)]">
+<h2 class="text-sm font-bold font-headline text-primary mb-6 uppercase tracking-wider">Quick Stats</h2>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-blue-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-500">notification_important</span>
+</div>
+<span class="text-sm font-medium font-body text-on-surface">Total Alerts</span>
+</div>
+<span class="text-xl font-extrabold font-headline text-on-surface">124</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-error/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-error">verified_user</span>
+</div>
+<span class="text-sm font-medium font-body text-on-surface">Critical Resolved</span>
+</div>
+<span class="text-xl font-extrabold font-headline text-error">12</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-amber-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-amber-500">pending_actions</span>
+</div>
+<span class="text-sm font-medium font-body text-on-surface">Pending Actions</span>
+</div>
+<span class="text-xl font-extrabold font-headline text-amber-500">8</span>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xs font-bold text-outline uppercase tracking-widest">Health Index</h3>
+<span class="text-xs font-bold text-primary">94%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[94%] shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
+</div>
+</div>
+</div>
+<!-- Decorative Glass Insight Card -->
+<div class="bg-surface-container-high/40 backdrop-blur-xl rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-700"></div>
+<h3 class="text-sm font-bold font-headline text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">auto_awesome</span>
+                            AI Sentinel Tip
+                        </h3>
+<p class="text-xs text-outline leading-relaxed font-body">
+                            78% of your current alerts are related to the new "Production" region. Consider updating your auto-approval rules for regional access.
+                        </p>
+<button class="mt-4 text-[10px] font-bold text-primary hover:underline uppercase tracking-tighter">Adjust Rules →</button>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-slate-950/90 backdrop-blur-xl border-t border-white/5 flex justify-around items-center py-3 z-50">
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">DASH</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-blue-500">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-[10px] font-bold">ALERTS</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">shield</span>
+<span class="text-[10px] font-bold">CORE</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">PROFILE</span>
+</button>
+</nav>
+</body></html>

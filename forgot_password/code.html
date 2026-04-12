@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reset Access | AccessCore AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#101419",
+                        "on-surface": "#e0e2ea",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-fixed": "#dce3f0",
+                        "on-secondary-fixed-variant": "#404752",
+                        "inverse-on-surface": "#2d3136",
+                        "outline-variant": "#434655",
+                        "on-primary": "#002a78",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-container": "#afb5c2",
+                        "surface-container-low": "#181c21",
+                        "on-secondary": "#2a313b",
+                        "outline": "#8d90a0",
+                        "background": "#101419",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#31353b",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "surface-container-lowest": "#0a0e13",
+                        "surface-tint": "#b4c5ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "tertiary-fixed": "#eaddff",
+                        "tertiary": "#d2bbff",
+                        "surface-container-high": "#262a30",
+                        "secondary": "#c0c7d3",
+                        "surface-container-highest": "#31353b",
+                        "on-tertiary-container": "#f7edff",
+                        "on-tertiary": "#3f008e",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "inverse-primary": "#0053db",
+                        "surface-bright": "#36393f",
+                        "on-tertiary-fixed": "#25005a",
+                        "primary": "#b4c5ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "primary-fixed": "#dbe1ff",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1c2025",
+                        "on-secondary-fixed": "#151c25",
+                        "tertiary-container": "#8343f4",
+                        "on-background": "#e0e2ea",
+                        "secondary-container": "#404752",
+                        "on-surface-variant": "#c3c6d7",
+                        "surface": "#101419",
+                        "inverse-surface": "#e0e2ea",
+                        "primary-container": "#2563eb",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(141, 144, 160, 0.05);
+        }
+        .signature-glow {
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #31353b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c0c7d3;
+        }
+    </style>
+</head>
+<body class="bg-surface-dim text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Ambient Background Texture -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-container/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-5%] right-[-5%] w-[30%] h-[30%] bg-tertiary-container/5 rounded-full blur-[100px]"></div>
+<div class="absolute inset-0 opacity-20" data-alt="subtle dark technical grid pattern with tiny grey dots over deep black background" style="background-image: radial-gradient(#434655 0.5px, transparent 0.5px); background-size: 24px 24px;">
+</div>
+</div>
+<!-- Top Navigation (Shell Implementation) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+<div class="flex justify-between items-center px-8 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-bold tracking-tighter text-slate-100 dark:text-slate-100 font-headline">AccessCore AI</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-slate-400 hover:text-blue-400 transition-colors" data-icon="help_outline">help_outline</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative z-10 w-full max-w-md px-6">
+<div class="glass-panel p-10 rounded-lg signature-glow border-l-2 border-primary-container">
+<!-- Header Section -->
+<div class="mb-8 text-center md:text-left">
+<div class="flex items-center gap-3 mb-4 justify-center md:justify-start">
+<div class="w-10 h-10 rounded bg-primary-container/20 flex items-center justify-center border border-primary-container/30">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">lock_reset</span>
+</div>
+<span class="font-headline font-bold tracking-tight text-on-surface text-xl">Reset Authentication</span>
+</div>
+<h1 class="font-headline font-extrabold text-3xl text-on-surface mb-3 tracking-tight">Verify your identity to regain access.</h1>
+<p class="text-on-secondary-container text-sm leading-relaxed">Enter your registered organizational email. If an account exists, we will transmit a secure recovery token to your inbox.</p>
+</div>
+<!-- Recovery Form -->
+<form action="#" class="space-y-6" onsubmit="return false;">
+<div>
+<label class="block font-label text-[10px] uppercase tracking-widest text-outline mb-2 ml-1" for="email">Email Address</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-lg py-4 px-5 text-on-surface placeholder:text-outline-variant focus:outline-none focus:border-primary-container focus:ring-4 focus:ring-primary-container/10 transition-all duration-200" id="email" name="email" placeholder="name@organization.com" required="" type="email"/>
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none opacity-40 group-focus-within:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full bg-primary-container hover:bg-blue-700 text-on-primary-container font-headline font-bold py-4 rounded transition-all duration-200 flex items-center justify-center gap-2 group" type="submit">
+<span>Send Reset Link</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Footer Action -->
+<div class="mt-10 pt-8 border-t border-outline-variant/10 text-center">
+<a class="inline-flex items-center gap-2 text-sm text-secondary hover:text-primary transition-colors font-medium" href="#">
+<span class="material-symbols-outlined text-[18px]">keyboard_backspace</span>
+<span>Return to Login</span>
+</a>
+</div>
+</div>
+<!-- Security Badge -->
+<div class="mt-8 flex justify-center items-center gap-4 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/10">
+<span class="material-symbols-outlined text-xs text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label text-[10px] tracking-widest uppercase">Encrypted Session</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/10">
+<span class="material-symbols-outlined text-xs text-tertiary" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-label text-[10px] tracking-widest uppercase">FIPS 140-2 Compliant</span>
+</div>
+</div>
+</main>
+<!-- Global Footer (Shell Implementation) -->
+<footer class="fixed bottom-0 left-0 right-0 z-50 bg-transparent">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full border-t border-slate-800/20">
+<div class="font-inter text-xs tracking-wide uppercase opacity-60 text-slate-500 mb-4 md:mb-0">
+                © 2024 AccessCore AI. Obsidian Sentinel Security.
+            </div>
+<div class="flex gap-8">
+<a class="font-inter text-xs tracking-wide uppercase opacity-60 text-slate-500 hover:text-slate-300 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-inter text-xs tracking-wide uppercase opacity-60 text-slate-500 hover:text-slate-300 transition-opacity" href="#">Terms of Service</a>
+<a class="font-inter text-xs tracking-wide uppercase opacity-60 text-slate-500 hover:text-slate-300 transition-opacity" href="#">System Status</a>
+</div>
+</div>
+</footer>
+</body></html>

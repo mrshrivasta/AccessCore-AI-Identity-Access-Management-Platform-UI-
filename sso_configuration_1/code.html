@@ -1,0 +1,460 @@
+<html><head><meta charset="utf-8"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary-container": "#404752",
+                "tertiary-fixed-dim": "#d2bbff",
+                "outline-variant": "#434655",
+                "primary-container": "#2563eb",
+                "primary": "#b4c5ff",
+                "surface-dim": "#101419",
+                "surface": "#101419",
+                "on-secondary-container": "#afb5c2",
+                "inverse-primary": "#0053db",
+                "on-secondary": "#2a313b",
+                "on-error-container": "#ffdad6",
+                "on-surface": "#e0e2ea",
+                "surface-container-highest": "#31353b",
+                "on-tertiary-fixed-variant": "#5a00c6",
+                "on-tertiary-fixed": "#25005a",
+                "on-secondary-fixed-variant": "#404752",
+                "on-tertiary": "#3f008e",
+                "secondary-fixed-dim": "#c0c7d3",
+                "inverse-surface": "#e0e2ea",
+                "secondary": "#c0c7d3",
+                "on-primary-container": "#eeefff",
+                "outline": "#8d90a0",
+                "surface-variant": "#31353b",
+                "on-error": "#690005",
+                "surface-container-lowest": "#0a0e13",
+                "surface-container": "#1c2025",
+                "secondary-fixed": "#dce3f0",
+                "background": "#101419",
+                "primary-fixed": "#dbe1ff",
+                "error-container": "#93000a",
+                "error": "#ffb4ab",
+                "on-primary-fixed": "#00174b",
+                "tertiary": "#d2bbff",
+                "surface-container-high": "#262a30",
+                "on-tertiary-container": "#f7edff",
+                "surface-bright": "#36393f",
+                "on-background": "#e0e2ea",
+                "surface-tint": "#b4c5ff",
+                "on-primary": "#002a78",
+                "primary-fixed-dim": "#b4c5ff",
+                "on-surface-variant": "#c3c6d7",
+                "on-primary-fixed-variant": "#003ea8",
+                "tertiary-fixed": "#eaddff",
+                "tertiary-container": "#8343f4",
+                "on-secondary-fixed": "#151c25",
+                "surface-container-low": "#181c21",
+                "inverse-on-surface": "#2d3136"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "fontFamily": {
+                "headline": [
+                        "Manrope"
+                ],
+                "body": [
+                        "Inter"
+                ],
+                "label": [
+                        "Inter"
+                ]
+        }
+      },
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .headline-font {
+    font-family: 'Manrope', sans-serif;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1c2025;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #404752;
+    border-radius: 10px;
+  }
+</style>
+</head><body class="dark bg-background text-on-surface min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="flex flex-col fixed left-0 top-0 h-full h-screen w-64 border-r border-slate-800/20 bg-slate-900/80 dark:bg-[#1c2025] z-50">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h1 class="text-xl font-black tracking-tighter text-slate-100 dark:text-[#E0E2EA] headline-font">AccessCore AI</h1>
+<p class="text-[10px] uppercase tracking-widest text-outline">Enterprise IAM</p>
+</div>
+</div>
+<nav class="mt-4 flex-1 px-3 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="text-sm font-medium">Roles</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#2563EB] bg-blue-500/10 border-l-2 border-[#2563EB] font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="text-sm font-medium">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-white/5">
+<button class="w-full flex items-center justify-center gap-2 bg-primary-container text-on-primary-container py-3 rounded font-semibold text-sm active:opacity-80 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+        New Security Policy
+      </button>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-8 h-16 z-40 bg-slate-950/90 dark:bg-[#101419]/90 backdrop-blur-xl border-b border-white/5">
+<div class="flex items-center gap-8">
+<div class="relative group">
+<span class="absolute inset-y-0 left-3 flex items-center text-outline group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</span>
+<input class="bg-surface-container-lowest border border-white/10 rounded-lg pl-10 pr-4 py-1.5 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-primary-container/40 transition-all" placeholder="Search identities..." type="text"/>
+</div>
+<nav class="flex gap-6">
+<a class="text-sm text-slate-400 hover:text-slate-100 transition-colors" href="#">Global View</a>
+<a class="text-sm text-[#2563EB] font-semibold border-b-2 border-[#2563EB] pb-5" href="#">Logs</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="h-8 w-[1px] bg-white/10 mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right hidden xl:block">
+<p class="text-xs font-bold text-on-surface">Admin Console</p>
+<p class="text-[10px] text-outline">Super Admin</p>
+</div>
+<img class="w-8 h-8 rounded-full border border-white/20 group-hover:border-primary transition-colors" data-alt="Professional headshot of a software architect in a dark studio setting with soft rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxu0T5HKPn2YyTyjdGKmGvWamdo41djJUdpN3_RFHufmR4BMXW3-jvSeqLlC3RLP-2NB06PVBpuJr8LNKYxufi6W09UQ5FMDA9hUY1pT87ywH9hdL0muBHejVWJFS_cfNTm7AwJPkQ8ttTjHZuRM3Ew9oFCr4Lma6n9-uKa_ck5mV5p_Me1DSKsutNFz6IUHl94YpdZGKb9eyv8VsF1Wkv0eTjs7y7eShw1s8bHoahe2Ys8Siz4_y718Oz4cOoEVx1lJXAxKXEr8w"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-12 px-8 max-w-[1600px]">
+<!-- Page Header -->
+<section class="mb-10 flex justify-between items-end">
+<div>
+<nav class="flex items-center gap-2 text-[10px] uppercase tracking-widest text-outline mb-2">
+<span>Security</span>
+<span class="material-symbols-outlined text-[12px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary-fixed-dim">SSO Configuration</span>
+</nav>
+<h2 class="text-4xl font-extrabold headline-font tracking-tight mb-2">Identity Providers</h2>
+<p class="text-outline text-sm max-w-xl leading-relaxed">
+          Manage your enterprise authentication sources. Connect external identity providers to centralize access control and enforce security policies.
+        </p>
+</div>
+<button class="flex items-center gap-2 bg-primary-container text-white px-6 py-3 rounded font-bold shadow-[0_10px_20px_rgba(37,99,235,0.2)] hover:scale-[1.02] active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" data-icon="add_moderator">add_moderator</span>
+        Add Identity Provider
+      </button>
+</section>
+<!-- Bento Grid for Identity Providers -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Provider Card: Okta -->
+<div class="group relative bg-surface-container-high p-6 rounded-xl border border-white/[0.03] shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:bg-surface-bright transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-[#007DC1]/10 rounded-lg flex items-center justify-center border border-[#007DC1]/20">
+<span class="material-symbols-outlined text-[#007DC1]" data-icon="hub">hub</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
+              Active
+            </span>
+<p class="text-[10px] text-outline mt-2">v2.4.1</p>
+</div>
+</div>
+<h3 class="text-xl font-bold headline-font mb-1">Okta Enterprise</h3>
+<p class="text-sm text-outline mb-6">Primary identity source for internal employees and contractors.</p>
+<div class="space-y-3 pt-4 border-t border-white/5">
+<div class="flex justify-between text-xs">
+<span class="text-outline">Users Synced</span>
+<span class="text-on-surface font-mono">1,248</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-outline">Last Sync</span>
+<span class="text-on-surface">4 mins ago</span>
+</div>
+</div>
+<div class="mt-6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex-1 py-2 rounded bg-surface-container-highest text-xs font-semibold hover:bg-primary-container/20 transition-colors">Configure</button>
+<button class="px-3 py-2 rounded bg-surface-container-highest text-xs hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Provider Card: Google Workspace -->
+<div class="group relative bg-surface-container-high p-6 rounded-xl border border-white/[0.03] shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:bg-surface-bright transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-on-surface" data-icon="cloud_done">cloud_done</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
+              Active
+            </span>
+<p class="text-[10px] text-outline mt-2">SAML 2.0</p>
+</div>
+</div>
+<h3 class="text-xl font-bold headline-font mb-1">Google Workspace</h3>
+<p class="text-sm text-outline mb-6">Secondary SSO for temporary agency staff and guest domains.</p>
+<div class="space-y-3 pt-4 border-t border-white/5">
+<div class="flex justify-between text-xs">
+<span class="text-outline">Users Synced</span>
+<span class="text-on-surface font-mono">312</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-outline">Last Sync</span>
+<span class="text-on-surface">12 mins ago</span>
+</div>
+</div>
+<div class="mt-6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex-1 py-2 rounded bg-surface-container-highest text-xs font-semibold hover:bg-primary-container/20 transition-colors">Configure</button>
+<button class="px-3 py-2 rounded bg-surface-container-highest text-xs hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Provider Card: Microsoft Entra -->
+<div class="group relative bg-surface-container-high p-6 rounded-xl border border-white/[0.03] shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:bg-surface-bright transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center border border-amber-500/20">
+<span class="material-symbols-outlined text-amber-400" data-icon="lan">lan</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-500/10 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-slate-500"></span>
+              Inactive
+            </span>
+<p class="text-[10px] text-outline mt-2">Azure AD</p>
+</div>
+</div>
+<h3 class="text-xl font-bold headline-font mb-1">Microsoft Entra ID</h3>
+<p class="text-sm text-outline mb-6">Enterprise identity bridge for Microsoft 365 hybrid deployments.</p>
+<div class="space-y-3 pt-4 border-t border-white/5 text-amber-400/80 bg-amber-400/5 -mx-6 px-6 py-4">
+<div class="flex items-center gap-2 text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+<span>Configuration incomplete: Tenant ID missing.</span>
+</div>
+</div>
+<div class="mt-6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex-1 py-2 rounded bg-primary-container text-white text-xs font-bold hover:brightness-110 transition-all">Complete Setup</button>
+<button class="px-3 py-2 rounded bg-surface-container-highest text-xs hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Asymmetric Insights Section -->
+<section class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Global Activity Sidebar (4 Columns) -->
+<div class="lg:col-span-4 bg-surface-container p-6 rounded-xl border border-white/5">
+<h4 class="text-lg font-bold headline-font mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="history">history</span>
+          Security Audit
+        </h4>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-[2px] bg-primary-container/30 relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#2563eb]"></div>
+</div>
+<div class="pb-1">
+<p class="text-xs font-bold">New Configuration</p>
+<p class="text-[11px] text-outline mt-0.5 leading-relaxed">Admin 'm.chen' added Google Workspace as a secondary IDP.</p>
+<p class="text-[10px] text-primary/60 mt-1 uppercase font-semibold">2 hours ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-[2px] bg-primary-container/30 relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary-container/40"></div>
+</div>
+<div class="pb-1">
+<p class="text-xs font-bold">Policy Updated</p>
+<p class="text-[11px] text-outline mt-0.5 leading-relaxed">MFA enforced for all users authenticating via Okta.</p>
+<p class="text-[10px] text-primary/60 mt-1 uppercase font-semibold">Yesterday</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-[2px] bg-primary-container/30 relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary-container/40"></div>
+</div>
+<div class="">
+<p class="text-xs font-bold">Entra ID Disabled</p>
+<p class="text-[11px] text-outline mt-0.5 leading-relaxed">Connection paused due to recurring credential errors.</p>
+<p class="text-[10px] text-primary/60 mt-1 uppercase font-semibold">Jan 12, 2024</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Connection Visualization (8 Columns) -->
+<div class="lg:col-span-8 bg-surface-container-high rounded-xl border border-white/5 overflow-hidden flex flex-col">
+<div class="p-6 border-b border-white/5 flex justify-between items-center">
+<div>
+<h4 class="text-lg font-bold headline-font">Authentication Traffic</h4>
+<p class="text-xs text-outline">Real-time auth request distribution across providers.</p>
+</div>
+<select class="bg-surface-container-highest border-none text-xs rounded px-3 py-1.5 focus:ring-1 focus:ring-primary">
+<option>Last 24 Hours</option>
+<option>Last 7 Days</option>
+</select>
+</div>
+<div class="flex-1 min-h-[300px] p-8 flex items-center justify-center relative">
+<!-- Abstract Visualization Replacement -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-container/20 via-transparent to-transparent"></div>
+</div>
+<div class="relative w-full flex flex-col gap-6">
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] uppercase font-bold tracking-widest">
+<span>Okta Enterprise</span>
+<span>82%</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container shadow-[0_0_15px_rgba(37,99,235,0.4)] w-[82%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] uppercase font-bold tracking-widest">
+<span>Google Workspace</span>
+<span>15%</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary shadow-[0_0_15px_rgba(210,187,255,0.4)] w-[15%]"></div>
+</div>
+</div>
+<div class="space-y-2 opacity-50">
+<div class="flex justify-between text-[10px] uppercase font-bold tracking-widest">
+<span>Other / Entra ID</span>
+<span>3%</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[3%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Add Identity Provider Wizard (Glassmorphism Modal) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm">
+<div class="w-full max-w-2xl bg-surface-container-low/80 backdrop-blur-xl rounded-xl border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] overflow-hidden">
+<!-- Wizard Progress -->
+<div class="flex border-b border-white/5 h-1">
+<div class="w-1/3 bg-primary shadow-[0_0_10px_#2563eb]"></div>
+<div class="w-1/3 bg-white/5"></div>
+<div class="w-1/3 bg-white/5"></div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-2xl font-bold headline-font">Select Identity Provider</h3>
+<p class="text-sm text-outline mt-1">Step 1: Choose the authentication standard or provider type.</p>
+</div>
+<button class="p-2 text-outline hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Provider Selection Grid -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<button class="p-5 bg-surface-container-highest border border-primary/40 rounded-lg flex items-center gap-4 text-left group">
+<div class="w-10 h-10 bg-primary/10 rounded flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="lock_open">lock_open</span>
+</div>
+<div>
+<p class="text-sm font-bold">SAML 2.0</p>
+<p class="text-[11px] text-outline">Okta, Ping, Salesforce</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<button class="p-5 bg-white/5 border border-white/5 rounded-lg flex items-center gap-4 text-left hover:bg-white/10 transition-colors">
+<div class="w-10 h-10 bg-white/5 rounded flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+</div>
+<div>
+<p class="text-sm font-bold">OIDC / OAuth 2.0</p>
+<p class="text-[11px] text-outline">Google, Microsoft, Github</p>
+</div>
+</button>
+<button class="p-5 bg-white/5 border border-white/5 rounded-lg flex items-center gap-4 text-left hover:bg-white/10 transition-colors">
+<div class="w-10 h-10 bg-white/5 rounded flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="directory_sync">directory_sync</span>
+</div>
+<div>
+<p class="text-sm font-bold">Active Directory</p>
+<p class="text-[11px] text-outline">LDAP, On-prem AD</p>
+</div>
+</button>
+<button class="p-5 bg-white/5 border border-white/5 rounded-lg flex items-center gap-4 text-left hover:bg-white/10 transition-colors">
+<div class="w-10 h-10 bg-white/5 rounded flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</div>
+<div>
+<p class="text-sm font-bold">Custom Protocol</p>
+<p class="text-[11px] text-outline">External APIs, Webhooks</p>
+</div>
+</button>
+</div>
+<div class="flex justify-between items-center pt-6 border-t border-white/5">
+<p class="text-[11px] text-outline flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="shield">shield</span>
+            All connections are encrypted with AES-256.
+          </p>
+<div class="flex gap-3">
+<button class="px-5 py-2 text-sm font-semibold text-outline hover:text-white transition-colors">Cancel</button>
+<button class="px-8 py-2 bg-primary-container text-white text-sm font-bold rounded shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:brightness-110 active:scale-95 transition-all">Continue</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Subtle Ambient Glow Effects -->
+<div class="fixed top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary-container/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-tertiary-container/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
+</body></html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AccessCore AI - Identity Provisioning</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#8d90a0",
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "surface-container-low": "#181c21",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "on-error": "#690005",
+                        "primary-container": "#2563eb",
+                        "tertiary-fixed": "#eaddff",
+                        "primary": "#b4c5ff",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary-container": "#404752",
+                        "on-tertiary-fixed": "#25005a",
+                        "tertiary": "#d2bbff",
+                        "on-tertiary": "#3f008e",
+                        "surface-container-highest": "#31353b",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary": "#002a78",
+                        "inverse-surface": "#e0e2ea",
+                        "surface-variant": "#31353b",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "surface-container-lowest": "#0a0e13",
+                        "on-primary-fixed": "#00174b",
+                        "outline-variant": "#434655",
+                        "surface-tint": "#b4c5ff",
+                        "surface": "#101419",
+                        "tertiary-container": "#8343f4",
+                        "surface-dim": "#101419",
+                        "on-secondary-container": "#afb5c2",
+                        "on-surface": "#e0e2ea",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#262a30",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error": "#ffb4ab",
+                        "inverse-on-surface": "#2d3136",
+                        "on-tertiary-container": "#f7edff",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#c0c7d3",
+                        "inverse-primary": "#0053db",
+                        "surface-container": "#1c2025",
+                        "on-secondary-fixed-variant": "#404752",
+                        "on-secondary": "#2a313b",
+                        "background": "#101419",
+                        "on-secondary-fixed": "#151c25",
+                        "surface-bright": "#36393f",
+                        "secondary-fixed": "#dce3f0",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-primary-container": "#eeefff",
+                        "on-background": "#e0e2ea"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #101419;
+            color: #e0e2ea;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(141, 144, 160, 0.05);
+        }
+        .input-ghost {
+            background: #0a0e13;
+            border: 1px solid rgba(141, 144, 160, 0.1);
+            transition: all 0.2s ease;
+        }
+        .input-ghost:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            outline: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1c2025;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #404752;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<!-- Shell Layout Wrapper (SideNav and TopAppBar are suppressed for this transactional screen per mandate) -->
+<div class="min-h-screen flex flex-col lg:flex-row items-center justify-center p-4 lg:p-12 relative overflow-hidden">
+<!-- Atmospheric Background Elements -->
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary-container opacity-5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-[400px] h-[400px] bg-tertiary-container opacity-5 rounded-full blur-[100px]"></div>
+<main class="w-full max-w-5xl z-10">
+<!-- Header Section -->
+<div class="mb-8 flex items-center justify-between">
+<div>
+<h1 class="font-headline text-3xl font-extrabold tracking-tighter text-on-surface mb-1">Provision New Identity</h1>
+<p class="font-body text-sm text-outline">Configure secure access parameters and system roles for AccessCore AI.</p>
+</div>
+<button class="flex items-center gap-2 text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="close">close</span>
+<span class="text-xs font-semibold tracking-widest uppercase">Discard</span>
+</button>
+</div>
+<!-- Asymmetric Bento Grid Form -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Primary Info -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Section 1: Account Information -->
+<div class="glass-panel rounded-xl p-8">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="person_add">person_add</span>
+<h2 class="font-headline text-lg font-bold tracking-tight">Account Information</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-xs font-medium text-outline-variant tracking-wider uppercase">Legal Name</label>
+<input class="w-full h-12 px-4 rounded-lg input-ghost text-on-surface font-body text-sm" placeholder="e.g. Adrian Sentinel" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-medium text-outline-variant tracking-wider uppercase">Corporate Email</label>
+<input class="w-full h-12 px-4 rounded-lg input-ghost text-on-surface font-body text-sm" placeholder="adrian@accesscore.ai" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-medium text-outline-variant tracking-wider uppercase">Employee ID</label>
+<input class="w-full h-12 px-4 rounded-lg input-ghost text-on-surface font-body text-sm" placeholder="AC-9920" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-medium text-outline-variant tracking-wider uppercase">Primary Department</label>
+<select class="w-full h-12 px-4 rounded-lg input-ghost text-on-surface font-body text-sm appearance-none cursor-pointer">
+<option>Cyber Security Ops</option>
+<option>Core Infrastructure</option>
+<option>Identity Management</option>
+<option>Cloud Architecture</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Section 2: Group Assignments -->
+<div class="glass-panel rounded-xl p-8">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" data-icon="hub">hub</span>
+<h2 class="font-headline text-lg font-bold tracking-tight">Group Access</h2>
+</div>
+<span class="text-[10px] bg-tertiary-container/20 text-tertiary px-2 py-1 rounded font-bold uppercase tracking-widest">Global Policy</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<label class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 rounded border-outline-variant bg-surface-container-lowest text-primary-container focus:ring-0" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-on-surface">Admin_Tier_1</span>
+<span class="text-[10px] text-outline">System Wide</span>
+</div>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="relative flex items-center">
+<input checked="" class="peer h-5 w-5 rounded border-outline-variant bg-surface-container-lowest text-primary-container focus:ring-0" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-on-surface">Data_Analysts</span>
+<span class="text-[10px] text-outline">Read Only</span>
+</div>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 rounded border-outline-variant bg-surface-container-lowest text-primary-container focus:ring-0" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-on-surface">Security_Audit</span>
+<span class="text-[10px] text-outline">Audit Logs</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar Settings -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Section 3: Role Assignment -->
+<div class="glass-panel rounded-xl p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="security">security</span>
+<h2 class="font-headline text-lg font-bold tracking-tight">System Role</h2>
+</div>
+<div class="space-y-4">
+<div class="p-4 rounded-lg border border-primary-container/20 bg-primary-container/5">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-bold text-primary">Assigned Role</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="info">info</span>
+</div>
+<select class="w-full bg-transparent border-none p-0 text-on-surface font-body text-base font-semibold focus:ring-0 cursor-pointer">
+<option>System Administrator</option>
+<option>Security Engineer</option>
+<option>Auditor</option>
+<option>Guest Contributor</option>
+</select>
+</div>
+<p class="text-[11px] text-outline leading-relaxed italic">
+                                Administrators have full read/write access to user directories and security clusters.
+                            </p>
+</div>
+</div>
+<!-- Section 4: Security Settings -->
+<div class="glass-panel rounded-xl p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-error" data-icon="v鍵">vpn_key</span>
+<h2 class="font-headline text-lg font-bold tracking-tight">Security Flow</h2>
+</div>
+<div class="space-y-6">
+<!-- Toggle: Password Change -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-on-surface">Require PW Reset</span>
+<span class="text-[10px] text-outline">Next login session</span>
+</div>
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary-container">
+<span class="inline-block h-4 w-4 translate-x-6 transform rounded-full bg-white transition"></span>
+</button>
+</div>
+<!-- Toggle: MFA Required -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-on-surface">Mandatory MFA</span>
+<span class="text-[10px] text-outline">Hardware tokens only</span>
+</div>
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-surface-container-highest">
+<span class="inline-block h-4 w-4 translate-x-1 transform rounded-full bg-outline transition"></span>
+</button>
+</div>
+<div class="pt-4 space-y-4">
+<div class="h-[1px] bg-outline-variant opacity-20"></div>
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded bg-error-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-error" data-icon="lock_clock">lock_clock</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface">Session Expiry</p>
+<p class="text-[10px] text-outline">Expires in 4 hours of inactivity</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-4">
+<button class="h-14 rounded bg-surface-container-high text-on-surface font-headline font-bold text-sm hover:bg-surface-bright transition-all active:scale-95">
+                            Cancel
+                        </button>
+<button class="h-14 rounded bg-primary-container text-white font-headline font-bold text-sm shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="save">save</span>
+                            Save User
+                        </button>
+</div>
+</div>
+</div>
+<!-- Footer Compliance Note -->
+<footer class="mt-8 text-center">
+<p class="text-[10px] text-outline tracking-widest uppercase">Encryption Standard: AES-256-GCM • Managed by AccessCore Sentinel</p>
+</footer>
+</main>
+</div>
+<!-- Background Decorative Element -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-[0.02]" data-alt="Subtle dark carbon fiber texture background for high-tech security feel" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDMqOUbIpJLQ7j46K2ZSkQ0KhRsCH15dNnauJjQvl-vMV8_7O17VgqvFvRBYOb0_hrvJL-mmyH-__pf8DwxCbJol8ivZ6Y_oG0iAstom0S-R-Jc4qBqIRDIV2RukUI9YF96H3WaxpEcvG1aVHUoUdpjZn-cJ_NK9e_popg7DI5Vjl3syACbjWraUB1Tv4iQBAJU4gK4lW3GDRSvACv_IY-q14cjl4Ad3kESO-vQp0IYsdLtrjZKciOO-BPcWq0os_SwrcWq4NtJMrQ');"></div>
+</body></html>

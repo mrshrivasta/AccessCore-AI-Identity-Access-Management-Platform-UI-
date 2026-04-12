@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Inter:wght@300..700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#afb5c2",
+                        "on-secondary-fixed": "#151c25",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-tertiary": "#3f008e",
+                        "on-surface": "#e0e2ea",
+                        "primary-container": "#2563eb",
+                        "error": "#ffb4ab",
+                        "primary": "#b4c5ff",
+                        "inverse-primary": "#0053db",
+                        "secondary-fixed": "#dce3f0",
+                        "on-secondary": "#2a313b",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-lowest": "#0a0e13",
+                        "on-error": "#690005",
+                        "surface-container-high": "#262a30",
+                        "surface-variant": "#31353b",
+                        "on-primary": "#002a78",
+                        "surface-dim": "#101419",
+                        "secondary": "#c0c7d3",
+                        "surface-bright": "#36393f",
+                        "surface-container-low": "#181c21",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#404752",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "tertiary-fixed": "#eaddff",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary": "#d2bbff",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "surface-container-highest": "#31353b",
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "outline-variant": "#434655",
+                        "outline": "#8d90a0",
+                        "surface-tint": "#b4c5ff",
+                        "surface-container": "#1c2025",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "on-tertiary-container": "#f7edff",
+                        "on-background": "#e0e2ea",
+                        "primary-fixed": "#dbe1ff",
+                        "inverse-on-surface": "#2d3136",
+                        "surface": "#101419",
+                        "tertiary-container": "#8343f4",
+                        "secondary-container": "#404752",
+                        "inverse-surface": "#e0e2ea",
+                        "on-tertiary-fixed": "#25005a",
+                        "background": "#101419"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #1c2025; }
+        ::-webkit-scrollbar-thumb { background: #404752; border-radius: 10px; }
+        .glass-panel {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(141, 144, 160, 0.05);
+        }
+        .status-orb {
+            box-shadow: 0 0 8px currentColor;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/30">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#1c2025] dark:bg-[#1c2025] h-screen w-64 border-r border-transparent shadow-[20px_0_40px_rgba(0,0,0,0.4)]">
+<div class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="shield">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="text-blue-500 font-black tracking-tighter text-xl">AccessCore AI</span>
+<span class="font-['Manrope'] tracking-tight text-[10px] uppercase font-bold text-outline">The Digital Vault</span>
+</div>
+</div>
+</div>
+<nav class="mt-4 flex-1 px-3 space-y-1">
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 font-['Manrope'] tracking-tight text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 font-['Manrope'] tracking-tight text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+                Identities
+            </a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 font-['Manrope'] tracking-tight text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_ind">assignment_ind</span>
+                Roles
+            </a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg bg-[#31353b] text-blue-400 border-l-2 border-blue-500 transition-colors duration-200 font-['Manrope'] tracking-tight text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+                Security
+            </a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 font-['Manrope'] tracking-tight text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="p-3 border-t border-outline-variant/20 mb-4">
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 font-['Manrope'] tracking-tight text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Help Center
+            </a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 font-['Manrope'] tracking-tight text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="flex items-center justify-between px-8 ml-64 w-[calc(100%-16rem)] z-30 bg-[#101419]/80 backdrop-blur-xl w-full h-16 sticky top-0 shadow-[0_1px_0_0_rgba(141,144,160,0.1)] shadow-lg">
+<div class="flex items-center gap-6 flex-1">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border-none ring-1 ring-outline-variant/20 focus:ring-primary/50 rounded-lg pl-10 pr-4 py-1.5 text-sm font-label text-on-surface-variant" placeholder="Search audit logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="h-8 w-px bg-outline-variant/20 mx-2"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">Admin User</p>
+<p class="text-[10px] text-outline">System Root</p>
+</div>
+<img class="w-8 h-8 rounded-full border border-primary/20" data-alt="close-up portrait of a professional male administrator in a modern office environment with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4gfRrDoawzOAUuzHBehEke7xz2mt4q9MysV6z_L2GO81IgZ-lUaaCjHm90Aoi74O62Vp7l1k9veCNL-k_5TGkLReVBi7YIRDvIFsISlCLZ6o5rtTSMsxjRO0bznwL2fSyyqABGOXg8xtkjom0QUhUNEsiMauA7ybdGcrvbs_qPOUHJCB7j6vUyfoBqdDZaEQRMSUuEWVdFl3EAh8XG9l6vajCJvMZkSj5-EQ4U1qGK0vWWOpLstjF8mGclop9AuNRdcfwcIsrQ6o"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-8 min-h-[calc(100vh-4rem)]">
+<!-- Header & Stats Section -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<nav class="flex items-center gap-2 text-xs font-medium text-outline mb-2">
+<span>Security</span>
+<span class="material-symbols-outlined text-[12px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary-fixed-dim">Audit Logs</span>
+</nav>
+<h1 class="text-3xl font-extrabold tracking-tight text-on-surface">Audit Logs</h1>
+<p class="text-outline mt-1 text-sm">Real-time immutable record of system-wide administrative actions.</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-secondary-container/20 text-secondary border border-outline-variant/10 rounded font-semibold text-sm hover:bg-secondary-container/30 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                    Export CSV
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary-container text-white rounded font-semibold text-sm shadow-lg shadow-primary-container/20 hover:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                    Advanced Filter
+                </button>
+</div>
+</div>
+<!-- Filters Asymmetric Layout -->
+<div class="grid grid-cols-12 gap-6 mb-8">
+<div class="col-span-12 lg:col-span-9 glass-panel rounded-xl p-6 flex flex-wrap items-center gap-8">
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-bold uppercase tracking-wider text-outline">Date Range</label>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3 py-2 rounded-lg ring-1 ring-outline-variant/10">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-medium">Oct 12, 2023 - Oct 19, 2023</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-bold uppercase tracking-wider text-outline">Severity Level</label>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-error-container/20 text-error text-[10px] font-bold border border-error/10">Critical</span>
+<span class="px-3 py-1 rounded-full bg-surface-variant text-on-surface-variant text-[10px] font-bold">Warning</span>
+<span class="px-3 py-1 rounded-full bg-surface-variant text-on-surface-variant text-[10px] font-bold">Info</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-bold uppercase tracking-wider text-outline">Actor Type</label>
+<select class="bg-surface-container-lowest border-none ring-1 ring-outline-variant/10 rounded-lg text-sm px-3 py-2 focus:ring-primary/50">
+<option>All Actors</option>
+<option>Human Administrator</option>
+<option>Service Account</option>
+<option>System Automation</option>
+</select>
+</div>
+<div class="flex-1"></div>
+<button class="text-primary-fixed-dim text-sm font-semibold hover:underline">Clear all</button>
+</div>
+<div class="col-span-12 lg:col-span-3 glass-panel rounded-xl p-6 flex items-center justify-between border-l-4 border-primary">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-wider text-outline">Total Logs</p>
+<h3 class="text-3xl font-black text-on-surface">1,402</h3>
+<p class="text-xs text-primary-fixed-dim mt-1">+12% from last 24h</p>
+</div>
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="monitoring">monitoring</span>
+</div>
+</div>
+</div>
+<!-- High-Fidelity Data Table -->
+<div class="glass-panel rounded-xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-high/50 border-b border-outline-variant/10">
+<tr>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-outline">Timestamp</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-outline">Actor</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-outline">Action Type</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-outline">Resource ID</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-outline">IP Address</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-outline">Status</th>
+<th class="px-6 py-4 text-right"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1: Critical -->
+<tr class="hover:bg-surface-bright/20 group transition-all">
+<td class="px-6 py-5 font-mono text-xs text-on-surface-variant">2023-10-19 14:22:01</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<img class="w-6 h-6 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="professional male headshot with neutral background and cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvhmclSGMZo5jUBHuO3unCRRUlNGowXj4-oZHPoIzMWpYEDEdXI1tLnxIFENTGk0VxSkXSAmtZlO_LYJHHtt8tdvrO82gOKcjQVDspR43WL295Qc9LRb_LORCV103KxzqlHEi06L9Cb8pWRtTm7ZOQ-lNDuGsTER9AZ9bEG_gnP9US5_-you_AmwfBapHp7Rdt8LVbuDYLVLdFFvVcs5-AtmjV2_MxeJrBtzL03gI_JVCgVbYxqC9muWtB76zNeXLyd-ijvoq2nC0"/>
+<div>
+<p class="text-sm font-semibold">jeff_admin</p>
+<p class="text-[10px] text-outline">Admin Panel</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium">User Role Modified</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-mono text-xs bg-surface-container-highest px-2 py-1 rounded text-tertiary">USR-9482-AD</span>
+</td>
+<td class="px-6 py-5 font-mono text-xs text-outline">192.168.1.104</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error status-orb text-error"></span>
+<span class="text-[11px] font-bold uppercase text-error">Critical</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-1 hover:bg-white/5 rounded"><span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright/20 group transition-all">
+<td class="px-6 py-5 font-mono text-xs text-on-surface-variant">2023-10-19 14:18:55</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-white" data-icon="smart_toy">smart_toy</span>
+</div>
+<div>
+<p class="text-sm font-semibold">svc_vault_sync</p>
+<p class="text-[10px] text-outline">Service Account</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium">Access Token Revoked</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-mono text-xs bg-surface-container-highest px-2 py-1 rounded text-tertiary">TOK-8812-ZZ</span>
+</td>
+<td class="px-6 py-5 font-mono text-xs text-outline">10.0.4.22</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container status-orb text-primary-container"></span>
+<span class="text-[11px] font-bold uppercase text-primary-container">Info</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-1 hover:bg-white/5 rounded"><span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright/20 group transition-all">
+<td class="px-6 py-5 font-mono text-xs text-on-surface-variant">2023-10-19 13:55:12</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<img class="w-6 h-6 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="vibrant professional female portrait with warm natural lighting and soft blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC50-Qs1C9GUyE_8LvME4cmedTeXej7LdN_xNlm0oUq7HWP5VqH1p-eZS6ujRFmoRHF92Fd8gTkNTzO552HM5ZxTAPBu_T20s4GJeh0j3OBl4CY1ZLViBoq6F75OUw6UfwLHoZKCmOT2w2xhfyHhvb2fpkaq3q-_c1W6ER0WrUMxXx1TuBxtNzCV62BHiWfNwoo9m1Z5kbkkJX3AlrxKGils_jAVcemfILzZvsmHMxw82mGCUTTKyVCBrw1THLJlcbEw4AqgPpKhRo"/>
+<div>
+<p class="text-sm font-semibold">sarah_ops</p>
+<p class="text-[10px] text-outline">Admin Panel</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium">Policy Attachment</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-mono text-xs bg-surface-container-highest px-2 py-1 rounded text-tertiary">POL-0039-RW</span>
+</td>
+<td class="px-6 py-5 font-mono text-xs text-outline">24.120.91.4</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary status-orb text-secondary"></span>
+<span class="text-[11px] font-bold uppercase text-secondary">Warning</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-1 hover:bg-white/5 rounded"><span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright/20 group transition-all">
+<td class="px-6 py-5 font-mono text-xs text-on-surface-variant">2023-10-19 13:40:02</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-white" data-icon="terminal">terminal</span>
+</div>
+<div>
+<p class="text-sm font-semibold">root_cli_global</p>
+<p class="text-[10px] text-outline">CLI Interface</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium">Global Key Rotation</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-mono text-xs bg-surface-container-highest px-2 py-1 rounded text-tertiary">KEY-MAS-01</span>
+</td>
+<td class="px-6 py-5 font-mono text-xs text-outline">127.0.0.1</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error status-orb text-error"></span>
+<span class="text-[11px] font-bold uppercase text-error">Critical</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-1 hover:bg-white/5 rounded"><span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-bright/20 group transition-all">
+<td class="px-6 py-5 font-mono text-xs text-on-surface-variant">2023-10-19 12:12:30</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<img class="w-6 h-6 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="sharp headshot of a diverse professional male in a clean studio setting with blue accent lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDQ8-fkUqZ7t2UuNGHtL977uiK-NQsHrYI6LCmwILI7kypIsN-KZVYtwwpUjCHc47YCjo4lcgFdnY40LgE018420jPEXOJqfHTgQ84ZxHdUy0Jr67KvYdXFcKz5ZPRLyXf2UrLR75nR4hGS9qX_ZHPLRisvgy3gZiFlJt4HQXAPZD1Zblq5XyFirY0qSl1SYU2g2_AVYrbYjDqx2hZ_NYWvjA0S2LEXIqSTY3DrO5JNMbF4eWHG0cf2YSrZ2OqAYiaorUV4RZ98lY"/>
+<div>
+<p class="text-sm font-semibold">marcus_sec</p>
+<p class="text-[10px] text-outline">Admin Panel</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium">Audit Log Exported</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-mono text-xs bg-surface-container-highest px-2 py-1 rounded text-tertiary">LOG-HIST-OCT</span>
+</td>
+<td class="px-6 py-5 font-mono text-xs text-outline">82.14.221.90</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container status-orb text-primary-container"></span>
+<span class="text-[11px] font-bold uppercase text-primary-container">Info</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-1 hover:bg-white/5 rounded"><span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="bg-surface-container-low px-6 py-4 border-t border-outline-variant/10 flex items-center justify-between">
+<span class="text-xs text-outline font-medium">Showing 1-10 of 1,402 entries</span>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 bg-surface-container-highest border border-outline-variant/20 rounded text-xs font-semibold disabled:opacity-50">Previous</button>
+<button class="px-3 py-1.5 bg-primary-container text-white rounded text-xs font-semibold">1</button>
+<button class="px-3 py-1.5 bg-surface-container-highest border border-outline-variant/20 rounded text-xs font-semibold">2</button>
+<button class="px-3 py-1.5 bg-surface-container-highest border border-outline-variant/20 rounded text-xs font-semibold">3</button>
+<span class="text-outline self-end pb-1">...</span>
+<button class="px-3 py-1.5 bg-surface-container-highest border border-outline-variant/20 rounded text-xs font-semibold">Next</button>
+</div>
+</div>
+</div>
+<!-- System Intelligence Footer (Asymmetric Element) -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-panel p-6 rounded-xl border-l-4 border-tertiary-container flex items-start gap-4">
+<div class="bg-tertiary-container/10 p-3 rounded-lg">
+<span class="material-symbols-outlined text-tertiary" data-icon="security_update_good">security_update_good</span>
+</div>
+<div>
+<h4 class="font-bold text-sm text-on-surface">Data Integrity Check</h4>
+<p class="text-xs text-outline mt-1 leading-relaxed">All logs are signed with SHA-256 and mirrored to the secondary immutable vault. Verification status: <span class="text-primary-fixed-dim font-bold">VERIFIED</span>.</p>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-center">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold text-sm text-on-surface">Live Event Stream</h4>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary uppercase">Connected</span>
+</div>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[72%]"></div>
+</div>
+<p class="text-[10px] text-outline mt-3">Monitoring 48 active service nodes across US-EAST-1 and EU-WEST-2.</p>
+</div>
+</div>
+</main>
+</body></html>

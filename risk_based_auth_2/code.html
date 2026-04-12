@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AccessCore AI - Risk Auth Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#101419",
+                        "on-tertiary": "#3f008e",
+                        "tertiary": "#d2bbff",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-container": "#afb5c2",
+                        "secondary": "#c0c7d3",
+                        "outline": "#8d90a0",
+                        "surface-container-highest": "#31353b",
+                        "primary-container": "#2563eb",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-tint": "#b4c5ff",
+                        "outline-variant": "#434655",
+                        "on-surface": "#e0e2ea",
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "on-primary": "#002a78",
+                        "surface-variant": "#31353b",
+                        "on-tertiary-fixed": "#25005a",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-fixed": "#dce3f0",
+                        "primary-fixed": "#dbe1ff",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "inverse-on-surface": "#2d3136",
+                        "surface-dim": "#101419",
+                        "on-secondary-fixed": "#151c25",
+                        "on-tertiary-container": "#f7edff",
+                        "background": "#101419",
+                        "on-background": "#e0e2ea",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "on-secondary-fixed-variant": "#404752",
+                        "on-surface-variant": "#c3c6d7",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "surface-container": "#1c2025",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0a0e13",
+                        "tertiary-container": "#8343f4",
+                        "inverse-surface": "#e0e2ea",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#181c21",
+                        "inverse-primary": "#0053db",
+                        "tertiary-fixed": "#eaddff",
+                        "on-secondary": "#2a313b",
+                        "surface-bright": "#36393f",
+                        "secondary-container": "#404752",
+                        "primary": "#b4c5ff",
+                        "surface-container-high": "#262a30"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(141, 144, 160, 0.05);
+        }
+        .tonal-shift-layering {
+            background: linear-gradient(to bottom, #1c2025, #101419);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #31353b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c0c7d3;
+            border-radius: 10px;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            background: #31353b;
+            height: 4px;
+            border-radius: 2px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-white overflow-hidden">
+<!-- Side Navigation Shell -->
+<aside class="flex flex-col fixed left-0 top-0 h-full h-screen w-64 border-r border-slate-800/20 bg-slate-900/80 dark:bg-[#1c2025] font-['Manrope'] tracking-tight shadow-[20px_0_40px_rgba(0,0,0,0.4)] z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-8 h-8 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg" data-icon="shield">shield</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tighter text-blue-500 dark:text-[#2563EB]">AccessCore AI</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-outline">Enterprise Sentinel</p>
+</div>
+</div>
+<nav class="space-y-1">
+<!-- Tabs from JSON mapping -->
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="assignment">assignment</span>
+<span class="text-sm font-medium">Activity Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="settings_input_component">settings_input_component</span>
+<span class="text-sm font-medium">Session Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="devices">devices</span>
+<span class="text-sm font-medium">Active Sessions</span>
+</a>
+<!-- Active Tab: Risk Auth -->
+<a class="flex items-center gap-3 px-4 py-3 rounded text-blue-500 dark:text-[#d2bbff] border-l-2 border-blue-500 dark:border-[#2563EB] bg-slate-800/50 group" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="security_update_good">security_update_good</span>
+<span class="text-sm font-medium">Risk Auth</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="verified_user">verified_user</span>
+<span class="text-sm font-medium">MFA Setup</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="policy">policy</span>
+<span class="text-sm font-medium">Password Policies</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="text-sm font-medium">SSO Config</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-800/20">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Security Administrator" class="w-8 h-8 rounded-full bg-surface-container-highest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBht49MgBubsGqR--qbJV5EQ8fcfUW4JpdYVwUXhxTUSL5hp9GoMY3cXMYdeZdwyV_O4W1X7Wj0HIUa4puYOS4663_dfMTz0lFkOR_v52G3CCqo7AJAdPRD13odeTbnVkEvLDnoS_9_d4bcY4ZoBtk77Ecnym4N4Q8Eb5WVBvuPxOMxhVLRtOLW-KKA1I0ojOTPKEDIaLqtbPfSBndyN51mNSCyOCF4qZBT55T8HhLAyEfFJbZMxTcDSeVcglrzZYW3BSH4YGqo2LU"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate text-on-surface">Admin Sentinel</p>
+<p class="text-[10px] text-outline truncate">System Status: Secure</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Shell -->
+<header class="flex items-center justify-between px-8 sticky top-0 z-40 ml-64 w-[calc(100%-16rem)] h-16 border-b border-white/5 bg-slate-900/40 dark:bg-[#101419]/80 backdrop-blur-xl font-['Manrope'] text-sm font-medium shadow-sm">
+<div class="flex items-center gap-8">
+<div class="flex gap-6">
+<a class="text-slate-400 dark:text-[#E0E2EA]/70 hover:text-blue-300 transition-all" href="#">Audit</a>
+<a class="text-blue-400 dark:text-[#2563EB] border-b-2 border-blue-500 py-5" href="#">Shield</a>
+<a class="text-slate-400 dark:text-[#E0E2EA]/70 hover:text-blue-300 transition-all" href="#">Vault</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-outline group-focus-within:text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="search">search</span>
+</span>
+<input class="bg-surface-container-lowest border border-outline/10 rounded-lg py-1.5 pl-9 pr-4 text-xs focus:ring-1 focus:ring-primary focus:border-primary w-64 transition-all" placeholder="Search parameters..." type="text"/>
+</div>
+<div class="flex gap-3 text-outline">
+<button class="hover:text-white transition-colors"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="hover:text-white transition-colors"><span class="material-symbols-outlined" data-icon="help_outline">help_outline</span></button>
+<button class="hover:text-white transition-colors"><span class="material-symbols-outlined" data-icon="account_circle">account_circle</span></button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-8 overflow-y-auto h-[calc(100vh-4rem)] custom-scrollbar">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<div class="flex items-end justify-between mb-10">
+<div>
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2 font-headline">Risk-Based Authentication</h2>
+<p class="text-outline max-w-xl">Configure intelligent, context-aware authentication layers. Adaptive policies analyze behavioral signals to prevent unauthorized access in real-time.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 bg-surface-container-highest text-on-surface font-semibold text-sm rounded shadow-sm hover:brightness-110 transition-all">Export Logs</button>
+<button class="px-5 py-2.5 bg-primary-container text-white font-semibold text-sm rounded shadow-sm hover:bg-blue-600 transition-all">Deploy Policies</button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Impossible Travel Module -->
+<div class="col-span-12 lg:col-span-8 glass-panel p-6 rounded-xl flex flex-col gap-6">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-2xl" data-icon="flight_takeoff">flight_takeoff</span>
+</div>
+<div>
+<h3 class="text-lg font-bold font-headline">Impossible Travel Detection</h3>
+<p class="text-xs text-outline">Analyze velocity between login locations.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="relative h-48 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover opacity-40" data-alt="abstract satellite view of earth at night with glowing connection lines and network nodes across continents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHaEpnaJbckIPH5fXKVcGSd4CjfUHg0c6KjY30Ags2NyUCHa1eO3mkDjoz7TWoVDHGTvp7_K6v9f9hAKVwSazPdJz-sIe_RNnrZZgAYXNqTUHR7cm2H-Uv5mmk5IX7rbSDO0xncs6QpL8V4uNRdnVID40ECH4kpy4YD04cHzJ88HXf4T5aeTRFPPIowd1no-GCw1gQ_YQPKTqS1zFpXfPTFTA3PtFpvykt2N29MruMMkxnsEZI-bZ1X5uthiouKncNEMZYgqRilZ4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div class="space-y-1">
+<span class="text-[10px] uppercase tracking-widest text-tertiary font-bold">Current Sensitivity</span>
+<p class="text-2xl font-black text-white">Aggressive (0.8s/km)</p>
+</div>
+<div class="w-48">
+<input class="w-full" max="100" min="0" type="range" value="80"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div class="bg-surface-container-low p-4 rounded border border-white/5">
+<p class="text-xs text-outline mb-1">Alert Threshold</p>
+<p class="text-lg font-bold">500 km/h</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-white/5">
+<p class="text-xs text-outline mb-1">MFA Enforcement</p>
+<p class="text-lg font-bold">Immediate</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-white/5">
+<p class="text-xs text-outline mb-1">Geofence Bypass</p>
+<p class="text-lg font-bold text-error">Disabled</p>
+</div>
+</div>
+</div>
+<!-- Geolocation Policy -->
+<div class="col-span-12 lg:col-span-4 glass-panel p-6 rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="w-10 h-10 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<h3 class="text-lg font-bold font-headline mb-2">Geolocation Profiling</h3>
+<p class="text-sm text-outline mb-6">Restrict access based on trusted geographic regions and blacklisted jurisdictions.</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded border border-white/5">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+<span class="text-xs font-medium uppercase tracking-tighter">North America</span>
+</div>
+<span class="text-[10px] text-primary">ALLOWED</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded border border-white/5">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+<span class="text-xs font-medium uppercase tracking-tighter">European Union</span>
+</div>
+<span class="text-[10px] text-primary">ALLOWED</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded border border-white/5 opacity-50">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-error shadow-[0_0_8px_rgba(255,180,171,0.5)]"></span>
+<span class="text-xs font-medium uppercase tracking-tighter">Restricted Zones</span>
+</div>
+<span class="text-[10px] text-error">BLOCKED</span>
+</div>
+</div>
+</div>
+<button class="mt-8 text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all">
+                        Edit Whitelist <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- IP Reputation Score -->
+<div class="col-span-12 lg:col-span-4 glass-panel p-6 rounded-xl">
+<div class="flex items-center justify-between mb-8">
+<div class="w-10 h-10 rounded bg-amber-500/10 flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<h3 class="text-lg font-bold font-headline mb-2">IP Reputation</h3>
+<p class="text-sm text-outline mb-6">Real-time check against global threat databases for malicious proxies and TOR nodes.</p>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-tighter">
+<span>Proxy Detection</span>
+<span class="text-amber-500">92%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full w-[92%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-tighter">
+<span>Botnet Filtering</span>
+<span class="text-primary">High</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[75%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Device Fingerprinting -->
+<div class="col-span-12 lg:col-span-8 glass-panel p-6 rounded-xl">
+<div class="flex items-start justify-between mb-8">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded bg-tertiary-container/10 flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-2xl" data-icon="fingerprint">fingerprint</span>
+</div>
+<div>
+<h3 class="text-lg font-bold font-headline">Device Fingerprinting</h3>
+<p class="text-xs text-outline">Verify unique hardware and browser attributes.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-on-surface">Canvas Fingerprinting</span>
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest"></span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-on-surface">WebRTC Leak Check</span>
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest"></span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-on-surface">Entropy Analysis</span>
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-5 border border-white/5 relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Protection Level</p>
+<p class="text-3xl font-black text-on-surface mb-1">Sentinel-V4</p>
+<p class="text-xs text-primary font-medium">99.9% Unique ID Match Rate</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-8xl" data-icon="security" style="font-size: 120px;">security</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Risk Sensitivity Slider -->
+<div class="mt-8 glass-panel p-8 rounded-2xl bg-gradient-to-r from-surface-container to-surface-container-high border-l-4 border-primary">
+<div class="flex flex-col md:flex-row md:items-center gap-8">
+<div class="md:w-1/3">
+<h4 class="text-xl font-bold font-headline mb-1">Global Sensitivity</h4>
+<p class="text-sm text-outline">Adjust the aggregate risk engine threshold for all connected applications.</p>
+</div>
+<div class="flex-1 space-y-4">
+<div class="flex justify-between text-[10px] font-bold tracking-[0.2em] text-outline px-1">
+<span>RELAXED</span>
+<span class="text-primary">BALANCED</span>
+<span>PARANOID</span>
+</div>
+<input class="w-full h-2 rounded-full cursor-pointer accent-primary" max="10" min="1" type="range" value="7"/>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 text-xs text-on-surface/60">
+<span class="material-symbols-outlined text-sm" data-icon="info">info</span>
+                                Active Policy: <strong>Corporate Standard</strong>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- System Status Footer -->
+<footer class="mt-12 py-8 border-t border-white/5 flex justify-between items-center text-[10px] text-outline tracking-widest font-bold uppercase">
+<div class="flex gap-8">
+<span class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Risk Engine: Operational
+                </span>
+<span class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    API Latency: 42ms
+                </span>
+</div>
+<div>
+                © 2024 ACCESSCORE AI | VERSION 2.4.0-STABLE
+            </div>
+</footer>
+</main>
+</body></html>

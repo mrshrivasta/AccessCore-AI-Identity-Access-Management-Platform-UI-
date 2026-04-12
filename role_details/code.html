@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Role Details - AccessCore AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1c2025;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #404752;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c0c7d3;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#31353b",
+                        "secondary": "#c0c7d3",
+                        "inverse-surface": "#e0e2ea",
+                        "surface": "#101419",
+                        "surface-container-lowest": "#0a0e13",
+                        "on-tertiary": "#3f008e",
+                        "secondary-fixed": "#dce3f0",
+                        "on-tertiary-container": "#f7edff",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "on-error-container": "#ffdad6",
+                        "on-surface-variant": "#c3c6d7",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-error": "#690005",
+                        "background": "#101419",
+                        "on-primary-container": "#eeefff",
+                        "inverse-primary": "#0053db",
+                        "outline-variant": "#434655",
+                        "tertiary-fixed": "#eaddff",
+                        "on-background": "#e0e2ea",
+                        "on-surface": "#e0e2ea",
+                        "on-secondary-fixed": "#151c25",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "on-secondary-fixed-variant": "#404752",
+                        "on-primary": "#002a78",
+                        "on-secondary-container": "#afb5c2",
+                        "primary-container": "#2563eb",
+                        "tertiary-container": "#8343f4",
+                        "secondary-container": "#404752",
+                        "on-secondary": "#2a313b",
+                        "surface-container-high": "#262a30",
+                        "primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "surface-dim": "#101419",
+                        "surface-container-low": "#181c21",
+                        "error-container": "#93000a",
+                        "surface-container": "#1c2025",
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "on-tertiary-fixed": "#25005a",
+                        "inverse-on-surface": "#2d3136",
+                        "surface-tint": "#b4c5ff",
+                        "surface-bright": "#36393f",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary": "#d2bbff",
+                        "surface-container-highest": "#31353b",
+                        "primary-fixed": "#dbe1ff",
+                        "error": "#ffb4ab",
+                        "outline": "#8d90a0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 z-50 bg-[#1c2025] shadow-2xl flex flex-col py-6">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary-container flex items-center justify-center shadow-[0_0_20px_rgba(37,99,235,0.3)]">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="shield_person">shield_person</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-blue-500 font-headline leading-none">AccessCore AI</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 mt-1">The Digital Vault</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 font-['Inter'] text-sm font-medium">
+<a class="bg-[#2563EB]/10 text-blue-500 border-l-2 border-blue-500 px-4 py-3 flex items-center gap-3 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="shield_person">shield_person</span>
+<span>Roles</span>
+</a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="key">key</span>
+<span>Permissions</span>
+</a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="tune">tune</span>
+<span>Access Editor</span>
+</a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+<span>Audit Logs</span>
+</a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="lock">lock</span>
+<span>Security Vault</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1 pt-6 border-t border-white/5">
+<button class="w-full bg-primary-container text-on-primary-container py-2.5 rounded text-xs font-bold uppercase tracking-wider mb-4 hover:brightness-110 active:scale-95 transition-all">
+                New Role
+            </button>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-40 bg-[#101419]/80 backdrop-blur-xl flex justify-between items-center px-6 py-3 ml-64 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)]">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary text-sm pl-10 pr-4 py-2 rounded" placeholder="Search assets, users, or logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1">
+<button class="p-2 text-slate-400 hover:bg-[#31353b] transition-colors rounded">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-[#31353b] transition-colors rounded">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-[#31353b] transition-colors rounded">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-white/10 mx-2"></div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold text-slate-100 font-headline">Admin</span>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-primary/20" data-alt="professional portrait of a middle-aged male administrator in a modern office setting with cool lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcWByMbUmFiwUpS5pqhaquSuMbniE5dPJF4TMeEM6dB93f-HCPwSrYtm9SU7HdWoj6JDMJwCjbXIjmoGj0PR13yS9WT4sg5nC7iw0iP5TH2aaKldS-nEYV6C4o4ZRA15vb1ZWmcc4q6CPPnUT0SuscHFFQ7ZayDDb-2u0COy_WnYTkBu1aZviyayl6OtBFPBTmRgIdKibSKeH0ZISYFtxUiQ2PFYhcDpaCQtoeJwehlo_SU3mNemA8KxZ8W3YRwLUKRCVG4CksnwI"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-20 px-8 pb-12">
+<!-- Role Hero Header -->
+<section class="mb-8">
+<div class="flex items-center gap-3 text-sm text-secondary mb-4">
+<span class="hover:text-primary cursor-pointer transition-colors">Roles</span>
+<span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface">Cloud Infrastructure Admin</span>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex items-start gap-6">
+<div class="w-16 h-16 bg-surface-container-high rounded-lg flex items-center justify-center text-primary shadow-xl border border-white/5">
+<span class="material-symbols-outlined text-4xl" data-icon="settings_input_component">settings_input_component</span>
+</div>
+<div>
+<h2 class="text-4xl font-extrabold font-headline tracking-tight text-on-surface">Cloud Infrastructure Admin</h2>
+<p class="text-secondary mt-1 max-w-2xl">Elevated administrative privileges for managing multi-cloud VPCs, Kubernetes clusters, and core routing infrastructure. Critical system role.</p>
+<div class="flex gap-4 mt-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-tertiary-container/20 text-tertiary text-xs font-bold rounded-full border border-tertiary/20">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
+                                System Role
+                            </div>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-highest text-secondary text-xs font-bold rounded-full">
+<span class="material-symbols-outlined text-[14px]" data-icon="group">group</span>
+                                14 Users Assigned
+                            </div>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 bg-secondary-container/20 text-secondary border border-outline-variant/30 font-bold rounded hover:bg-secondary-container/40 transition-all active:scale-95">Duplicate</button>
+<button class="px-6 py-2.5 bg-primary-container text-on-primary-container font-bold rounded shadow-[0_10px_20px_rgba(37,99,235,0.3)] hover:brightness-110 transition-all active:scale-95">Edit Config</button>
+</div>
+</div>
+</section>
+<!-- Dynamic Bento Grid Content -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Left Column: Tabs & Main Details (8 Columns) -->
+<div class="col-span-8 space-y-6">
+<!-- Navigation Tabs -->
+<nav class="flex gap-1 p-1 bg-surface-container-low rounded-lg w-fit">
+<button class="px-6 py-2 rounded font-bold text-sm bg-surface-container-highest text-primary transition-all">Permissions</button>
+<button class="px-6 py-2 rounded font-bold text-sm text-secondary hover:text-on-surface transition-all">Assigned Users</button>
+<button class="px-6 py-2 rounded font-bold text-sm text-secondary hover:text-on-surface transition-all">Audit Log</button>
+</nav>
+<!-- Permissions Matrix Section (Asymmetric Layout) -->
+<div class="bg-surface-container-high rounded-xl p-6 shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary shadow-[0_0_15px_rgba(37,99,235,0.6)]"></div>
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-xl font-bold font-headline text-on-surface">Permission Matrix</h3>
+<p class="text-sm text-secondary">Granular resource control for this role</p>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="filter_list">filter_list</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="download">download</span>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Matrix Header -->
+<div class="grid grid-cols-12 gap-4 px-4 py-2 text-[10px] uppercase tracking-widest text-slate-500 font-black">
+<div class="col-span-5">Resource Type</div>
+<div class="col-span-2 text-center">Read</div>
+<div class="col-span-2 text-center">Write</div>
+<div class="col-span-2 text-center">Delete</div>
+<div class="col-span-1 text-right">Scope</div>
+</div>
+<!-- Resource Row 1 -->
+<div class="grid grid-cols-12 gap-4 items-center px-4 py-4 bg-surface rounded hover:bg-surface-bright transition-all group">
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg" data-icon="cloud">cloud</span>
+</div>
+<span class="font-bold text-on-surface group-hover:text-primary transition-colors">AWS VPC Instances</span>
+</div>
+<div class="col-span-2 text-center">
+<div class="w-4 h-4 rounded-full bg-green-500/20 border border-green-500/50 mx-auto flex items-center justify-center shadow-[0_0_8px_rgba(34,197,94,0.3)]">
+<div class="w-1.5 h-1.5 bg-green-500 rounded-full blur-[1px]"></div>
+</div>
+</div>
+<div class="col-span-2 text-center">
+<div class="w-4 h-4 rounded-full bg-green-500/20 border border-green-500/50 mx-auto flex items-center justify-center shadow-[0_0_8px_rgba(34,197,94,0.3)]">
+<div class="w-1.5 h-1.5 bg-green-500 rounded-full blur-[1px]"></div>
+</div>
+</div>
+<div class="col-span-2 text-center">
+<div class="w-4 h-4 rounded-full bg-error-container/20 border border-error/50 mx-auto flex items-center justify-center shadow-[0_0_8px_rgba(255,180,171,0.3)]">
+<div class="w-1.5 h-1.5 bg-error rounded-full blur-[1px]"></div>
+</div>
+</div>
+<div class="col-span-1 text-right">
+<span class="text-xs text-secondary italic">Global</span>
+</div>
+</div>
+<!-- Resource Row 2 -->
+<div class="grid grid-cols-12 gap-4 items-center px-4 py-4 bg-surface-container-low rounded hover:bg-surface-bright transition-all group">
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg" data-icon="storage">storage</span>
+</div>
+<span class="font-bold text-on-surface group-hover:text-primary transition-colors">S3 Buckets (Production)</span>
+</div>
+<div class="col-span-2 text-center">
+<div class="w-4 h-4 rounded-full bg-green-500/20 border border-green-500/50 mx-auto flex items-center justify-center shadow-[0_0_8px_rgba(34,197,94,0.3)]">
+<div class="w-1.5 h-1.5 bg-green-500 rounded-full blur-[1px]"></div>
+</div>
+</div>
+<div class="col-span-2 text-center">
+<div class="w-4 h-4 rounded-full bg-error-container/20 border border-error/50 mx-auto flex items-center justify-center">
+<div class="w-1.5 h-1.5 bg-error rounded-full blur-[1px]"></div>
+</div>
+</div>
+<div class="col-span-2 text-center">
+<div class="w-4 h-4 rounded-full bg-error-container/20 border border-error/50 mx-auto flex items-center justify-center">
+<div class="w-1.5 h-1.5 bg-error rounded-full blur-[1px]"></div>
+</div>
+</div>
+<div class="col-span-1 text-right">
+<span class="text-xs text-secondary italic">Restricted</span>
+</div>
+</div>
+<!-- Resource Row 3 -->
+<div class="grid grid-cols-12 gap-4 items-center px-4 py-4 bg-surface rounded hover:bg-surface-bright transition-all group">
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg" data-icon="terminal">terminal</span>
+</div>
+<span class="font-bold text-on-surface group-hover:text-primary transition-colors">CI/CD Pipeline Execution</span>
+</div>
+<div class="col-span-2 text-center">
+<div class="w-4 h-4 rounded-full bg-green-500/20 border border-green-500/50 mx-auto flex items-center justify-center shadow-[0_0_8px_rgba(34,197,94,0.3)]">
+<div class="w-1.5 h-1.5 bg-green-500 rounded-full blur-[1px]"></div>
+</div>
+</div>
+<div class="col-span-2 text-center">
+<div class="w-4 h-4 rounded-full bg-green-500/20 border border-green-500/50 mx-auto flex items-center justify-center shadow-[0_0_8px_rgba(34,197,94,0.3)]">
+<div class="w-1.5 h-1.5 bg-green-500 rounded-full blur-[1px]"></div>
+</div>
+</div>
+<div class="col-span-2 text-center">
+<div class="w-4 h-4 rounded-full bg-green-500/20 border border-green-500/50 mx-auto flex items-center justify-center shadow-[0_0_8px_rgba(34,197,94,0.3)]">
+<div class="w-1.5 h-1.5 bg-green-500 rounded-full blur-[1px]"></div>
+</div>
+</div>
+<div class="col-span-1 text-right">
+<span class="text-xs text-secondary italic">All</span>
+</div>
+</div>
+</div>
+<button class="mt-8 text-primary font-bold text-sm flex items-center gap-2 group">
+                        View 18 More Permissions
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Assigned Users Card -->
+<div class="bg-surface-container-high rounded-xl p-6 shadow-2xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold font-headline text-on-surface">Assigned Users</h3>
+<button class="text-sm font-bold text-primary hover:underline">Add New User</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-4 p-3 rounded-lg bg-surface hover:bg-surface-bright transition-all group cursor-pointer">
+<img class="w-10 h-10 rounded-full ring-2 ring-transparent group-hover:ring-primary/40 transition-all" data-alt="portrait of a male engineer wearing headphones in a tech office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlQ6GhFQ9T-3F_qsO2tmR0tL33zfEsImBTgUxW1ciE2w4GJXekf3fsY047gZdJsUDYsEnNS5pYswFegV9Lje2W6e-hzwtzIfICBSPEFYV4i5v2DCN6p_u_5oY0Bo3gtZ0hBSRpmfD9HpU4wlxl4rZBX3EP0PmOd2hpKEvLpjDGFk6aExkoeiAqh6YM2tHm3FSXd_kcd3C7CJShO05oOypaE2muiAoeYrwZeT3ZM8fpWJYtbj2oksh4rSKA7ejhZvIrduRWjZ0IW7M"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Marcus Chen</p>
+<p class="text-[10px] text-secondary uppercase tracking-wider">Sr. DevOps Engineer</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-surface hover:bg-surface-bright transition-all group cursor-pointer">
+<img class="w-10 h-10 rounded-full ring-2 ring-transparent group-hover:ring-primary/40 transition-all" data-alt="professional woman of color with glasses in office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC00ZsH5XfehKmUDlEr97Tgat8oJqzFkF7_HoDnx6XD62LcnzkI79hNcQFOtg8a5RFkgcGKkheW5LkJXRKX0t_WuxamMi3Sj1B56CLNdRTMRSOuI1kdg5Vtius5y-IHneNv8KHRMi53Ykhw0eCoe0wq9dJg7GZs0MQJgUY3QgUX_lRkLhFGkveu56jCwdWHntXdxDn_rAtiQz6rkCALOZvtYmeyI4wbXrkSaBFAShwM8kYBWBvV5WNkUgU_6JbpaCMXffUKCFqTXIk"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Elena Rodriguez</p>
+<p class="text-[10px] text-secondary uppercase tracking-wider">Security Lead</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-surface hover:bg-surface-bright transition-all group cursor-pointer">
+<img class="w-10 h-10 rounded-full ring-2 ring-transparent group-hover:ring-primary/40 transition-all" data-alt="confident professional man in suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOG2-W7-YYxSxeGwmce0uOiT1SIbomZ-ftBrXpTHCODggJTn5puwjVpex96_Dfc4tKKFmX5ciI7Np7434SBu-R5J9HbhdUxqr9AABL0rMQEW-Qan6KjN4EKpVklm5SLB6gUnjyzDm81Jo8wBwTI8sbTf5ePCiNTpOneLxx8poLkyYlNe06nMpM_3gpj_NPCkFa7EF2xTMGqogBt6VSlFgh6_Ekm1DFiE_4d_V4vN4_F-D2AtC8VBo2tR5GFk4K83ge8yM5243Z2dM"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Jameson Burke</p>
+<p class="text-[10px] text-secondary uppercase tracking-wider">Infrastructure Architect</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-surface-container-low border border-white/5 opacity-80 cursor-default">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-xs font-bold text-secondary">
+                                +11
+                            </div>
+<div>
+<p class="text-sm font-bold text-secondary">External Partners</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-wider">Managed Access</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Audit History & Metrics (4 Columns) -->
+<div class="col-span-4 space-y-6">
+<!-- Audit Timeline -->
+<div class="bg-surface-container-high rounded-xl p-6 shadow-2xl border-l border-white/5 h-full">
+<h3 class="text-lg font-bold font-headline text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="history">history</span>
+                        Audit History
+                    </h3>
+<div class="relative space-y-8 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-white/5">
+<!-- Timeline Item 1 -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-[24px] h-[24px] rounded-full bg-primary-container flex items-center justify-center ring-4 ring-surface-container-high">
+<span class="material-symbols-outlined text-xs" data-icon="edit">edit</span>
+</div>
+<div>
+<p class="text-xs text-secondary font-medium">Today, 2:14 PM</p>
+<p class="text-sm font-bold text-on-surface mt-1">Modified Permission Scope</p>
+<p class="text-xs text-slate-400 mt-1 leading-relaxed">
+<span class="text-primary font-bold">Admin</span> changed <span class="italic">S3 Bucket Access</span> from 'Global' to 'Restricted'.
+                                </p>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-[24px] h-[24px] rounded-full bg-secondary-container flex items-center justify-center ring-4 ring-surface-container-high">
+<span class="material-symbols-outlined text-xs" data-icon="person_add">person_add</span>
+</div>
+<div>
+<p class="text-xs text-secondary font-medium">Oct 24, 9:00 AM</p>
+<p class="text-sm font-bold text-on-surface mt-1">User Assignment</p>
+<p class="text-xs text-slate-400 mt-1 leading-relaxed">
+<span class="text-primary font-bold">System</span> added <span class="text-on-surface underline">Elena Rodriguez</span> to role.
+                                </p>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-[24px] h-[24px] rounded-full bg-tertiary-container flex items-center justify-center ring-4 ring-surface-container-high">
+<span class="material-symbols-outlined text-xs" data-icon="lock_open">lock_open</span>
+</div>
+<div>
+<p class="text-xs text-secondary font-medium">Oct 22, 4:45 PM</p>
+<p class="text-sm font-bold text-on-surface mt-1">Temporary Elevation</p>
+<p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                                    Elevated write access granted for <span class="text-on-surface">2 hours</span> for incident #882.
+                                </p>
+</div>
+</div>
+<!-- Timeline Item 4 -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-[24px] h-[24px] rounded-full bg-surface-container-highest flex items-center justify-center ring-4 ring-surface-container-high border border-white/10">
+<span class="material-symbols-outlined text-xs" data-icon="add_circle">add_circle</span>
+</div>
+<div>
+<p class="text-xs text-secondary font-medium">Oct 15, 10:12 AM</p>
+<p class="text-sm font-bold text-on-surface mt-1">Role Created</p>
+<p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                                    Initial configuration finalized via CloudFormation template v1.0.4.
+                                </p>
+</div>
+</div>
+</div>
+<button class="w-full mt-10 py-3 bg-surface-container-low border border-white/5 text-xs font-bold uppercase tracking-wider rounded text-secondary hover:bg-surface-variant transition-colors">
+                        Full Audit Trail
+                    </button>
+</div>
+<!-- Role Security Score Card -->
+<div class="p-6 bg-gradient-to-br from-primary-container/20 to-surface-container-high rounded-xl border border-primary/10 relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-primary font-black">Security Rating</p>
+<h4 class="text-3xl font-black font-headline text-on-surface">94<span class="text-lg text-primary font-normal">/100</span></h4>
+</div>
+<div class="w-12 h-12 rounded-full border-4 border-green-500/30 border-t-green-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-500 text-sm" data-icon="shield">shield</span>
+</div>
+</div>
+<p class="text-xs text-secondary leading-relaxed mb-4">Role follows Principle of Least Privilege (PoLP) with 2 active policy warnings.</p>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full w-[94%] bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

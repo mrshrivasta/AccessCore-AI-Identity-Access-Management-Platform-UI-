@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#404752",
+                    "tertiary-fixed-dim": "#d2bbff",
+                    "outline-variant": "#434655",
+                    "primary-container": "#2563eb",
+                    "primary": "#b4c5ff",
+                    "surface-dim": "#101419",
+                    "surface": "#101419",
+                    "on-secondary-container": "#afb5c2",
+                    "inverse-primary": "#0053db",
+                    "on-secondary": "#2a313b",
+                    "on-error-container": "#ffdad6",
+                    "on-surface": "#e0e2ea",
+                    "surface-container-highest": "#31353b",
+                    "on-tertiary-fixed-variant": "#5a00c6",
+                    "on-tertiary-fixed": "#25005a",
+                    "on-tertiary": "#3f008e",
+                    "secondary-fixed-dim": "#c0c7d3",
+                    "inverse-surface": "#e0e2ea",
+                    "secondary": "#c0c7d3",
+                    "on-primary-container": "#eeefff",
+                    "outline": "#8d90a0",
+                    "surface-variant": "#31353b",
+                    "on-error": "#690005",
+                    "surface-container-lowest": "#0a0e13",
+                    "surface-container": "#1c2025",
+                    "secondary-fixed": "#dce3f0",
+                    "background": "#101419",
+                    "primary-fixed": "#dbe1ff",
+                    "error-container": "#93000a",
+                    "error": "#ffb4ab",
+                    "on-primary-fixed": "#00174b",
+                    "tertiary": "#d2bbff",
+                    "surface-container-high": "#262a30",
+                    "on-tertiary-container": "#f7edff",
+                    "surface-bright": "#36393f",
+                    "on-background": "#e0e2ea",
+                    "surface-tint": "#b4c5ff",
+                    "on-primary": "#002a78",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-surface-variant": "#c3c6d7",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "tertiary-fixed": "#eaddff",
+                    "tertiary-container": "#8343f4",
+                    "on-secondary-fixed": "#151c25",
+                    "surface-container-low": "#181c21",
+                    "inverse-on-surface": "#2d3136"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .glass-panel {
+            background: rgba(28, 32, 37, 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(141, 144, 160, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/30">
+<!-- Sidebar Navigation -->
+<aside class="flex flex-col fixed left-0 top-0 h-full h-screen w-64 border-r border-slate-800/20 bg-slate-900/80 dark:bg-[#1c2025] z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-8 h-8 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-sm" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div>
+<h1 class="text-xl font-black tracking-tighter text-slate-100 dark:text-[#E0E2EA]">AccessCore AI</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-outline">Enterprise IAM</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+<span class="text-sm font-medium">Roles</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#2563EB] bg-blue-500/10 border-l-2 border-[#2563EB] font-bold transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">security</span>
+<span class="text-sm">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-4">
+<button class="w-full py-3 px-4 bg-primary-container hover:bg-primary-container/90 text-on-primary-container rounded font-semibold text-sm transition-all active:opacity-80 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Security Policy
+            </button>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-6 h-16 z-40 bg-slate-950/90 dark:bg-[#101419]/90 backdrop-blur-xl border-b border-white/5">
+<div class="flex items-center gap-8">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline text-sm">search</span>
+<input class="bg-surface-container-lowest border border-outline/10 rounded-lg pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-2 focus:ring-[#2563EB]/40 focus:outline-none transition-all" placeholder="Search policies..." type="text"/>
+</div>
+<nav class="hidden lg:flex gap-6">
+<a class="text-slate-400 hover:text-slate-100 text-xs font-medium uppercase tracking-wider" href="#">Global View</a>
+<a class="text-slate-400 hover:text-slate-100 text-xs font-medium uppercase tracking-wider" href="#">Logs</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl">help_outline</span>
+</button>
+<div class="h-8 w-[1px] bg-white/10 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-on-surface">Admin Console</p>
+<p class="text-[10px] text-outline">Super User</p>
+</div>
+<img alt="User Profile" class="w-9 h-9 rounded-full ring-2 ring-primary/20" data-alt="Close-up portrait of a professional male software engineer in a modern dark office setting with soft ambient blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZptpcMkN9ci7gkJwQTRjVsBGLGb28vfcPFeROtFUocN98dkfJbMbod6mC2rIHNASjYYoK9vT_Ke-Gf23NQVHNqxaRs646-8YOINX4kxYeJToX1VromLdLSRV8aPI99O08ox1c481byC9eqdJhq7GZcUUTBl46fF4F6yxKSFm5f-AlmtPLZId_K_u7zFDEG0_JanKgInxuZ6Dkkni7S1XSgZ8jytsexh-F5P1YVJIbK_qcqtbHbuEbZHeli3IqRa0NndtWhsW1dhU"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-12 px-8 min-h-screen">
+<header class="mb-10 max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold tracking-tight mb-2 text-on-surface">MFA &amp; Password Policies</h2>
+<p class="text-outline text-sm">Define the cryptographic standards and access requirements for all enterprise identities.</p>
+</header>
+<div class="max-w-5xl mx-auto grid grid-cols-12 gap-8">
+<!-- Section 1: MFA Settings -->
+<section class="col-span-12 lg:col-span-5 space-y-6">
+<div class="glass-panel p-8 rounded-xl border-l-2 border-primary-container">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">vibration</span>
+                                MFA Enforcement
+                            </h3>
+<p class="text-xs text-outline mt-1">Multi-factor authentication status for all users.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="space-y-4">
+<div class="group p-4 bg-surface-container rounded-lg hover:bg-surface-container-high transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">passkey</span>
+</div>
+<div>
+<p class="text-sm font-semibold">WebAuthn / Passkeys</p>
+<p class="text-[10px] text-outline">Biometric hardware keys (Recommended)</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary-container text-on-tertiary-container">ACTIVE</span>
+</div>
+</div>
+<div class="group p-4 bg-surface-container rounded-lg hover:bg-surface-container-high transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">app_shortcut</span>
+</div>
+<div>
+<p class="text-sm font-semibold">TOTP Authenticator</p>
+<p class="text-[10px] text-outline">Google, Authy, or Microsoft Auth</p>
+</div>
+</div>
+<input checked="" class="w-4 h-4 rounded border-outline/30 bg-surface-container-lowest text-primary-container focus:ring-offset-surface" type="checkbox"/>
+</div>
+</div>
+<div class="group p-4 bg-surface-container-low/50 rounded-lg hover:bg-surface-container-high transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4 opacity-60">
+<div class="w-10 h-10 rounded bg-outline/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">sms</span>
+</div>
+<div>
+<p class="text-sm font-semibold">SMS Delivery</p>
+<p class="text-[10px] text-outline">One-time codes via text message</p>
+</div>
+</div>
+<input class="w-4 h-4 rounded border-outline/30 bg-surface-container-lowest text-primary-container focus:ring-offset-surface" type="checkbox"/>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-white/5">
+<div class="flex items-center justify-between text-xs text-outline mb-2">
+<span>Trust Level Readiness</span>
+<span class="text-primary font-bold">High Precision</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[85%] shadow-[0_0_8px_rgba(37,99,235,0.4)]"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-white/5">
+<h4 class="text-sm font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-lg">emergency_home</span>
+                        Recovery Options
+                    </h4>
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-surface p-3 rounded text-left hover:bg-surface-container-highest transition-all group">
+<p class="text-[10px] text-outline group-hover:text-tertiary">Backup Codes</p>
+<p class="text-xs font-semibold">10/10 Remaining</p>
+</button>
+<button class="bg-surface p-3 rounded text-left hover:bg-surface-container-highest transition-all group">
+<p class="text-[10px] text-outline group-hover:text-tertiary">Magic Link</p>
+<p class="text-xs font-semibold">Enabled</p>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 2: Password Complexity -->
+<section class="col-span-12 lg:col-span-7">
+<div class="glass-panel p-8 rounded-xl space-y-8">
+<div>
+<h3 class="text-lg font-bold flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">password</span>
+                            Password Complexity Rules
+                        </h3>
+<p class="text-xs text-outline">Configuration for cryptographic strength and rotation cycles.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-[11px] font-bold uppercase tracking-wider text-outline block">Minimum Length</label>
+<div class="flex items-center gap-4">
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary-container" max="64" min="8" type="range" value="14"/>
+<span class="text-sm font-mono font-bold text-primary px-2 py-1 bg-primary/10 rounded">14</span>
+</div>
+<div class="flex justify-between text-[10px] text-outline/50">
+<span>NIST Min: 8</span>
+<span>Enterprise Max: 64</span>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-[11px] font-bold uppercase tracking-wider text-outline block">Character Requirements</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input checked="" class="peer h-4 w-4 bg-surface-container-highest border-transparent rounded-sm checked:bg-primary-container transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-[12px] text-on-primary-container opacity-0 peer-checked:opacity-100 left-0.5">check</span>
+</div>
+<span class="text-sm group-hover:text-on-surface transition-colors">Special Characters (@, #, $, %)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input checked="" class="peer h-4 w-4 bg-surface-container-highest border-transparent rounded-sm checked:bg-primary-container transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-[12px] text-on-primary-container opacity-0 peer-checked:opacity-100 left-0.5">check</span>
+</div>
+<span class="text-sm group-hover:text-on-surface transition-colors">Uppercase &amp; Lowercase mix</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input checked="" class="peer h-4 w-4 bg-surface-container-highest border-transparent rounded-sm checked:bg-primary-container transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-[12px] text-on-primary-container opacity-0 peer-checked:opacity-100 left-0.5">check</span>
+</div>
+<span class="text-sm group-hover:text-on-surface transition-colors">Numeric digits (0-9)</span>
+</label>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-[11px] font-bold uppercase tracking-wider text-outline block">Rotation Frequency</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline/10 text-on-surface rounded-lg py-2.5 px-4 text-sm appearance-none focus:ring-2 focus:ring-[#2563EB]/40 focus:outline-none cursor-pointer">
+<option>90 Days (Recommended)</option>
+<option>180 Days</option>
+<option>365 Days</option>
+<option>Never (Passwordless focus)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] font-bold uppercase tracking-wider text-outline block">Password History</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline/10 text-on-surface rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-[#2563EB]/40 focus:outline-none" type="number" value="12"/>
+<p class="text-[10px] text-outline mt-1.5">Users cannot reuse the last 12 passwords.</p>
+</div>
+</div>
+<div class="p-4 bg-error-container/10 border border-error/20 rounded-lg flex gap-3">
+<div class="w-5 h-5 rounded-full bg-error flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,180,171,0.5)]">
+<span class="material-symbols-outlined text-[12px] text-on-error font-bold">priority_high</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-error uppercase">Security Alert</p>
+<p class="text-[11px] text-on-error-container leading-tight">Rotation is currently disabled for Service Accounts. This may violate SOC2 compliance.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Rule Validation Indicators -->
+<div class="pt-6 mt-6 border-t border-white/5">
+<h4 class="text-[11px] font-bold uppercase tracking-wider text-outline mb-4">Live Policy Strength</h4>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container rounded-full">
+<span class="w-2 h-2 rounded-full bg-[#4ADE80] shadow-[0_0_8px_rgba(74,222,128,0.4)]"></span>
+<span class="text-[11px] font-medium">Entropy: 128-bit</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container rounded-full">
+<span class="w-2 h-2 rounded-full bg-[#4ADE80] shadow-[0_0_8px_rgba(74,222,128,0.4)]"></span>
+<span class="text-[11px] font-medium">Dictionary Check</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container rounded-full">
+<span class="w-2 h-2 rounded-full bg-[#FBBF24] shadow-[0_0_8px_rgba(251,191,36,0.4)]"></span>
+<span class="text-[11px] font-medium">Rotation Sync</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="mt-8 flex items-center justify-between gap-4">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-sm">history</span>
+<span class="text-xs">Last edited by <strong>j.miller</strong> 4 hours ago</span>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 rounded-lg text-sm font-semibold text-slate-300 hover:bg-white/5 transition-all">Discard Changes</button>
+<button class="px-8 py-2.5 bg-primary-container text-on-primary-container rounded-lg text-sm font-bold shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:scale-[1.02] active:scale-[0.98] transition-all">Deploy Policy Updates</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Background Atmospheric Element -->
+<div class="fixed bottom-0 right-0 w-96 h-96 bg-primary/5 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+<div class="fixed top-20 left-10 w-64 h-64 bg-tertiary/5 blur-[100px] rounded-full -z-10 pointer-events-none"></div>
+</main>
+<!-- Visual Identity Strip -->
+<div class="fixed bottom-6 right-8 flex items-center gap-4 bg-surface-container-highest/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 z-50">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-surface bg-primary-container flex items-center justify-center text-[8px] font-bold">AC</div>
+<div class="w-6 h-6 rounded-full border-2 border-surface bg-tertiary flex items-center justify-center text-[8px] font-bold">SC</div>
+</div>
+<p class="text-[10px] font-bold tracking-widest text-outline uppercase">Sentinel Engine v4.2</p>
+</div>
+</body></html>

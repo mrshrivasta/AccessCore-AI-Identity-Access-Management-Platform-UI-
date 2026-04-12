@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New Role | AccessCore AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#31353b",
+                        "secondary": "#c0c7d3",
+                        "inverse-surface": "#e0e2ea",
+                        "surface": "#101419",
+                        "surface-container-lowest": "#0a0e13",
+                        "on-tertiary": "#3f008e",
+                        "secondary-fixed": "#dce3f0",
+                        "on-tertiary-container": "#f7edff",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "on-error-container": "#ffdad6",
+                        "on-surface-variant": "#c3c6d7",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-error": "#690005",
+                        "background": "#101419",
+                        "on-primary-container": "#eeefff",
+                        "inverse-primary": "#0053db",
+                        "outline-variant": "#434655",
+                        "tertiary-fixed": "#eaddff",
+                        "on-background": "#e0e2ea",
+                        "on-surface": "#e0e2ea",
+                        "on-secondary-fixed": "#151c25",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "on-secondary-fixed-variant": "#404752",
+                        "on-primary": "#002a78",
+                        "on-secondary-container": "#afb5c2",
+                        "primary-container": "#2563eb",
+                        "tertiary-container": "#8343f4",
+                        "secondary-container": "#404752",
+                        "on-secondary": "#2a313b",
+                        "surface-container-high": "#262a30",
+                        "primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "surface-dim": "#101419",
+                        "surface-container-low": "#181c21",
+                        "error-container": "#93000a",
+                        "surface-container": "#1c2025",
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "on-tertiary-fixed": "#25005a",
+                        "inverse-on-surface": "#2d3136",
+                        "surface-tint": "#b4c5ff",
+                        "surface-bright": "#36393f",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary": "#d2bbff",
+                        "surface-container-highest": "#31353b",
+                        "primary-fixed": "#dbe1ff",
+                        "error": "#ffb4ab",
+                        "outline": "#8d90a0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .signature-glow {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #1c2025; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #404752; border-radius: 2px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface custom-scrollbar selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 z-50 bg-[#1c2025] flex flex-col py-6 shadow-2xl">
+<div class="px-6 mb-10 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center signature-glow">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="shield_person">shield_person</span>
+</div>
+<div>
+<div class="text-lg font-black text-blue-500 leading-none">AccessCore AI</div>
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mt-1">The Digital Vault</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 font-['Inter'] text-sm font-medium">
+<a class="bg-[#2563EB]/10 text-blue-500 border-l-2 border-blue-500 px-4 py-3 flex items-center gap-3 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="shield_person">shield_person</span>
+                Roles
+            </a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="key">key</span>
+                Permissions
+            </a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="tune">tune</span>
+                Access Editor
+            </a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+                Audit Logs
+            </a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="lock">lock</span>
+                Security Vault
+            </a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="contact_support">contact_support</span>
+                Support
+            </a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="logout">logout</span>
+                Sign Out
+            </a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-40 ml-64 bg-[#101419]/80 backdrop-blur-xl flex justify-between items-center px-6 py-3 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer" data-icon="arrow_back">arrow_back</span>
+<h1 class="text-xl font-bold text-slate-100 font-['Manrope'] tracking-tight">Create New Role</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-lg" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-lg" data-icon="help">help</span>
+<span class="material-symbols-outlined text-lg" data-icon="settings">settings</span>
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="Administrator profile picture in a professional corporate setting with soft ambient office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEKFo-8vmA5oR3UrhKyO9FSYJMxFrD1hXU3fpPLCLDH8XM7416aEA3Sy54H4WNdKMNhAqa9hBq14b7fX4KvJvdb9TDYwl2Ox8VnTaoBUI-NnJl70zpp3tLa1ZIBiByWdYv1DOtQCGculG1zi3w1Cs2a561MGYQt_Mtc8fJKC_xcXQiNvYFFh31ZshEba9Ilc2tdm7jfxnfrXwobwVMhn7uy_ScS7KTVGyjW_0DcgyShWPs56rI_Ooy1GerD7nwA3B5050FA5xf1hg"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-64 pt-24 pb-12 px-8 max-w-6xl mx-auto">
+<!-- Step Indicator -->
+<div class="mb-12">
+<div class="flex items-center justify-between max-w-2xl mx-auto relative">
+<!-- Progress Line -->
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-surface-container-high -translate-y-1/2 z-0"></div>
+<div class="absolute top-1/2 left-0 w-1/3 h-[2px] bg-primary-container -translate-y-1/2 z-0"></div>
+<!-- Steps -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center ring-4 ring-surface shadow-lg">
+<span class="material-symbols-outlined text-lg" data-icon="description">description</span>
+</div>
+<span class="text-xs font-bold text-primary tracking-wider uppercase">Definition</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-slate-400 flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-lg" data-icon="checklist">checklist</span>
+</div>
+<span class="text-xs font-bold text-slate-500 tracking-wider uppercase">Permissions</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-slate-400 flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</div>
+<span class="text-xs font-bold text-slate-500 tracking-wider uppercase">Review</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-8 items-start">
+<!-- Left Column: Primary Form -->
+<div class="col-span-8 space-y-6">
+<!-- Section 1: Core Details -->
+<section class="bg-surface-container-high rounded-xl p-8 shadow-[0_20px_40px_rgba(0,0,0,0.4)] relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<h2 class="text-lg font-bold text-slate-100 mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="badge">badge</span>
+                        Role Identity
+                    </h2>
+<div class="space-y-6">
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-semibold text-slate-400 uppercase tracking-tighter">Role Name</label>
+<input class="w-full bg-surface-container-lowest border-none outline outline-1 outline-outline-variant/20 rounded-lg px-4 py-3 focus:outline-primary-container focus:ring-0 text-on-surface transition-all" placeholder="e.g. Senior Security Auditor" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-semibold text-slate-400 uppercase tracking-tighter">Inherit From (Optional)</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border-none outline outline-1 outline-outline-variant/20 rounded-lg px-4 py-3 focus:outline-primary-container focus:ring-0 text-on-surface appearance-none transition-all">
+<option>Select existing role...</option>
+<option>System Administrator</option>
+<option>Security Lead</option>
+<option>Cloud Architect</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-slate-500 pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-semibold text-slate-400 uppercase tracking-tighter">Description</label>
+<textarea class="w-full bg-surface-container-lowest border-none outline outline-1 outline-outline-variant/20 rounded-lg px-4 py-3 focus:outline-primary-container focus:ring-0 text-on-surface transition-all" placeholder="Briefly describe the purpose and scope of this role..." rows="4"></textarea>
+</div>
+</div>
+</section>
+<!-- Section 2: Permission Quick-Add -->
+<section class="bg-surface-container-high rounded-xl p-8 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-lg font-bold text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="security">security</span>
+                            Initial Permissions
+                        </h2>
+<button class="text-xs font-bold text-primary hover:underline uppercase tracking-widest">Browse Full Library</button>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<!-- Permission Item 1 -->
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface hover:bg-surface-bright transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-success-orb bg-green-500 blur-[2px]"></div>
+<div>
+<p class="text-sm font-semibold text-slate-200">View Audit Logs</p>
+<p class="text-xs text-slate-500">Allows user to read and export system security logs.</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 bg-tertiary-container/20 text-tertiary text-[10px] font-bold rounded uppercase">Audit</span>
+<input checked="" class="w-5 h-5 rounded border-outline-variant/30 bg-surface-container-lowest text-primary-container focus:ring-offset-surface ring-0" type="checkbox"/>
+</div>
+</div>
+<!-- Permission Item 2 -->
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface hover:bg-surface-bright transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-slate-700"></div>
+<div>
+<p class="text-sm font-semibold text-slate-200">Manage Keys</p>
+<p class="text-xs text-slate-500">Full control over cryptographic key rotation and lifecycle.</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 bg-tertiary-container/20 text-tertiary text-[10px] font-bold rounded uppercase">Security</span>
+<input class="w-5 h-5 rounded border-outline-variant/30 bg-surface-container-lowest text-primary-container focus:ring-offset-surface ring-0" type="checkbox"/>
+</div>
+</div>
+<!-- Permission Item 3 -->
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface hover:bg-surface-bright transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-slate-700"></div>
+<div>
+<p class="text-sm font-semibold text-slate-200">Modify User Access</p>
+<p class="text-xs text-slate-500">Edit permissions for standard users across all vaults.</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 bg-tertiary-container/20 text-tertiary text-[10px] font-bold rounded uppercase">IAM</span>
+<input class="w-5 h-5 rounded border-outline-variant/30 bg-surface-container-lowest text-primary-container focus:ring-offset-surface ring-0" type="checkbox"/>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-end gap-4">
+<button class="px-6 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-white transition-colors">Discard Draft</button>
+<button class="px-8 py-2.5 bg-primary-container text-on-primary-container rounded-lg text-sm font-bold signature-glow flex items-center gap-2 active:scale-95 duration-200">
+                            Continue to Permissions
+                            <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+</div>
+<!-- Right Column: Contextual Info & Preview -->
+<div class="col-span-4 space-y-6">
+<!-- Role Preview Card -->
+<div class="glass-panel rounded-xl p-6 shadow-2xl relative overflow-hidden border border-outline-variant/5">
+<div class="absolute -right-12 -top-12 w-32 h-32 bg-primary-container/10 blur-3xl rounded-full"></div>
+<h3 class="text-sm font-black text-slate-400 uppercase tracking-widest mb-6">Live Preview</h3>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 bg-surface-container-highest rounded-xl flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-3xl" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<p class="text-lg font-bold text-white leading-tight">Untitled Role</p>
+<p class="text-xs text-slate-500">Created by Administrator</p>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<p class="text-[10px] font-bold text-slate-500 uppercase mb-2">Scope</p>
+<span class="text-xs text-on-surface">Global Enterprise Infrastructure</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-500 uppercase mb-2">Inheritance</p>
+<span class="text-xs text-on-surface">None Selected</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-500 uppercase mb-2">Active Privileges</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] text-slate-300 border border-outline-variant/10">Auth:Read</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] text-slate-300 border border-outline-variant/10">Audit:Export</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Guidance Info -->
+<div class="p-6 bg-surface-container rounded-xl">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-tertiary" data-icon="info">info</span>
+<div class="space-y-3">
+<p class="text-sm font-bold text-slate-200">The Principle of Least Privilege</p>
+<p class="text-xs text-slate-400 leading-relaxed">
+                                AccessCore AI recommends granting only the minimum permissions required for a role to function. You can always add granular permissions later via the <span class="text-primary">Access Editor</span>.
+                            </p>
+<div class="pt-2">
+<a class="text-xs font-bold text-primary flex items-center gap-1 group" href="#">
+                                    Read Best Practices
+                                    <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity Feed (Asymmetric Layout) -->
+<div class="space-y-4">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">Related Roles</h3>
+<div class="space-y-2">
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border-l-2 border-primary-container/20">
+<span class="material-symbols-outlined text-slate-500" data-icon="account_tree">account_tree</span>
+<div class="flex-1">
+<p class="text-xs font-bold text-slate-300">Security Analyst</p>
+<p class="text-[10px] text-slate-500">42 Permissions included</p>
+</div>
+<span class="material-symbols-outlined text-slate-600 text-sm" data-icon="content_copy">content_copy</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border-l-2 border-transparent">
+<span class="material-symbols-outlined text-slate-500" data-icon="account_tree">account_tree</span>
+<div class="flex-1">
+<p class="text-xs font-bold text-slate-300">IT Support Tier 2</p>
+<p class="text-[10px] text-slate-500">18 Permissions included</p>
+</div>
+<span class="material-symbols-outlined text-slate-600 text-sm" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB Contextual (Only for relevant screens) -->
+<!-- Suppressed for form screens as per instructions -->
+</body></html>

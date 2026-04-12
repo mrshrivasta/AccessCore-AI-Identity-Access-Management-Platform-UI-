@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Access Governance | AccessCore AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#2563eb",
+                    "error": "#ffb4ab",
+                    "surface-variant": "#31353b",
+                    "surface-container-low": "#181c21",
+                    "secondary-fixed-dim": "#c0c7d3",
+                    "inverse-on-surface": "#2d3136",
+                    "outline-variant": "#434655",
+                    "surface-tint": "#b4c5ff",
+                    "on-tertiary": "#3f008e",
+                    "on-tertiary-container": "#f7edff",
+                    "on-primary": "#002a78",
+                    "on-secondary-container": "#afb5c2",
+                    "surface-container": "#1c2025",
+                    "tertiary-fixed-dim": "#d2bbff",
+                    "on-tertiary-fixed-variant": "#5a00c6",
+                    "outline": "#8d90a0",
+                    "surface-bright": "#36393f",
+                    "background": "#101419",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-container-high": "#262a30",
+                    "on-secondary": "#2a313b",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#25005a",
+                    "secondary": "#c0c7d3",
+                    "surface-container-highest": "#31353b",
+                    "primary": "#b4c5ff",
+                    "tertiary-fixed": "#eaddff",
+                    "inverse-primary": "#0053db",
+                    "surface-dim": "#101419",
+                    "surface": "#101419",
+                    "tertiary-container": "#8343f4",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary-fixed": "#151c25",
+                    "on-secondary-fixed-variant": "#404752",
+                    "error-container": "#93000a",
+                    "surface-container-lowest": "#0a0e13",
+                    "primary-fixed": "#dbe1ff",
+                    "secondary-container": "#404752",
+                    "on-surface-variant": "#c3c6d7",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "inverse-surface": "#e0e2ea",
+                    "on-background": "#e0e2ea",
+                    "on-primary-container": "#eeefff",
+                    "on-surface": "#e0e2ea",
+                    "tertiary": "#d2bbff",
+                    "secondary-fixed": "#dce3f0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #101419;
+            color: #e0e2ea;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .signature-glow {
+            box-shadow: 0 0 20px rgba(131, 67, 244, 0.15);
+        }
+        .policy-gradient {
+            background: linear-gradient(135deg, rgba(131, 67, 244, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+        }
+    </style>
+</head>
+<body class="flex min-h-screen overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="flex flex-col fixed left-0 top-0 h-full z-40 h-screen w-64 border-r border-transparent bg-[#1c2025] dark:bg-slate-900 shadow-[20px_0_40px_rgba(0,0,0,0.4)] font-['Manrope'] tracking-tight">
+<div class="p-6 flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-tertiary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">shield_person</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-slate-100 tracking-tighter">AccessCore AI</h1>
+<p class="text-[10px] uppercase tracking-widest text-blue-500 font-bold">Sentinel Edition</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 mt-6 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-slate-800/30 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Command Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-slate-800/30 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Identity Directory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-slate-800/50 text-blue-400 border-l-2 border-blue-600 transition-colors duration-200 rounded-r" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">policy</span>
+<span class="text-sm font-bold">Access Governance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-slate-800/30 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-sm font-medium">Audit Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-slate-800/30 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-4 py-6 mt-auto space-y-4">
+<button class="w-full py-3 bg-tertiary-container hover:bg-opacity-90 text-on-tertiary-container rounded-lg flex items-center justify-center gap-2 font-bold transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined">add</span>
+                New Policy
+            </button>
+<div class="pt-4 border-t border-slate-800 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+<span class="text-sm">Help</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-slate-200 transition-all text-error" href="#">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span class="text-sm">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen relative">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between px-8 w-full h-16 sticky top-0 bg-[#101419]/80 backdrop-blur-xl dark:bg-slate-950/80 z-30 shadow-[0_1px_0_0_rgba(141,144,160,0.05)]">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline/10 rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="Search governance rules..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded font-headline font-bold text-xs tracking-tight transition-all active:opacity-80">
+                    Deploy Update
+                </button>
+<div class="flex items-center gap-4 text-slate-400">
+<button class="hover:text-blue-300 transition-all"><span class="material-symbols-outlined">notifications</span></button>
+<button class="hover:text-blue-300 transition-all"><span class="material-symbols-outlined">history</span></button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline/20">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional system administrator in a dark tech-focused environment with subtle blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWT3N058kreADJa_PQaCP-u0vOQdGeefk8g1uO65MKTDw4pj2J4jKO1-b6cHoUs2LCAFayRj5E6sBlA_BEnt_utjwTieib0LccNG3DPDkNxK5hOwbQdV21WSdJzDrVba9HdeOF12qjFvWyqm9Rpw6gglXQYpIIiXiGzOSU-FcqN3mtWAqpoviSsP7QhfnUgRyhMGAoWnTLZ_wsJLfK6C7Nkwid2Jnp0F8Eqf3jPZ7SORrtkQJef6R_nAA0bEJ1eGbULilDvYM9Ejc"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Body -->
+<section class="p-8 grid grid-cols-12 gap-8">
+<!-- Dashboard Left Header -->
+<div class="col-span-12 flex justify-between items-end mb-2">
+<div>
+<h2 class="text-3xl font-headline font-extrabold text-on-surface tracking-tight">Governance Policies</h2>
+<p class="text-outline text-sm mt-1">Managing 14 active mandates across Enterprise Resource Clusters</p>
+</div>
+<div class="flex gap-3">
+<div class="flex flex-col items-end">
+<span class="text-[10px] uppercase font-bold text-tertiary-fixed-dim">Global Risk Index</span>
+<span class="text-xl font-headline font-bold text-tertiary">3.2 Low</span>
+</div>
+<div class="w-px h-10 bg-outline/10 mx-2"></div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] uppercase font-bold text-primary">Compliance Score</span>
+<span class="text-xl font-headline font-bold text-on-primary-container">98.4%</span>
+</div>
+</div>
+</div>
+<!-- Left Side: Policy List -->
+<div class="col-span-12 lg:col-span-8 space-y-4">
+<!-- Policy Card 1 -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group transition-all hover:bg-surface-bright">
+<div class="absolute left-0 top-0 w-1 h-full bg-tertiary-container opacity-0 group-hover:opacity-100 transition-all shadow-[2px_0_10px_rgba(131,67,244,0.5)]"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded bg-tertiary-container/10 border border-tertiary-container/20">
+<span class="material-symbols-outlined text-tertiary">security</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg">Cross-Region Admin Lockdown</h3>
+<p class="text-xs text-outline">Created by SecOps-AI • 2 days ago</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 text-[10px] font-bold rounded bg-primary-container/20 text-primary uppercase tracking-wider">Active</span>
+<!-- Toggle Switch -->
+<div class="w-10 h-5 bg-tertiary-container rounded-full relative cursor-pointer shadow-inner">
+<div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-6 mb-6">
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-outline">Condition</label>
+<p class="text-sm font-medium text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">location_on</span> IP outside US-East-1
+                            </p>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-outline">Target</label>
+<p class="text-sm font-medium text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">group</span> High-Privilege Roles
+                            </p>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-outline">Action</label>
+<p class="text-sm font-medium text-error flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">block</span> Deny &amp; Log
+                            </p>
+</div>
+</div>
+<div class="pt-4 border-t border-outline/5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-slate-700 border border-surface-container-high flex items-center justify-center text-[8px]">JD</div>
+<div class="w-6 h-6 rounded-full bg-slate-600 border border-surface-container-high flex items-center justify-center text-[8px]">AK</div>
+<div class="w-6 h-6 rounded-full bg-slate-800 border border-surface-container-high flex items-center justify-center text-[8px]">...</div>
+</div>
+<span class="text-xs text-outline">Impacts <strong>42 users</strong> (Critical Risk Level)</span>
+</div>
+<button class="text-tertiary hover:underline text-xs font-bold uppercase tracking-widest">Edit Details</button>
+</div>
+</div>
+<!-- Policy Card 2 -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group transition-all hover:bg-surface-bright">
+<div class="absolute left-0 top-0 w-1 h-full bg-primary opacity-0 group-hover:opacity-100 transition-all"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded bg-surface-container-highest border border-outline/10">
+<span class="material-symbols-outlined text-outline">hourglass_empty</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg">Temporal Dev-Access Provision</h3>
+<p class="text-xs text-outline">Created by Lead Arch • 4 hours ago</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 text-[10px] font-bold rounded bg-surface-container-highest text-outline uppercase tracking-wider">Under Review</span>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full relative cursor-pointer">
+<div class="absolute left-1 top-1 w-3 h-3 bg-outline rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-6 mb-6">
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-outline">Condition</label>
+<p class="text-sm font-medium text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">schedule</span> Work Hours (9-5)
+                            </p>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-outline">Target</label>
+<p class="text-sm font-medium text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">folder</span> S3 Stage-Buckets
+                            </p>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-outline">Action</label>
+<p class="text-sm font-medium text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">verified</span> Grant Temporary
+                            </p>
+</div>
+</div>
+<div class="pt-4 border-t border-outline/5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="text-xs text-outline">Impacts <strong>128 users</strong> (Moderate Risk Level)</span>
+</div>
+<button class="text-primary hover:underline text-xs font-bold uppercase tracking-widest">Approve</button>
+</div>
+</div>
+<!-- Policy Card 3 -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group transition-all hover:bg-surface-bright border border-dashed border-outline/10">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded bg-surface-container-highest/50">
+<span class="material-symbols-outlined text-outline/50">edit_note</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg text-outline">New Zero Trust Mandate</h3>
+<p class="text-xs text-outline/50">Last saved just now</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 text-[10px] font-bold rounded border border-outline/20 text-outline/50 uppercase tracking-wider">Draft</span>
+<div class="w-10 h-5 bg-surface-container-highest/30 rounded-full relative">
+<div class="absolute left-1 top-1 w-3 h-3 bg-outline/20 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex justify-center py-4 border-t border-outline/5">
+<p class="text-xs italic text-outline/40">Partial configuration saved. Visual Risk Assessment pending.</p>
+</div>
+</div>
+</div>
+<!-- Right Side: Policy Builder Preview -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-highest rounded-2xl p-8 signature-glow border border-tertiary-container/10 flex flex-col gap-6 sticky top-24">
+<div>
+<span class="text-[10px] uppercase tracking-widest font-bold text-tertiary mb-1 block">Live Designer</span>
+<h3 class="text-xl font-headline font-extrabold">Policy Builder</h3>
+<p class="text-xs text-outline mt-2 leading-relaxed">Compose logic using AI-assisted natural language or granular primitive blocks.</p>
+</div>
+<!-- Builder UI -->
+<div class="space-y-6">
+<div class="space-y-3">
+<label class="text-[10px] uppercase font-bold text-outline tracking-wider">IF (Trigger/Condition)</label>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline/10 flex justify-between items-center group cursor-pointer hover:border-tertiary/50 transition-all">
+<span class="text-sm font-medium text-on-surface-variant">User Group is 'External'</span>
+<span class="material-symbols-outlined text-sm text-outline group-hover:text-tertiary">expand_more</span>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-[10px] uppercase font-bold text-outline tracking-wider">AND (Identity Context)</label>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline/10 flex justify-between items-center group cursor-pointer hover:border-tertiary/50 transition-all">
+<span class="text-sm font-medium text-on-surface-variant">Device is NOT Managed</span>
+<span class="material-symbols-outlined text-sm text-outline group-hover:text-tertiary">expand_more</span>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-[10px] uppercase font-bold text-outline tracking-wider">THEN (Enforcement Action)</label>
+<div class="bg-surface-container-lowest p-3 rounded border border-tertiary-container/30 flex justify-between items-center bg-tertiary-container/5">
+<span class="text-sm font-bold text-tertiary">Require MFA Push</span>
+<span class="material-symbols-outlined text-sm text-tertiary">security</span>
+</div>
+</div>
+</div>
+<!-- Risk Impact Visualization -->
+<div class="mt-4 p-4 rounded-xl policy-gradient border border-outline/5">
+<div class="flex justify-between items-center mb-4">
+<span class="text-[10px] uppercase font-bold">Predicted Impact</span>
+<span class="material-symbols-outlined text-xs text-outline">info</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative w-16 h-16">
+<svg class="w-16 h-16 transform -rotate-90">
+<circle class="text-surface-container-highest" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-tertiary-container" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="176" stroke-dashoffset="44" stroke-width="4"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center text-xs font-bold">75%</span>
+</div>
+<div class="flex-1">
+<div class="text-lg font-headline font-bold">Low Risk</div>
+<div class="text-[10px] text-outline">Affects 8 existing user flows. High compatibility score.</div>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-3 border border-outline/20 text-on-surface text-sm font-bold rounded hover:bg-surface-container-low transition-colors">Save Draft</button>
+<button class="flex-1 py-3 bg-tertiary-container text-on-tertiary-container text-sm font-bold rounded shadow-[0_4px_12px_rgba(131,67,244,0.3)] hover:opacity-90 transition-all">Test Policy</button>
+</div>
+</div>
+<!-- Quick Stats Mini Card -->
+<div class="bg-surface-container-high rounded-xl p-5 border border-outline/5 overflow-hidden relative">
+<img alt="Cybersecurity abstraction" class="absolute inset-0 w-full h-full object-cover opacity-10" data-alt="abstract digital connection network with deep purple and blue glowing nodes and lines on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1eZhJuCueiB3tBGymdu5jgy7GmPtKjRRNMj9f5OE5kCEgLUdLEEl0XYp2n8J5WBd04iXRrFM9r2HxSqIhczPyRAsyAWKQtdlgWacJls5slyKF3RH4u22AcQxopq6PmQe1EHz9nUfzU04D3ql6J2omPRV5YnWA-r2Q2hHWN2cJBY1IG8gYYlncuJKPH_f8eHTYIkbQA5z615IObMaPnYNF1OIF8_5oFCHUbbOgSkzBorqoyaezxnQq_XiymsMcIXSSmOCJGEdqLtc"/>
+<div class="relative z-10 flex flex-col gap-2">
+<span class="text-[10px] uppercase font-bold text-primary">System Alert</span>
+<p class="text-sm font-medium leading-snug text-on-surface">3 overlapping policies detected in "Marketing" cluster.</p>
+<button class="mt-2 text-xs font-bold text-primary hover:text-white transition-colors">Optimize Rules</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual FAB (Suppressing on governance management screen per instructions, but placeholder logic if navigation were different) -->
+<!-- Suppressed -->
+</body></html>

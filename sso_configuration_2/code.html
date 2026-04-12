@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SSO Configuration - AccessCore AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#101419",
+                        "on-tertiary": "#3f008e",
+                        "tertiary": "#d2bbff",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-container": "#afb5c2",
+                        "secondary": "#c0c7d3",
+                        "outline": "#8d90a0",
+                        "surface-container-highest": "#31353b",
+                        "primary-container": "#2563eb",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-tint": "#b4c5ff",
+                        "outline-variant": "#434655",
+                        "on-surface": "#e0e2ea",
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "on-primary": "#002a78",
+                        "surface-variant": "#31353b",
+                        "on-tertiary-fixed": "#25005a",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-fixed": "#dce3f0",
+                        "primary-fixed": "#dbe1ff",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "inverse-on-surface": "#2d3136",
+                        "surface-dim": "#101419",
+                        "on-secondary-fixed": "#151c25",
+                        "on-tertiary-container": "#f7edff",
+                        "background": "#101419",
+                        "on-background": "#e0e2ea",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "on-secondary-fixed-variant": "#404752",
+                        "on-surface-variant": "#c3c6d7",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "surface-container": "#1c2025",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0a0e13",
+                        "tertiary-container": "#8343f4",
+                        "inverse-surface": "#e0e2ea",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#181c21",
+                        "inverse-primary": "#0053db",
+                        "tertiary-fixed": "#eaddff",
+                        "on-secondary": "#2a313b",
+                        "surface-bright": "#36393f",
+                        "secondary-container": "#404752",
+                        "primary": "#b4c5ff",
+                        "surface-container-high": "#262a30"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift-layering {
+            background: linear-gradient(to bottom, #1c2025, #101419);
+        }
+        .glass-card {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(141, 144, 160, 0.05);
+        }
+        .status-orb-active {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #4ade80;
+            box-shadow: 0 0 12px #4ade80;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #31353b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c0c7d3;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<aside class="flex flex-col fixed left-0 top-0 h-full h-screen w-64 border-r border-slate-800/20 bg-slate-900/80 dark:bg-[#1c2025] font-['Manrope'] tracking-tight shadow-[20px_0_40px_rgba(0,0,0,0.4)] z-[60]">
+<div class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tighter text-blue-500 dark:text-[#2563EB]">AccessCore AI</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-slate-400">Enterprise Sentinel</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 mt-4 px-3 space-y-1">
+<a class="flex items-center px-4 py-3 gap-3 text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">assignment</span>
+<span class="text-sm font-medium">Activity Logs</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">settings_input_component</span>
+<span class="text-sm font-medium">Session Management</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">devices</span>
+<span class="text-sm font-medium">Active Sessions</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">security_update_good</span>
+<span class="text-sm font-medium">Risk Auth</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+<span class="text-sm font-medium">MFA Setup</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 text-slate-400 dark:text-[#E0E2EA]/60 hover:bg-[#31353b] hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">policy</span>
+<span class="text-sm font-medium">Password Policies</span>
+</a>
+<!-- Active Tab: SSO Config -->
+<a class="flex items-center px-4 py-3 gap-3 text-blue-500 dark:text-[#d2bbff] border-l-2 border-blue-500 dark:border-[#2563EB] bg-slate-800/50 scale-98 active:opacity-80 transition-all group" href="#">
+<span class="material-symbols-outlined text-xl">admin_panel_settings</span>
+<span class="text-sm font-medium">SSO Config</span>
+</a>
+</nav>
+<div class="p-6 mt-auto border-t border-slate-800/20">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Security Administrator" class="w-10 h-10 rounded-full object-cover border border-slate-700" data-alt="professional portrait of a security administrator in a dark tech environment, cinematic lighting, sharp focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXNN2rZw2EhXuqQ3QvoAPt2Xw9kd-9pl0XIanUx8IK194JUF7TxZdJVrty1Y8nXv2RajSEumJt-qQQALAACSo4d-aX5B_aRL1u2x29dutXA3Yjs8Rvp-ZqGNrZlp-EmXG4J_2vs0jAHRtt2QO_6k7VcpsdT9s8CKYNLyNmB2ODAhIzOTjOtokcTm-INgo6sgUVtMn12j1nGmI1EgcFbkGkjF46Cqx0kzmmfwurMb7PvMlhkgDtF4N0GlA_NtYOMAlVlKY4Tr1AYOY"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold text-on-surface truncate">Security Administrator</p>
+<p class="text-[10px] text-slate-500 truncate">System Status: Secure</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="flex items-center justify-between px-8 sticky top-0 z-50 ml-64 w-[calc(100%-16rem)] h-16 bg-slate-900/40 dark:bg-[#101419]/80 backdrop-blur-xl border-b border-white/5 shadow-sm font-['Manrope'] text-sm font-medium">
+<div class="flex items-center gap-8">
+<span class="text-lg font-black text-slate-100 dark:text-[#E0E2EA]">SSO Management</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 dark:text-[#E0E2EA]/70 hover:text-blue-300 dark:hover:text-white transition-all" href="#">Audit</a>
+<a class="text-slate-400 dark:text-[#E0E2EA]/70 hover:text-blue-300 dark:hover:text-white transition-all" href="#">Shield</a>
+<a class="text-slate-400 dark:text-[#E0E2EA]/70 hover:text-blue-300 dark:hover:text-white transition-all" href="#">Vault</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="bg-surface-container-lowest border-none ring-1 ring-white/10 rounded px-9 py-1.5 text-xs w-64 focus:ring-primary-container transition-all outline-none" placeholder="Search providers..." type="text"/>
+</div>
+<div class="flex items-center gap-4 text-slate-400">
+<button class="hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:text-white transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<button class="hover:text-white transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-8 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-10">
+<div class="space-y-2">
+<h2 class="text-3xl font-extrabold tracking-tight font-headline text-on-surface">SSO Configuration</h2>
+<p class="text-on-secondary-container max-w-lg">Manage enterprise identity providers. Centralize authentication across OIDC and SAML protocols with hardware-level security enforcement.</p>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded shadow-lg shadow-primary-container/20 flex items-center gap-2 font-semibold text-sm hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Add New Provider
+                </button>
+</div>
+<!-- Bento Grid Stats / Quick Actions -->
+<div class="grid grid-cols-12 gap-6 mb-10">
+<div class="col-span-12 lg:col-span-8 glass-card p-6 rounded-xl flex items-center justify-between overflow-hidden relative">
+<div class="space-y-4 relative z-10">
+<div class="inline-flex items-center px-2 py-1 rounded bg-tertiary-container/20 text-tertiary text-[10px] font-bold tracking-widest uppercase">System Health</div>
+<h3 class="text-xl font-bold font-headline">SSO Pipeline Active</h3>
+<div class="flex gap-8">
+<div>
+<p class="text-2xl font-black text-primary">99.98%</p>
+<p class="text-[10px] text-outline uppercase tracking-wider">Uptime</p>
+</div>
+<div>
+<p class="text-2xl font-black text-tertiary">42ms</p>
+<p class="text-[10px] text-outline uppercase tracking-wider">Avg Latency</p>
+</div>
+<div>
+<p class="text-2xl font-black text-on-surface">1.2k</p>
+<p class="text-[10px] text-outline uppercase tracking-wider">Active Logins</p>
+</div>
+</div>
+</div>
+<div class="absolute right-0 top-0 bottom-0 w-1/3 opacity-20 pointer-events-none">
+<div class="h-full w-full bg-gradient-to-l from-primary/30 to-transparent"></div>
+</div>
+<span class="material-symbols-outlined text-7xl text-white/5 absolute -right-4 -bottom-4 rotate-12">security</span>
+</div>
+<div class="col-span-12 lg:col-span-4 glass-card p-6 rounded-xl space-y-4 border-l-2 border-primary-container">
+<h3 class="text-sm font-bold uppercase tracking-widest text-outline">Configuration Wizard</h3>
+<p class="text-xs text-on-secondary-container leading-relaxed">Need help setting up a custom provider? Our interactive agent can guide you through metadata exchange.</p>
+<button class="text-primary text-xs font-bold flex items-center gap-1 hover:underline">
+                        Start Setup Guide <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Table Section -->
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="p-6 border-b border-white/5 flex items-center justify-between">
+<h3 class="text-sm font-bold font-headline uppercase tracking-widest text-on-surface-variant">Configured Identity Providers</h3>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-highest rounded transition-colors">
+<span class="material-symbols-outlined text-outline">filter_list</span>
+</button>
+<button class="p-2 hover:bg-surface-container-highest rounded transition-colors">
+<span class="material-symbols-outlined text-outline">sync</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-outline">Provider</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-outline">Protocol</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-outline">Status</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-outline">Users</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-outline">Last Sync</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-outline text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<!-- Provider 1 -->
+<tr class="hover:bg-surface-bright/20 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-sm text-primary">corporate_fare</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Okta Workforce</p>
+<p class="text-[10px] text-outline">okta.accesscore.io</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/30 text-secondary text-[10px] font-bold uppercase tracking-wider">SAML 2.0</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="status-orb-active"></div>
+<span class="text-xs font-medium text-on-surface">Active</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm font-medium text-on-secondary-container">1,402</td>
+<td class="px-6 py-5 text-[11px] text-outline">2 mins ago</td>
+<td class="px-6 py-5 text-right">
+<button class="bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container px-4 py-1.5 rounded text-xs font-bold transition-all">Configure</button>
+</td>
+</tr>
+<!-- Provider 2 -->
+<tr class="hover:bg-surface-bright/20 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-sm text-tertiary">cloud_done</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Azure Active Directory</p>
+<p class="text-[10px] text-outline">tenant.microsoftonline.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/30 text-secondary text-[10px] font-bold uppercase tracking-wider">OIDC</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="status-orb-active"></div>
+<span class="text-xs font-medium text-on-surface">Active</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm font-medium text-on-secondary-container">2,891</td>
+<td class="px-6 py-5 text-[11px] text-outline">14 mins ago</td>
+<td class="px-6 py-5 text-right">
+<button class="bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container px-4 py-1.5 rounded text-xs font-bold transition-all">Configure</button>
+</td>
+</tr>
+<!-- Provider 3 -->
+<tr class="hover:bg-surface-bright/20 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-sm text-secondary">domain</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Google Workspace</p>
+<p class="text-[10px] text-outline">accounts.google.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/30 text-secondary text-[10px] font-bold uppercase tracking-wider">OIDC</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-outline shadow-[0_0_8px_rgba(141,144,160,0.5)]"></div>
+<span class="text-xs font-medium text-outline">Disabled</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm font-medium text-on-secondary-container">--</td>
+<td class="px-6 py-5 text-[11px] text-outline">4 days ago</td>
+<td class="px-6 py-5 text-right">
+<button class="bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container px-4 py-1.5 rounded text-xs font-bold transition-all">Configure</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-surface-container-low/30 flex justify-between items-center px-6">
+<p class="text-xs text-outline">Showing 3 of 3 configured providers</p>
+<div class="flex gap-2">
+<button class="p-1 rounded hover:bg-surface-container-highest transition-all text-outline disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest transition-all text-outline disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Contextual Security Insight -->
+<div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="p-6 rounded-xl bg-error-container/10 border border-error/10 flex gap-4">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div class="space-y-1">
+<h4 class="text-sm font-bold text-on-surface">Untrusted Redirect detected</h4>
+<p class="text-xs text-on-secondary-container leading-relaxed">A configuration attempt from an unknown domain 'auth-test.dev' was blocked by Sentinel Shield 4 hours ago.</p>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-tertiary-container/10 border border-tertiary/10 flex gap-4">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<div class="space-y-1">
+<h4 class="text-sm font-bold text-on-surface">SCIM Provisioning available</h4>
+<p class="text-xs text-on-secondary-container leading-relaxed">Your Okta configuration supports SCIM. Enable it to automate user lifecycle management directly from the console.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Background Decorative Glow -->
+<div class="fixed top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-0 left-64 -z-10 w-[400px] h-[400px] bg-tertiary/5 rounded-full blur-[100px] pointer-events-none"></div>
+</body></html>

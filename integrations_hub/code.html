@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AccessCore AI - Integrations Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#afb5c2",
+                    "on-secondary-fixed": "#151c25",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-tertiary": "#3f008e",
+                    "on-surface": "#e0e2ea",
+                    "primary-container": "#2563eb",
+                    "error": "#ffb4ab",
+                    "primary": "#b4c5ff",
+                    "inverse-primary": "#0053db",
+                    "secondary-fixed": "#dce3f0",
+                    "on-secondary": "#2a313b",
+                    "on-primary-container": "#eeefff",
+                    "surface-container-lowest": "#0a0e13",
+                    "on-error": "#690005",
+                    "surface-container-high": "#262a30",
+                    "surface-variant": "#31353b",
+                    "on-primary": "#002a78",
+                    "surface-dim": "#101419",
+                    "secondary": "#c0c7d3",
+                    "surface-bright": "#36393f",
+                    "surface-container-low": "#181c21",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#404752",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "tertiary-fixed": "#eaddff",
+                    "on-surface-variant": "#c3c6d7",
+                    "on-primary-fixed": "#00174b",
+                    "tertiary": "#d2bbff",
+                    "tertiary-fixed-dim": "#d2bbff",
+                    "surface-container-highest": "#31353b",
+                    "on-tertiary-fixed-variant": "#5a00c6",
+                    "outline-variant": "#434655",
+                    "outline": "#8d90a0",
+                    "surface-tint": "#b4c5ff",
+                    "surface-container": "#1c2025",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#c0c7d3",
+                    "on-tertiary-container": "#f7edff",
+                    "on-background": "#e0e2ea",
+                    "primary-fixed": "#dbe1ff",
+                    "inverse-on-surface": "#2d3136",
+                    "surface": "#101419",
+                    "tertiary-container": "#8343f4",
+                    "secondary-container": "#404752",
+                    "inverse-surface": "#e0e2ea",
+                    "on-tertiary-fixed": "#25005a",
+                    "background": "#101419"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #101419; color: #e0e2ea; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(141, 144, 160, 0.05);
+        }
+        .active-glow {
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.2), inset 0 0 10px rgba(37, 99, 235, 0.1);
+        }
+        .status-orb {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            filter: blur(1px);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1c2025; }
+        ::-webkit-scrollbar-thumb { background: #404752; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#1c2025] dark:bg-[#1c2025] h-screen w-64 border-r border-transparent shadow-[20px_0_40px_rgba(0,0,0,0.4)]">
+<div class="p-6 flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">security</span>
+</div>
+<div class="flex flex-col">
+<span class="text-blue-500 font-black tracking-tighter text-xl">AccessCore AI</span>
+<span class="text-[10px] text-outline font-headline tracking-widest uppercase">The Digital Vault</span>
+</div>
+</div>
+</div>
+<nav class="mt-8 flex-grow px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 font-['Manrope'] tracking-tight text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-['Manrope'] tracking-tight text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">fingerprint</span>
+<span>Identities</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-['Manrope'] tracking-tight text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">assignment_ind</span>
+<span>Roles</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-['Manrope'] tracking-tight text-sm font-medium bg-[#31353b] text-blue-400 border-l-2 border-blue-500 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">security</span>
+<span>Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-['Manrope'] tracking-tight text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-outline-variant/10 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 font-['Manrope'] tracking-tight text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 font-['Manrope'] tracking-tight text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Component -->
+<header class="flex items-center justify-between px-6 ml-64 w-[calc(100%-16rem)] z-30 bg-[#101419]/80 backdrop-blur-xl w-full h-16 sticky top-0 shadow-lg">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-xl">search</span>
+<input class="w-full bg-surface-container-lowest border-none ring-1 ring-outline-variant/20 focus:ring-primary/50 rounded-lg py-2 pl-10 pr-4 text-sm text-on-surface placeholder:text-outline/50 font-body" placeholder="Search integrations and connectors..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded hover:bg-white/5 text-slate-400 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded hover:bg-white/5 text-slate-400 transition-all">
+<span class="material-symbols-outlined">history</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/20 mx-2"></div>
+<div class="flex items-center gap-3 px-2 py-1 rounded hover:bg-white/5 transition-all cursor-pointer">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img alt="Admin" class="w-full h-full object-cover" data-alt="professional headshot of a cyber security expert in a dark suit with a focused and trustworthy expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRfgbUuVVIZ2FhiP2_ZEQlYU3H6U_7p-uoVJqpHzFeZHNPB2idp9gUh_O81DP_b47QWCs_hvFDrxEyO2urDq6YfL1AjQ-l-Rt7ELjmjGyncU0VL8pHzdXeG0h97WT8GtBEhpjekC4PoidBm-9yKZhQ3Clx8Buq5q5iNUgXWDREvyP-nDr2pre07OH5soMSzLiMWvb_6AgWofxC5ABa1wM6khIxOLxMjqk6BcZzZhlxntJ1uJ5UvUQ-mLYlDb_9Iig9hEzPl4JE2JY"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold font-headline leading-none">Admin</span>
+<span class="text-[10px] text-primary leading-none mt-1 uppercase tracking-tighter">Verified Agent</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-8 min-h-[calc(100vh-64px)]">
+<!-- Hero Header Section -->
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<nav class="flex items-center gap-2 text-[10px] font-bold tracking-widest text-primary uppercase">
+<span>Security</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-outline">Integrations</span>
+</nav>
+<h1 class="text-4xl font-black font-headline tracking-tighter text-on-surface">Integrations Hub</h1>
+<p class="text-secondary max-w-lg text-sm font-body">Manage secure connections between AccessCore AI and your enterprise stack. Encrypted vaults for every handshake.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container-high hover:bg-surface-variant text-on-surface px-6 py-2.5 rounded font-headline text-sm font-bold flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                    Filter
+                </button>
+<button class="bg-primary-container hover:bg-blue-600 text-white px-6 py-2.5 rounded font-headline text-sm font-bold flex items-center gap-2 shadow-lg shadow-primary-container/20 transition-all">
+<span class="material-symbols-outlined text-lg">add_link</span>
+                    New Connection
+                </button>
+</div>
+</div>
+<!-- Integration Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Card 1: Slack (Connected) -->
+<div class="surface-container-high rounded-xl p-6 relative group transition-all duration-300 glass-panel active-glow">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center border border-white/10 group-hover:border-primary/40 transition-colors">
+<img class="w-8 h-8 object-contain" data-alt="Slack brand logo colorful icon on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3_4k8tjTPrt_FHX2trkExXEPCYJ0XQOTC2qlIfZlWkJvj5LsZsY6YNjise88PyqBG8H53g9pYsingzYywmqjD8syIUD6ZKYNHwc8i5LFWuH6Rsq3FpSUOjFbF_8DmH2kKR52c7yEiutouN90AUJ0e0QYYngqBNBibVcCbqsP-PF_g55Vl198OXbjl7_aD3vZ10vOX8gNSZR5GCtC5L33qw7dSbG572qkLaY3U-yUWxXXvfFviuBZsp8UdMqsfM_UQdV0tCjdLMZk"/>
+</div>
+<div class="flex flex-col items-end">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<div class="mt-2 flex items-center gap-2">
+<div class="status-orb bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)]"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-green-400">Connected</span>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-bold font-headline mb-1">Slack Enterprise</h3>
+<p class="text-xs text-outline mb-6 line-clamp-2">Real-time security alerts and automated identity approval workflows via Slack channels.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<span class="text-[10px] font-body text-outline uppercase tracking-wider">v2.4.1 Stable</span>
+<button class="text-primary text-xs font-bold font-headline hover:underline">Configure</button>
+</div>
+</div>
+<!-- Card 2: AWS (Connected) -->
+<div class="surface-container-high rounded-xl p-6 relative group transition-all duration-300 glass-panel active-glow">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center border border-white/10 group-hover:border-primary/40 transition-colors">
+<img class="w-8 h-8 object-contain" data-alt="AWS Amazon Web Services cloud logo icon on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG3PGDPoYdMIqdr2K5djA_nS5e_2-1b3tGmwRIn3MGgEDZDEWJlM6Tea1N9rjyIycZlZOaYnMBjXbDV00JLlFPW2_Z5tyBMjvVMp9F_RkSJNxCDgtHSHA1jSIFp_CK1TnqNChpUstjz2iq-mxooe5olxiokxnAfh2-lAEQ0p-kQfpl2QBb-SegeqErp4JnOljVlkaQ7vvceI97p3f1NfBr9xWPe9NrHzE6aXAInnSDZK9Qo6CbrUwIGGGl9Cgd7i2Tw5WKcsa-uX0"/>
+</div>
+<div class="flex flex-col items-end">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<div class="mt-2 flex items-center gap-2">
+<div class="status-orb bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)]"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-green-400">Connected</span>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-bold font-headline mb-1">AWS Cloud Shield</h3>
+<p class="text-xs text-outline mb-6 line-clamp-2">Automated IAM role syncing and cross-account access provisioning for global infrastructures.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<span class="text-[10px] font-body text-outline uppercase tracking-wider">3 Instances Active</span>
+<button class="text-primary text-xs font-bold font-headline hover:underline">Configure</button>
+</div>
+</div>
+<!-- Card 3: Google Cloud (Disconnected) -->
+<div class="surface-container-high rounded-xl p-6 relative group transition-all duration-300 glass-panel">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center border border-white/10 group-hover:border-outline/40 transition-colors opacity-50 grayscale">
+<img class="w-8 h-8 object-contain" data-alt="Google Cloud platform logo icon on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuYZ8zh45ANPjHlTCYp0tpI3SLzwj-p5CrG9pgvHjp-BEUMOrzpbrxpex_ZQH5TAIASR7-Ua3jPLqGFks9mzzBwAl24mD77402kkeWlbZnbi71JBer2Jk8RkZudNWRCJA1g2w7p1VHEbJx3aR2fTasuwrc4b1pY82Mv2zFgzI6bP-zNhMhD7-Q4H5vOWfp-UL12p42f-VK2VnEKbJaab5j-W3t76YXKkxplWWLvSHtrfDNFJmi6MP6YODG-f_aEwJ7eC005tR78LE"/>
+</div>
+<div class="flex flex-col items-end">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<div class="mt-2 flex items-center gap-2">
+<div class="status-orb bg-outline/40"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline/60">Inactive</span>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-bold font-headline mb-1">Google Cloud IAM</h3>
+<p class="text-xs text-outline mb-6 line-clamp-2">Sync project-level permissions and OAuth 2.0 scopes across your GCP organization.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<span class="text-[10px] font-body text-outline uppercase tracking-wider">Disconnected</span>
+<button class="text-primary text-xs font-bold font-headline hover:underline">Connect</button>
+</div>
+</div>
+<!-- Card 4: Okta (Connected) -->
+<div class="surface-container-high rounded-xl p-6 relative group transition-all duration-300 glass-panel active-glow">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center border border-white/10 group-hover:border-primary/40 transition-colors">
+<img class="w-8 h-8 object-contain" data-alt="Okta security logo icon on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmWswoWnwjGCxsH-ZMQASx_B2XNFcre-Ormw3Q7gZQaXA8PQOJglW7GE15oU5rct9vUOfYeNmjUXwLH_FyZzF8YcvXK2xysCe_XMho1vhEKa8AkNclDXc4MHhFrlREiZ9vmoTVctIRBjXQU59hLQ9xzhjfDs6VKyRG8lEeD-WfMvOhElsvIzwzIcnKgiINADoq5WwjgU6omRiVtwKL2mtVUcfLyokxtfoD-BwEDQfOeXFWn8rhCdj-RpI888Qdk8iV5IDbhAmvoiE"/>
+</div>
+<div class="flex flex-col items-end">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<div class="mt-2 flex items-center gap-2">
+<div class="status-orb bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)]"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-green-400">Connected</span>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-bold font-headline mb-1">Okta SSO</h3>
+<p class="text-xs text-outline mb-6 line-clamp-2">Master directory for identity lifecycle management and universal single sign-on.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<span class="text-[10px] font-body text-outline uppercase tracking-wider">Last sync: 2m ago</span>
+<button class="text-primary text-xs font-bold font-headline hover:underline">Configure</button>
+</div>
+</div>
+<!-- Card 5: Azure (Connected) -->
+<div class="surface-container-high rounded-xl p-6 relative group transition-all duration-300 glass-panel active-glow">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center border border-white/10 group-hover:border-primary/40 transition-colors">
+<img class="w-8 h-8 object-contain" data-alt="Microsoft Azure cloud logo icon on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUIt4h1KqGEWkco0TMufmGxDL9WOni3E0dOx0La4ld_my1rVkUv4qWyYSp0rEoUTqGutqKPZorsfn1NvuchI-OcACrsyqIuNqVxjAMUFfCvF3Vk8G5dgvAKv69SEkcOZRab1mWzT9cCfWSSnVLOIp74rbvn20xyztE-mrClVblp3zqhojEiYzjk3GeyT2DwPqMTiEJR8exYI2Ba8ViFOfasLq79JpME6jw1xTTP8A5W8O7ok4fwMUBqk5EDKOHOCyTxUH8WzMtmdA"/>
+</div>
+<div class="flex flex-col items-end">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<div class="mt-2 flex items-center gap-2">
+<div class="status-orb bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)]"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-green-400">Connected</span>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-bold font-headline mb-1">Azure AD</h3>
+<p class="text-xs text-outline mb-6 line-clamp-2">Deep integration with Entra ID for enterprise-grade directory services and conditional access.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<span class="text-[10px] font-body text-outline uppercase tracking-wider">Syncing 4,200 users</span>
+<button class="text-primary text-xs font-bold font-headline hover:underline">Configure</button>
+</div>
+</div>
+<!-- Card 6: GitHub (Disconnected) -->
+<div class="surface-container-high rounded-xl p-6 relative group transition-all duration-300 glass-panel">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center border border-white/10 group-hover:border-outline/40 transition-colors opacity-50 grayscale">
+<img class="w-8 h-8 object-contain invert" data-alt="GitHub octocat logo icon on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBROzSY4MnA_qvoCfMa-TNu92jpgmNMLMWzKZ_gPuuMCtEI8dEWdevbF7FghhpLKA_q0gbT3UftyUtB7RtiPig7mjTfUi-00OssIK0LA4SFoemeIb1cAR6av1mcNPyDYSlrNA4ut0nNQ237-3I76Ixc3UXmOy9YV2T-ZIN9-JHnNC6y9MF8DY5Q6Xz_VBeHEDEj-1_gMzfMv42pYqbblWqNQ1ThXU9fWXqmt11KvbysZDDNHgkRbpEav_0YoL11wl8n-0ZxJAEWLwg"/>
+</div>
+<div class="flex flex-col items-end">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<div class="mt-2 flex items-center gap-2">
+<div class="status-orb bg-outline/40"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline/60">Inactive</span>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-bold font-headline mb-1">GitHub Enterprise</h3>
+<p class="text-xs text-outline mb-6 line-clamp-2">Manage organization membership and SSH key provisioning through AccessCore policies.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<span class="text-[10px] font-body text-outline uppercase tracking-wider">Not Authenticated</span>
+<button class="text-primary text-xs font-bold font-headline hover:underline">Connect</button>
+</div>
+</div>
+<!-- Add Connector Placeholder -->
+<div class="surface-container rounded-xl p-6 border-2 border-dashed border-outline-variant/20 flex flex-col items-center justify-center text-center group hover:border-primary/40 transition-all cursor-pointer min-h-[220px]">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mb-4 group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">add</span>
+</div>
+<span class="text-sm font-headline font-bold text-outline group-hover:text-on-surface transition-colors">Request New Integration</span>
+<p class="text-[10px] text-outline/60 mt-2 font-body max-w-[120px]">Can't find a connector? Let us know.</p>
+</div>
+</div>
+<!-- System Status Banner -->
+<div class="mt-12 p-6 rounded-xl surface-container-high relative overflow-hidden border border-outline-variant/10">
+<div class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent"></div>
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div>
+<h4 class="text-sm font-bold font-headline">All active connections are secure</h4>
+<p class="text-xs text-outline">Last global health audit: Completed 12 minutes ago. No vulnerabilities detected.</p>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="px-3 py-1.5 rounded bg-surface-container-highest text-[10px] font-bold text-outline border border-outline-variant/10">
+                        TLS 1.3 ACTIVE
+                    </div>
+<div class="px-3 py-1.5 rounded bg-surface-container-highest text-[10px] font-bold text-outline border border-outline-variant/10">
+                        AES-256 VAULT
+                    </div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

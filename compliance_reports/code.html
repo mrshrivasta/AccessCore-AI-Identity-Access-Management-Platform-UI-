@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "on-primary-fixed": "#00174b",
+                        "inverse-on-surface": "#2d3136",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary": "#d2bbff",
+                        "surface-container-low": "#181c21",
+                        "on-secondary-fixed-variant": "#404752",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary-container": "#f7edff",
+                        "on-secondary-container": "#afb5c2",
+                        "outline": "#8d90a0",
+                        "surface-dim": "#101419",
+                        "surface-container-high": "#262a30",
+                        "secondary-fixed": "#dce3f0",
+                        "surface-tint": "#b4c5ff",
+                        "surface-bright": "#36393f",
+                        "on-surface": "#e0e2ea",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#2563eb",
+                        "surface-container": "#1c2025",
+                        "surface": "#101419",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "on-surface-variant": "#c3c6d7",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-lowest": "#0a0e13",
+                        "surface-variant": "#31353b",
+                        "secondary": "#c0c7d3",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#8343f4",
+                        "on-error": "#690005",
+                        "on-primary": "#002a78",
+                        "inverse-surface": "#e0e2ea",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary-container": "#404752",
+                        "primary": "#b4c5ff",
+                        "inverse-primary": "#0053db",
+                        "on-tertiary": "#3f008e",
+                        "on-secondary-fixed": "#151c25",
+                        "surface-container-highest": "#31353b",
+                        "on-tertiary-fixed": "#25005a",
+                        "on-secondary": "#2a313b",
+                        "tertiary-fixed": "#eaddff",
+                        "outline-variant": "#434655",
+                        "error": "#ffb4ab",
+                        "background": "#101419",
+                        "on-background": "#e0e2ea"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #101419;
+            color: #e0e2ea;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-effect {
+            backdrop-filter: blur(16px);
+            background: rgba(24, 28, 33, 0.8);
+        }
+        .signature-glow {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+        }
+    </style>
+</head>
+<body class="flex min-h-screen overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="bg-[#1c2025] dark:bg-[#1c2025] h-screen w-64 fixed left-0 top-0 border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.4)] flex flex-col h-full py-6 z-[60]">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-blue-500 tracking-tighter font-['Manrope']">AccessCore</h1>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">AI IAM Sentinel</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-400">dashboard</span>
+<span class="font-['Inter'] text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-400">fingerprint</span>
+<span class="font-['Inter'] text-sm font-medium">Identities</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-400">security_update_good</span>
+<span class="font-['Inter'] text-sm font-medium">Roles</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-400">shield_person</span>
+<span class="font-['Inter'] text-sm font-medium">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-400">vpn_key</span>
+<span class="font-['Inter'] text-sm font-medium">Auth</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-400">gpp_maybe</span>
+<span class="font-['Inter'] text-sm font-medium">Risk</span>
+</a>
+<!-- Active Navigation -->
+<a class="flex items-center gap-3 px-4 py-3 rounded text-blue-400 bg-[#31353b] border-l-2 border-blue-600 font-bold group" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-['Inter'] text-sm font-medium">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-400">settings</span>
+<span class="font-['Inter'] text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-6 pt-6 border-t border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border border-white/10">
+<img alt="AccessCore System Logo" class="w-full h-full object-cover" data-alt="professional male security officer portrait with neutral expression in high-tech environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy8ILsQ7o8l5yAnXXcAcOv-jFaJWTwisq8jNlGtZUelmM1IZ42rzXDaf8-TVhvYJip2fU-dPeO-s1vSNtkvik_CLw0y6xkn2w2N-Skb-w7Gy6R-wtW-o7WmfVGDSIRxcZPQLpxrlKmIR3q5NDYa9gguygvALlHp0drBy55pGLlFUGtw5u4qlggo9XV99Xjo8r_oU0h0rZubnZpTYdyHt44AJR448_AYwI9jWJwTgaM5JsLDqS8KtxYo0zb4AAOWGLErWQAqvWCJ3A"/>
+</div>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate">Marcus Vane</p>
+<p class="text-[10px] text-slate-500 truncate">CISO Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 z-50 bg-[#101419]/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20 flex items-center justify-between px-8">
+<div class="flex items-center bg-surface-container-lowest px-4 py-2 rounded border border-white/5 focus-within:ring-1 ring-blue-500/50 w-96">
+<span class="material-symbols-outlined text-slate-500 text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-on-surface w-full" placeholder="Search compliance standards..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-slate-400">
+<button class="hover:text-blue-400 transition-all material-symbols-outlined relative">
+                    notifications
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border-2 border-[#101419]"></span>
+</button>
+<button class="hover:text-blue-400 transition-all material-symbols-outlined">history</button>
+<button class="hover:text-blue-400 transition-all material-symbols-outlined">help_outline</button>
+</div>
+<div class="h-8 w-px bg-white/10 mx-2"></div>
+<div class="text-blue-400 border-b-2 border-blue-500 py-1 font-['Inter'] text-sm font-medium">Compliance Overview</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-10 w-full bg-background min-h-screen">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex items-end justify-between">
+<div>
+<span class="text-tertiary font-medium text-xs tracking-widest uppercase mb-2 block font-['Inter']">Governance &amp; Audit</span>
+<h2 class="text-4xl font-extrabold text-on-surface font-['Manrope'] tracking-tight">Compliance &amp; Audit Readiness</h2>
+<p class="text-on-surface-variant mt-2 max-w-2xl font-['Inter']">Continuous monitoring of identity controls against global regulatory frameworks. Automated evidence collection and risk posture assessment.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-surface-container-high hover:bg-surface-container-highest text-on-surface rounded font-medium flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                        Run System Scan
+                    </button>
+<button class="px-6 py-3 bg-primary-container hover:bg-blue-700 text-white rounded font-medium flex items-center gap-2 transition-all signature-glow">
+<span class="material-symbols-outlined text-sm">sim_card_download</span>
+                        Generate Master Report
+                    </button>
+</div>
+</div>
+</header>
+<!-- Bento Grid for Standards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+<!-- SOC2 -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group shadow-xl">
+<div class="absolute top-0 right-0 p-3">
+<span class="material-symbols-outlined text-blue-500/20 text-6xl rotate-12">verified_user</span>
+</div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<h3 class="text-lg font-bold font-['Manrope'] text-on-surface">SOC 2 Type II</h3>
+<span class="text-[10px] bg-primary-container/20 text-primary px-2 py-0.5 rounded uppercase font-bold tracking-tighter">Trust Criteria</span>
+</div>
+<div class="flex items-center justify-center mb-8">
+<div class="relative w-28 h-28 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle cx="56" cy="56" fill="transparent" r="48" stroke="rgba(255,255,255,0.05)" stroke-width="8"></circle>
+<circle cx="56" cy="56" fill="transparent" r="48" stroke="#2563eb" stroke-dasharray="301.6" stroke-dashoffset="30" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-2xl font-bold text-on-surface">90%</span>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-highest hover:bg-surface-bright text-sm font-semibold rounded text-on-surface flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Download Audit Pack
+                    </button>
+</div>
+</div>
+<!-- GDPR -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group shadow-xl">
+<div class="absolute top-0 right-0 p-3">
+<span class="material-symbols-outlined text-tertiary/20 text-6xl -rotate-12">policy</span>
+</div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<h3 class="text-lg font-bold font-['Manrope'] text-on-surface">GDPR</h3>
+<span class="text-[10px] bg-tertiary-container/20 text-tertiary px-2 py-0.5 rounded uppercase font-bold tracking-tighter">EU Privacy</span>
+</div>
+<div class="flex items-center justify-center mb-8">
+<div class="relative w-28 h-28 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle cx="56" cy="56" fill="transparent" r="48" stroke="rgba(255,255,255,0.05)" stroke-width="8"></circle>
+<circle cx="56" cy="56" fill="transparent" r="48" stroke="#d2bbff" stroke-dasharray="301.6" stroke-dashoffset="15" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-2xl font-bold text-on-surface">95%</span>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-highest hover:bg-surface-bright text-sm font-semibold rounded text-on-surface flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Download Audit Pack
+                    </button>
+</div>
+</div>
+<!-- HIPAA -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group shadow-xl">
+<div class="absolute top-0 right-0 p-3">
+<span class="material-symbols-outlined text-error/20 text-6xl">medical_services</span>
+</div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<h3 class="text-lg font-bold font-['Manrope'] text-on-surface">HIPAA</h3>
+<span class="text-[10px] bg-error-container/20 text-error px-2 py-0.5 rounded uppercase font-bold tracking-tighter">Healthcare</span>
+</div>
+<div class="flex items-center justify-center mb-8">
+<div class="relative w-28 h-28 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle cx="56" cy="56" fill="transparent" r="48" stroke="rgba(255,255,255,0.05)" stroke-width="8"></circle>
+<circle cx="56" cy="56" fill="transparent" r="48" stroke="#ffb4ab" stroke-dasharray="301.6" stroke-dashoffset="120" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-2xl font-bold text-on-surface">62%</span>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-highest hover:bg-surface-bright text-sm font-semibold rounded text-on-surface flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Download Audit Pack
+                    </button>
+</div>
+</div>
+<!-- ISO 27001 -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group shadow-xl">
+<div class="absolute top-0 right-0 p-3">
+<span class="material-symbols-outlined text-primary/20 text-6xl rotate-45">language</span>
+</div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<h3 class="text-lg font-bold font-['Manrope'] text-on-surface">ISO 27001</h3>
+<span class="text-[10px] bg-primary-fixed-dim/20 text-primary-fixed-dim px-2 py-0.5 rounded uppercase font-bold tracking-tighter">Security</span>
+</div>
+<div class="flex items-center justify-center mb-8">
+<div class="relative w-28 h-28 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle cx="56" cy="56" fill="transparent" r="48" stroke="rgba(255,255,255,0.05)" stroke-width="8"></circle>
+<circle cx="56" cy="56" fill="transparent" r="48" stroke="#b4c5ff" stroke-dasharray="301.6" stroke-dashoffset="60" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-2xl font-bold text-on-surface">81%</span>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-highest hover:bg-surface-bright text-sm font-semibold rounded text-on-surface flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Download Audit Pack
+                    </button>
+</div>
+</div>
+</div>
+<!-- Compliance Gaps & Evidence Repository -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Compliance Gaps Table -->
+<section class="lg:col-span-8 bg-surface-container-low rounded-2xl overflow-hidden shadow-2xl">
+<div class="p-6 border-b border-white/5 flex justify-between items-center">
+<div>
+<h3 class="text-xl font-bold font-['Manrope'] text-on-surface">Compliance Gaps</h3>
+<p class="text-sm text-slate-500 font-['Inter']">Critical failures and missing documentation requiring immediate action.</p>
+</div>
+<span class="px-3 py-1 bg-error-container/20 text-error text-[10px] font-bold rounded-full">12 OPEN FINDINGS</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-['Inter'] text-sm">
+<thead class="bg-surface-container-highest/50 text-slate-500 text-xs uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4 font-bold">Standard</th>
+<th class="px-6 py-4 font-bold">Control ID</th>
+<th class="px-6 py-4 font-bold">Failure Description</th>
+<th class="px-6 py-4 font-bold">Severity</th>
+<th class="px-6 py-4 font-bold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-surface-container-highest/30 transition-all">
+<td class="px-6 py-5 font-bold">HIPAA</td>
+<td class="px-6 py-5 text-slate-400">§ 164.312(a)(1)</td>
+<td class="px-6 py-5">Lack of multi-factor authentication for remote PHI access.</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error signature-glow"></span>
+<span class="text-error font-semibold">Critical</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-blue-400 hover:underline font-medium">Remediate</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-all">
+<td class="px-6 py-5 font-bold">SOC 2</td>
+<td class="px-6 py-5 text-slate-400">CC6.1</td>
+<td class="px-6 py-5">Quarterly privilege access review for admin roles overdue.</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-tertiary font-semibold">High</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-blue-400 hover:underline font-medium">Remediate</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-all">
+<td class="px-6 py-5 font-bold">ISO 27001</td>
+<td class="px-6 py-5 text-slate-400">A.9.2.2</td>
+<td class="px-6 py-5">Offboarding documentation missing for 3 departed contractors.</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-secondary font-semibold">Medium</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-blue-400 hover:underline font-medium">Remediate</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-all">
+<td class="px-6 py-5 font-bold">GDPR</td>
+<td class="px-6 py-5 text-slate-400">Article 32</td>
+<td class="px-6 py-5">Encryption at rest validation logs missing for staging DB.</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-tertiary font-semibold">High</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-blue-400 hover:underline font-medium">Remediate</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-surface-container-lowest text-center">
+<button class="text-slate-500 hover:text-white text-xs font-bold uppercase tracking-widest transition-all">View all 12 findings</button>
+</div>
+</section>
+<!-- Evidence Repository -->
+<aside class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container-high rounded-2xl p-6 shadow-2xl border border-white/5">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold font-['Manrope'] text-on-surface">Evidence Repository</h3>
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-all">
+<span class="material-symbols-outlined text-blue-400">add_circle</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Evidence Item -->
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface-container-highest/50 transition-all group">
+<div class="w-12 h-12 bg-surface-container-lowest rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-500">description</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-semibold truncate text-on-surface">MFA_Compliance_Logs_Q3.pdf</p>
+<p class="text-[10px] text-slate-500">Uploaded: Oct 12, 2023 • 4.2 MB</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 material-symbols-outlined text-slate-400 hover:text-white transition-all">visibility</button>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface-container-highest/50 transition-all group">
+<div class="w-12 h-12 bg-surface-container-lowest rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">article</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-semibold truncate text-on-surface">Privilege_Access_Policy_v2.docx</p>
+<p class="text-[10px] text-slate-500">Uploaded: Sep 28, 2023 • 1.1 MB</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 material-symbols-outlined text-slate-400 hover:text-white transition-all">visibility</button>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface-container-highest/50 transition-all group">
+<div class="w-12 h-12 bg-surface-container-lowest rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim">tab_unselected</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-semibold truncate text-on-surface">Audit_Trail_Inventory_Master.xlsx</p>
+<p class="text-[10px] text-slate-500">Uploaded: Sep 15, 2023 • 12.8 MB</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 material-symbols-outlined text-slate-400 hover:text-white transition-all">visibility</button>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface-container-highest/50 transition-all group">
+<div class="w-12 h-12 bg-surface-container-lowest rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-error">picture_as_pdf</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-semibold truncate text-on-surface">Data_Privacy_Impact_Assessment.pdf</p>
+<p class="text-[10px] text-slate-500">Uploaded: Aug 30, 2023 • 8.4 MB</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 material-symbols-outlined text-slate-400 hover:text-white transition-all">visibility</button>
+</div>
+</div>
+<button class="w-full mt-6 py-4 border-2 border-dashed border-outline-variant rounded-xl text-slate-500 hover:text-blue-400 hover:border-blue-400 hover:bg-blue-400/5 transition-all flex flex-col items-center gap-2">
+<span class="material-symbols-outlined">cloud_upload</span>
+<span class="text-xs font-bold">Drag and drop new evidence</span>
+</button>
+</div>
+<div class="bg-gradient-to-br from-primary-container to-blue-900 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+<div class="relative z-10">
+<h4 class="text-lg font-bold font-['Manrope'] text-white">Trust Center Sync</h4>
+<p class="text-xs text-blue-100/70 mt-1 mb-4 leading-relaxed">Your compliance data is currently syncing with the public trust center. Next public update in 4 hours.</p>
+<div class="flex items-center gap-2 mb-4">
+<span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+<span class="text-[10px] font-bold text-blue-100 uppercase tracking-widest">Active Syncing</span>
+</div>
+<button class="text-sm font-bold text-white flex items-center gap-2 hover:gap-3 transition-all">
+                            Configure Public Trust Page
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Contextual FAB (Only for main screens) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary-container text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 signature-glow">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</body></html>

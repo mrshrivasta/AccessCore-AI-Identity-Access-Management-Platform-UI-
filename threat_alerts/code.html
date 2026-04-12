@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Threat Alerts | AccessCore AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#00174b",
+                    "surface-dim": "#101419",
+                    "tertiary-fixed": "#eaddff",
+                    "surface-container-highest": "#31353b",
+                    "surface-container": "#1c2025",
+                    "surface-container-low": "#181c21",
+                    "background": "#101419",
+                    "on-background": "#e0e2ea",
+                    "inverse-surface": "#e0e2ea",
+                    "surface-bright": "#36393f",
+                    "on-tertiary-container": "#f7edff",
+                    "on-surface": "#e0e2ea",
+                    "tertiary": "#d2bbff",
+                    "secondary": "#c0c7d3",
+                    "on-secondary-container": "#afb5c2",
+                    "on-surface-variant": "#c3c6d7",
+                    "surface-tint": "#b4c5ff",
+                    "tertiary-container": "#8343f4",
+                    "on-tertiary": "#3f008e",
+                    "secondary-fixed-dim": "#c0c7d3",
+                    "outline": "#8d90a0",
+                    "inverse-primary": "#0053db",
+                    "secondary-fixed": "#dce3f0",
+                    "error-container": "#93000a",
+                    "primary": "#b4c5ff",
+                    "inverse-on-surface": "#2d3136",
+                    "on-secondary-fixed": "#151c25",
+                    "surface": "#101419",
+                    "outline-variant": "#434655",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-secondary": "#2a313b",
+                    "primary-fixed": "#dbe1ff",
+                    "on-tertiary-fixed-variant": "#5a00c6",
+                    "surface-container-lowest": "#0a0e13",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#d2bbff",
+                    "on-primary": "#002a78",
+                    "surface-variant": "#31353b",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#2563eb",
+                    "on-secondary-fixed-variant": "#404752",
+                    "surface-container-high": "#262a30",
+                    "on-tertiary-fixed": "#25005a",
+                    "secondary-container": "#404752",
+                    "on-primary-container": "#eeefff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #101419;
+            color: #e0e2ea;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(141, 144, 160, 0.05);
+        }
+        .sidebar-active-indicator {
+            box-shadow: inset 10px 0 20px rgba(37, 99, 235, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#101419] dark:bg-[#101419] backdrop-blur-xl bg-opacity-80 border-b border-white/5 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-blue-500 tracking-tighter font-['Manrope']">AccessCore AI</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-400 font-medium hover:text-white transition-colors" href="#">Dashboard</a>
+<a class="text-blue-400 font-bold border-b-2 border-blue-500 pb-1" href="#">Alerts</a>
+<a class="text-slate-400 font-medium hover:text-white transition-colors" href="#">Devices</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2 mr-4">
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">notifications_active</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">shield_with_heart</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<button class="px-4 py-1.5 text-sm font-bold bg-primary-container text-on-primary-container rounded-DEFAULT active:scale-95 duration-200">Secure Logout</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col py-8 z-40 bg-[#1c2025] dark:bg-[#1c2025] border-r border-white/5 shadow-2xl pt-24">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<img alt="System Administrator" class="w-10 h-10 rounded-full border border-primary/20" data-alt="close up profile photo of a security professional in a dark office environment with soft blue computer monitor glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiBF4TWtHX90zpX4nCKa0EsxFwH8DWKW--xghJOW-Gk9BZjkSDdtI_HGpcUffVJqS8_CZKhMmhUaIKGu3waV7SaWObTUsYdRQroVVSgzhQBxZJ9mVTEdpo844bfGcgn-qeHh7CYbT3Lo0DdkeL14ZgTcMlun4Bojh3Q9RokddgDbIGtiaYBYkodCKkHA3lbZyG8gXYz5_Ma7IK2fEVDVlihqDz1snPAwc3CnDFk_oxotDjZvxp_Y3PEN5MMH6GVtumPL_tjOMoPr0"/>
+<div>
+<h3 class="text-xs font-bold uppercase tracking-widest text-blue-500">The Sentinel</h3>
+<p class="text-[10px] text-slate-500">Global IAM Authority</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="px-4 py-2 flex items-center gap-3 text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-['Inter']">Risk Dashboard</span>
+</div>
+<div class="px-4 py-2 flex items-center gap-3 bg-blue-600/10 text-blue-400 border-l-4 border-blue-500 sidebar-active-indicator transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined">radar</span>
+<span class="text-sm font-['Inter'] font-medium">Threat Center</span>
+</div>
+<div class="px-4 py-2 flex items-center gap-3 text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-sm font-['Inter']">Anomaly Detection</span>
+</div>
+<div class="px-4 py-2 flex items-center gap-3 text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="text-sm font-['Inter']">Device Trust</span>
+</div>
+<div class="px-4 py-2 flex items-center gap-3 text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined">gavel</span>
+<span class="text-sm font-['Inter']">Policy Engine</span>
+</div>
+<div class="px-4 py-2 flex items-center gap-3 text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined">history</span>
+<span class="text-sm font-['Inter']">Audit Logs</span>
+</div>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-3 bg-primary-container text-on-primary-container text-xs font-bold rounded-DEFAULT mb-6 hover:brightness-110 active:scale-95 duration-200">New Security Policy</button>
+<div class="space-y-4 border-t border-white/5 pt-6">
+<div class="flex items-center gap-3 text-slate-400 hover:text-white cursor-pointer text-xs transition-colors">
+<span class="material-symbols-outlined text-sm">help</span>
+<span>Support</span>
+</div>
+<div class="flex items-center gap-3 text-slate-400 hover:text-white cursor-pointer text-xs transition-colors">
+<span class="material-symbols-outlined text-sm">sensors</span>
+<span>System Status</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pl-64 pt-16 min-h-screen">
+<div class="p-8">
+<!-- Global Stats Bar -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="glass-panel p-5 rounded-lg border-l-4 border-error">
+<p class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Active Alerts</p>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-black text-on-background font-headline tracking-tighter">42</span>
+<span class="text-xs text-error font-medium mb-1.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12%
+                        </span>
+</div>
+</div>
+<div class="glass-panel p-5 rounded-lg border-l-4 border-blue-500">
+<p class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Avg Response Time</p>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-black text-on-background font-headline tracking-tighter">1.4m</span>
+<span class="text-xs text-blue-400 font-medium mb-1.5">Real-time AI Ops</span>
+</div>
+</div>
+<div class="glass-panel p-5 rounded-lg border-l-4 border-tertiary">
+<p class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Threats Mitigated</p>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-black text-on-background font-headline tracking-tighter">1.2k</span>
+<span class="text-xs text-tertiary font-medium mb-1.5">Last 24h</span>
+</div>
+</div>
+<div class="glass-panel p-5 rounded-lg border-l-4 border-on-secondary-container">
+<p class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">System Health</p>
+<div class="flex items-center gap-2 mt-2">
+<div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_#22c55e]"></div>
+<span class="text-sm font-bold text-on-background">Operational</span>
+</div>
+</div>
+</div>
+<!-- Dashboard Layout: Asymmetrical Grid -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Priority Alerts List (8 Columns) -->
+<div class="col-span-12 lg:col-span-8 space-y-4">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-xl font-bold font-headline">Live Incident Feed</h2>
+<div class="flex gap-2">
+<button class="bg-surface-container-high px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 border border-white/5 hover:bg-surface-variant">Filter: All</button>
+<button class="bg-surface-container-high px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 border border-white/5 hover:bg-surface-variant">Sort: Criticality</button>
+</div>
+</div>
+<!-- Alert Item: Critical -->
+<div class="glass-panel p-6 rounded-xl border-l-4 border-error group relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-error/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-start relative z-10">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-3xl">dangerous</span>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<span class="px-2 py-0.5 bg-error text-on-error text-[10px] font-bold rounded-full">CRITICAL</span>
+<span class="text-xs text-slate-500">ID: TH-9021</span>
+<span class="text-xs text-slate-500">• 2m ago</span>
+</div>
+<h3 class="text-lg font-bold text-on-background">Brute Force Attack Detected</h3>
+<p class="text-sm text-slate-400 mt-1 max-w-lg">Multiple failed login attempts detected for Administrator account from unidentified IP in Singapore.</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-highest rounded-lg text-error hover:bg-error/20 transition-colors" title="Isolate User">
+<span class="material-symbols-outlined">person_off</span>
+</button>
+<button class="p-2 bg-surface-container-highest rounded-lg text-on-surface hover:bg-white/10 transition-colors" title="Review Context">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-4 pt-4 border-t border-white/5">
+<button class="text-[11px] font-bold uppercase tracking-wider text-error flex items-center gap-1 hover:brightness-125">
+<span class="material-symbols-outlined text-sm">block</span> Isolate User
+                            </button>
+<button class="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 hover:text-white">
+<span class="material-symbols-outlined text-sm">verified</span> Mark False Positive
+                            </button>
+<div class="ml-auto flex items-center gap-2">
+<span class="text-[10px] text-slate-500 italic">AI Remediation: Multi-factor lock engaged</span>
+<span class="material-symbols-outlined text-blue-400 text-sm" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+</div>
+</div>
+</div>
+<!-- Alert Item: High -->
+<div class="glass-panel p-6 rounded-xl border-l-4 border-orange-500 group relative overflow-hidden">
+<div class="flex justify-between items-start relative z-10">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined text-3xl">warning</span>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<span class="px-2 py-0.5 bg-orange-500 text-black text-[10px] font-bold rounded-full">HIGH</span>
+<span class="text-xs text-slate-500">ID: TH-8842</span>
+<span class="text-xs text-slate-500">• 14m ago</span>
+</div>
+<h3 class="text-lg font-bold text-on-background">Anomalous Data Egress</h3>
+<p class="text-sm text-slate-400 mt-1 max-w-lg">Large volume of encrypted data leaving Internal-S3-Bucket to unauthorized external domain.</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-highest rounded-lg text-orange-500 hover:bg-orange-500/20 transition-colors" title="Revoke Access">
+<span class="material-symbols-outlined">key_off</span>
+</button>
+<button class="p-2 bg-surface-container-highest rounded-lg text-on-surface hover:bg-white/10 transition-colors" title="Review Context">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-4 pt-4 border-t border-white/5">
+<button class="text-[11px] font-bold uppercase tracking-wider text-orange-500 flex items-center gap-1 hover:brightness-125">
+<span class="material-symbols-outlined text-sm">lock</span> Revoke Access
+                            </button>
+<button class="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 hover:text-white">
+<span class="material-symbols-outlined text-sm">verified</span> Mark False Positive
+                            </button>
+<div class="ml-auto flex items-center gap-2">
+<span class="text-[10px] text-slate-500 italic">AI Remediation: Session rate-limited</span>
+<span class="material-symbols-outlined text-blue-400 text-sm" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+</div>
+</div>
+</div>
+<!-- Alert Item: Medium -->
+<div class="glass-panel p-6 rounded-xl border-l-4 border-blue-500 group relative overflow-hidden">
+<div class="flex justify-between items-start relative z-10">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+<span class="material-symbols-outlined text-3xl">info</span>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<span class="px-2 py-0.5 bg-blue-500 text-on-primary text-[10px] font-bold rounded-full">MEDIUM</span>
+<span class="text-xs text-slate-500">ID: TH-8119</span>
+<span class="text-xs text-slate-500">• 1h ago</span>
+</div>
+<h3 class="text-lg font-bold text-on-background">New Device Enrollment (Overseas)</h3>
+<p class="text-sm text-slate-400 mt-1 max-w-lg">Employee 'John Doe' registered a new MacBook from London, UK. Location mismatch with travel profile.</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-highest rounded-lg text-slate-400 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Incident Sidebar (4 Columns) -->
+<div class="col-span-12 lg:col-span-4">
+<div class="glass-panel rounded-xl sticky top-24 overflow-hidden">
+<div class="bg-surface-container-highest p-4 flex items-center justify-between">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-200">Incident Intel</h3>
+<span class="px-2 py-1 bg-error-container text-error text-[10px] font-black rounded-DEFAULT">LIVE</span>
+</div>
+<div class="p-6 space-y-8">
+<!-- Source Section -->
+<div>
+<h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Threat Source</h4>
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-white/5">
+<img alt="Threat Map Location" class="w-12 h-12 rounded bg-surface-container-high" data-alt="high contrast digital map visualization with glowing red data points indicating cyber attack origins in a dark room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiTYsKQvIXhfGvKlkKrMx8Pq9sNPSaWtd8u-R-VKAR3VpnUfZB7GnWeOa3dznugmHq3hCUb9DRuMNDhkDscx1t_jrOa1rrPUa3vzFrc68msyXoMYGQW_GlPMlxPnIfQKBGuVuNmf4BTiwjmdoc9nJqYEM6dYT8B684dgY8Li8G4OyOFVHPYFRsZiOMXjIpaEQVXW-epd9y4_JPGcYyBAs9nEC9Qw0nXhwy6bCdSyVL5F4u3VCFzhyIIVkN1TjGjw2ElGGTn_WRpmA"/>
+<div>
+<p class="text-sm font-bold text-on-background">192.168.1.104</p>
+<p class="text-xs text-slate-500">Singapore, AS (Cloud Provider)</p>
+</div>
+</div>
+</div>
+<!-- Affected Assets -->
+<div>
+<h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Impacted Assets</h4>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">database</span>
+<span class="text-xs text-on-background">User_Master_DB</span>
+</div>
+<span class="text-[10px] px-1.5 py-0.5 bg-error/20 text-error rounded font-bold">Compromised</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">cloud</span>
+<span class="text-xs text-on-background">IAM_Internal_Gateway</span>
+</div>
+<span class="text-[10px] px-1.5 py-0.5 bg-orange-500/20 text-orange-500 rounded font-bold">Involved</span>
+</div>
+</div>
+</div>
+<!-- Remediation Steps -->
+<div>
+<h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">AI Auto-Remediation</h4>
+<div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-2 before:top-0 before:bottom-0 before:w-px before:bg-white/10">
+<div class="relative">
+<div class="absolute -left-6 w-4 h-4 bg-blue-500 rounded-full border-4 border-surface shadow-[0_0_8px_#3b82f6]"></div>
+<p class="text-xs font-bold text-blue-400">02:14:01 • IP Blacklisted</p>
+<p class="text-[10px] text-slate-500 mt-1">Source IP blocked across all edge gateways.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-6 w-4 h-4 bg-blue-500 rounded-full border-4 border-surface shadow-[0_0_8px_#3b82f6]"></div>
+<p class="text-xs font-bold text-blue-400">02:14:05 • Session Invalidated</p>
+<p class="text-[10px] text-slate-500 mt-1">JWT tokens revoked for targeted user.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-6 w-4 h-4 bg-surface-variant rounded-full border-4 border-surface"></div>
+<p class="text-xs font-bold text-slate-400">In Progress • Audit Generation</p>
+<p class="text-[10px] text-slate-500 mt-1">Compiling full forensic trace for compliance.</p>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-error text-on-error text-xs font-black uppercase tracking-widest rounded-lg hover:brightness-110 active:scale-95 transition-all">
+                                Trigger Global Lockout
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Hidden as per hierarchy on details page) -->
+</body></html>

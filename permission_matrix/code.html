@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AccessCore AI | Permission Matrix</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#31353b",
+                    "secondary": "#c0c7d3",
+                    "inverse-surface": "#e0e2ea",
+                    "surface": "#101419",
+                    "surface-container-lowest": "#0a0e13",
+                    "on-tertiary": "#3f008e",
+                    "secondary-fixed": "#dce3f0",
+                    "on-tertiary-container": "#f7edff",
+                    "tertiary-fixed-dim": "#d2bbff",
+                    "on-error-container": "#ffdad6",
+                    "on-surface-variant": "#c3c6d7",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-error": "#690005",
+                    "background": "#101419",
+                    "on-primary-container": "#eeefff",
+                    "inverse-primary": "#0053db",
+                    "outline-variant": "#434655",
+                    "tertiary-fixed": "#eaddff",
+                    "on-background": "#e0e2ea",
+                    "on-surface": "#e0e2ea",
+                    "on-secondary-fixed": "#151c25",
+                    "secondary-fixed-dim": "#c0c7d3",
+                    "on-secondary-fixed-variant": "#404752",
+                    "on-primary": "#002a78",
+                    "on-secondary-container": "#afb5c2",
+                    "primary-container": "#2563eb",
+                    "tertiary-container": "#8343f4",
+                    "secondary-container": "#404752",
+                    "on-secondary": "#2a313b",
+                    "surface-container-high": "#262a30",
+                    "primary": "#b4c5ff",
+                    "on-primary-fixed": "#00174b",
+                    "surface-dim": "#101419",
+                    "surface-container-low": "#181c21",
+                    "error-container": "#93000a",
+                    "surface-container": "#1c2025",
+                    "on-tertiary-fixed-variant": "#5a00c6",
+                    "on-tertiary-fixed": "#25005a",
+                    "inverse-on-surface": "#2d3136",
+                    "surface-tint": "#b4c5ff",
+                    "surface-bright": "#36393f",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "tertiary": "#d2bbff",
+                    "surface-container-highest": "#31353b",
+                    "primary-fixed": "#dbe1ff",
+                    "error": "#ffb4ab",
+                    "outline": "#8d90a0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #1c2025; }
+        ::-webkit-scrollbar-thumb { background: #404752; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c0c7d3; }
+        .glass-panel {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .signature-glow {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+        }
+        .active-cell-glow {
+            box-shadow: inset 0 0 12px rgba(37, 99, 235, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-hidden h-screen">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="fixed left-0 top-0 h-full w-64 z-50 bg-[#1c2025] flex flex-col h-full py-6 shadow-2xl font-['Inter'] text-sm font-medium">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="shield">shield</span>
+</div>
+<div>
+<h2 class="text-lg font-black text-blue-500 leading-none">AccessCore AI</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 mt-1">The Digital Vault</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-slate-400 px-4 py-3 flex items-center gap-4 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="shield_person">shield_person</span>
+<span>Roles</span>
+</a>
+<!-- Active Tab: Permissions -->
+<a class="bg-[#2563EB]/10 text-blue-500 border-l-2 border-blue-500 px-4 py-3 flex items-center gap-4 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="key">key</span>
+<span>Permissions</span>
+</a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-4 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Access Editor</span>
+</a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-4 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Audit Logs</span>
+</a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-4 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+<span>Security Vault</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<button class="w-full bg-primary-container text-white py-3 rounded-lg mb-6 flex items-center justify-center gap-2 font-bold active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                New Role
+            </button>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-4 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+<a class="text-slate-400 px-4 py-3 flex items-center gap-4 hover:bg-[#262a30] hover:text-slate-100 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar (Execution from JSON) -->
+<header class="fixed top-0 w-full z-40 bg-[#101419]/80 backdrop-blur-xl flex justify-between items-center px-6 py-3 ml-64 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)] font-['Manrope'] tracking-tight">
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+<span class="material-symbols-outlined text-sm" data-icon="search">search</span>
+</span>
+<input class="bg-surface-container border-none text-sm rounded-lg pl-10 pr-4 py-2 w-80 focus:ring-1 focus:ring-primary transition-all" placeholder="Search resources or roles..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center text-slate-400 hover:bg-[#31353b] transition-colors rounded-lg active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-slate-400 hover:bg-[#31353b] transition-colors rounded-lg active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-slate-400 hover:bg-[#31353b] transition-colors rounded-lg active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/30 mx-2"></div>
+<div class="flex items-center gap-3">
+<span class="text-sm font-medium text-slate-300">Admin</span>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full ring-1 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvHE8xgLn6sblY9pVpsAgBSsz8zuhBudJvwaSCSE2iNW2voUwGoJtUNdovCvYvhfBhYLVNqwa9HAmtb7MxzUaA2AJPx6qEE6c7OBi0mOzXWQh2-BkPaQrpNOpfG53Gpos03oAD_m3cGJrQKNxODwab2w6--Dyyj9kzlOhuvdVNxFTR1lxI88lqEWmgDfnEJU9AhdohozswIdxJIBHudkwMUydWKrsvAu0x1cHKaIiXChRGWLy8xgmVmtgue4GZ1mo2cJU04BVqd7k"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-20 h-full flex flex-col p-8 overflow-hidden">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<nav class="flex items-center gap-2 text-xs font-label text-slate-500 mb-2">
+<span>IAM Engine</span>
+<span class="material-symbols-outlined text-[12px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary-fixed-dim">Permission Matrix</span>
+</nav>
+<h1 class="text-3xl font-headline font-extrabold text-on-surface tracking-tight">Access Control Matrix</h1>
+<p class="text-secondary text-sm mt-1">Real-time resource-to-role entitlement synchronization.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex p-1 bg-surface-container rounded-lg">
+<button class="px-3 py-1.5 text-xs font-medium bg-surface-container-highest text-primary shadow-sm rounded-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="grid_view">grid_view</span>
+                        Matrix
+                    </button>
+<button class="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-slate-200 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="list">list</span>
+                        JSON
+                    </button>
+</div>
+<button class="flex items-center gap-2 bg-surface-container-high border-outline-variant/20 border hover:bg-surface-container-highest px-4 py-2 rounded-lg text-sm transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                    Filters
+                </button>
+<button class="flex items-center gap-2 bg-primary-container text-white px-4 py-2 rounded-lg text-sm font-bold signature-glow active:scale-95 duration-200">
+<span class="material-symbols-outlined text-sm" data-icon="publish">publish</span>
+                    Push Policy
+                </button>
+</div>
+</div>
+<!-- Matrix Container -->
+<div class="flex-1 glass-panel rounded-xl shadow-2xl overflow-hidden flex flex-col">
+<!-- Legend & Stats -->
+<div class="p-4 bg-surface-container-low border-b border-outline-variant/10 flex justify-between items-center">
+<div class="flex gap-6">
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<div class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+                        Full Access
+                    </div>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<div class="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]"></div>
+                        Limited Access
+                    </div>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<div class="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
+                        No Access
+                    </div>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<span class="material-symbols-outlined text-xs text-red-400" data-icon="warning">warning</span>
+                        Conflict Detected
+                    </div>
+</div>
+<div class="text-xs font-medium text-slate-500">
+                    Showing <span class="text-on-surface">12 Resources</span> across <span class="text-on-surface">6 Primary Roles</span>
+</div>
+</div>
+<!-- Scrollable Matrix Surface -->
+<div class="flex-1 overflow-auto">
+<table class="w-full border-separate border-spacing-0">
+<thead class="sticky top-0 z-20">
+<tr>
+<th class="sticky left-0 top-0 z-30 bg-[#1c2025] p-6 text-left border-r border-outline-variant/10 min-w-[300px]">
+<div class="flex items-center justify-between">
+<span class="text-xs uppercase tracking-widest text-primary font-bold">Resource / Role</span>
+<span class="material-symbols-outlined text-slate-600 text-lg" data-icon="sort">sort</span>
+</div>
+</th>
+<th class="bg-[#1c2025] px-6 py-8 text-center min-w-[140px] border-r border-outline-variant/5">
+<span class="material-symbols-outlined text-slate-400 mb-2 block" data-icon="admin_panel_settings">admin_panel_settings</span>
+<div class="text-sm font-headline font-bold text-on-surface">SuperAdmin</div>
+</th>
+<th class="bg-[#1c2025] px-6 py-8 text-center min-w-[140px] border-r border-outline-variant/5">
+<span class="material-symbols-outlined text-slate-400 mb-2 block" data-icon="developer_mode">developer_mode</span>
+<div class="text-sm font-headline font-bold text-on-surface">DevOps</div>
+</th>
+<th class="bg-[#1c2025] px-6 py-8 text-center min-w-[140px] border-r border-outline-variant/5">
+<span class="material-symbols-outlined text-slate-400 mb-2 block" data-icon="support_agent">support_agent</span>
+<div class="text-sm font-headline font-bold text-on-surface">SRE Eng</div>
+</th>
+<th class="bg-[#1c2025] px-6 py-8 text-center min-w-[140px] border-r border-outline-variant/5">
+<span class="material-symbols-outlined text-slate-400 mb-2 block" data-icon="person_search">person_search</span>
+<div class="text-sm font-headline font-bold text-on-surface">Security Audit</div>
+</th>
+<th class="bg-[#1c2025] px-6 py-8 text-center min-w-[140px] border-r border-outline-variant/5">
+<span class="material-symbols-outlined text-slate-400 mb-2 block" data-icon="visibility">visibility</span>
+<div class="text-sm font-headline font-bold text-on-surface">ReadOnly</div>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- S3 Bucket Resource -->
+<tr class="hover:bg-surface-bright group transition-colors">
+<td class="sticky left-0 bg-[#1c2025] group-hover:bg-[#262a30] p-4 border-r border-outline-variant/10 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined text-lg" data-icon="database">database</span>
+</div>
+<div>
+<div class="text-sm font-medium text-on-surface">S3::Prod-Assets-Static</div>
+<div class="text-[10px] text-slate-500 font-label">US-EAST-1 | 4.2TB</div>
+</div>
+</div>
+</td>
+<!-- Full Access -->
+<td class="p-4 text-center group-hover:active-cell-glow border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</td>
+<!-- Full Access -->
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</td>
+<!-- Limited Access -->
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-amber-500/10 rounded-full flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-xl" data-icon="adjust">adjust</span>
+</div>
+</td>
+<!-- Limited Access -->
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-amber-500/10 rounded-full flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-xl" data-icon="adjust">adjust</span>
+</div>
+</td>
+<!-- No Access -->
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-surface-container-highest rounded-full flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</div>
+</td>
+</tr>
+<!-- EC2 Instance -->
+<tr class="hover:bg-surface-bright group transition-colors">
+<td class="sticky left-0 bg-[#1c2025] group-hover:bg-[#262a30] p-4 border-r border-outline-variant/10 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-lg" data-icon="dns">dns</span>
+</div>
+<div>
+<div class="text-sm font-medium text-on-surface">EC2::i-0e922f1837</div>
+<div class="text-[10px] text-slate-500 font-label">t3.large | Running</div>
+</div>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-amber-500/10 rounded-full flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-xl" data-icon="adjust">adjust</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-surface-container-highest rounded-full flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-surface-container-highest rounded-full flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</div>
+</td>
+</tr>
+<!-- RDS Cluster -->
+<tr class="hover:bg-surface-bright group transition-colors">
+<td class="sticky left-0 bg-[#1c2025] group-hover:bg-[#262a30] p-4 border-r border-outline-variant/10 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-lg" data-icon="storage">storage</span>
+</div>
+<div>
+<div class="text-sm font-medium text-on-surface">RDS::Customer-Core-DB</div>
+<div class="text-[10px] text-red-400 font-label flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]" data-icon="lock">lock</span> Encrypted
+                                        </div>
+</div>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-surface-container-highest rounded-full flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-surface-container-highest rounded-full flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-amber-500/10 rounded-full flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-xl" data-icon="adjust">adjust</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-amber-500/10 rounded-full flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-xl" data-icon="adjust">adjust</span>
+</div>
+</td>
+</tr>
+<!-- Lambda Function -->
+<tr class="hover:bg-surface-bright group transition-colors">
+<td class="sticky left-0 bg-[#1c2025] group-hover:bg-[#262a30] p-4 border-r border-outline-variant/10 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined text-lg" data-icon="function">function</span>
+</div>
+<div>
+<div class="text-sm font-medium text-on-surface">LAMBDA::auth-callback</div>
+<div class="text-[10px] text-slate-500 font-label">Python 3.9 | Triggered</div>
+</div>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-surface-container-highest rounded-full flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-surface-container-highest rounded-full flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</div>
+</td>
+</tr>
+<!-- Vault Secret -->
+<tr class="hover:bg-surface-bright group transition-colors">
+<td class="sticky left-0 bg-[#1c2025] group-hover:bg-[#262a30] p-4 border-r border-outline-variant/10 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-lg" data-icon="key_visualizer">key_visualizer</span>
+</div>
+<div>
+<div class="text-sm font-medium text-on-surface">VAULT::API-Keys-Secret</div>
+<div class="text-[10px] text-slate-500 font-label">KMS Encrypted</div>
+</div>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-red-500/10 rounded-full flex items-center justify-center text-red-500 ring-2 ring-red-500/20">
+<span class="material-symbols-outlined text-xl" data-icon="warning">warning</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-surface-container-highest rounded-full flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-surface-container-highest rounded-full flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</div>
+</td>
+<td class="p-4 text-center border-r border-outline-variant/5">
+<div class="w-8 h-8 mx-auto bg-surface-container-highest rounded-full flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Matrix Footer -->
+<div class="px-6 py-4 bg-surface-container flex justify-between items-center text-xs text-slate-500 border-t border-outline-variant/10">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm" data-icon="sync">sync</span> Last synced: 2m ago</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm" data-icon="history_toggle_off">history_toggle_off</span> Auto-save active</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="hover:text-on-surface">Page 1 of 4</button>
+<div class="flex gap-1 ml-4">
+<button class="w-8 h-8 flex items-center justify-center rounded bg-surface-container-highest text-on-surface">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container-highest transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container-highest transition-colors">3</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Summary (Asymmetric Sidebar) -->
+<div class="fixed right-8 bottom-8 z-30 w-80">
+<div class="glass-panel p-6 rounded-2xl shadow-2xl border border-outline-variant/10 signature-glow">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold font-headline text-on-surface uppercase tracking-wider">Change Staging</h3>
+<span class="bg-primary/20 text-primary-fixed-dim px-2 py-0.5 rounded text-[10px] font-bold">3 PENDING</span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-start gap-3 p-2 bg-surface-container-highest rounded-lg">
+<span class="material-symbols-outlined text-emerald-500 text-sm mt-0.5" data-icon="add_circle">add_circle</span>
+<div>
+<p class="text-[11px] font-medium text-slate-200">Add RDS FullAccess to DevOps</p>
+<p class="text-[9px] text-slate-500">Resource: RDS::Customer-Core-DB</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-2 bg-surface-container-highest rounded-lg">
+<span class="material-symbols-outlined text-red-400 text-sm mt-0.5" data-icon="remove_circle">remove_circle</span>
+<div>
+<p class="text-[11px] font-medium text-slate-200">Revoke EC2 Shell Access from Auditor</p>
+<p class="text-[9px] text-slate-500">Resource: EC2::i-0e922f1837</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-2 bg-surface-container-highest text-slate-300 text-xs font-bold rounded-lg hover:bg-[#404752] transition-colors">Discard</button>
+<button class="py-2 bg-primary-container text-white text-xs font-bold rounded-lg active:scale-95 duration-200">Apply Changes</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Background Decorative Gradient -->
+<div class="fixed top-0 right-0 -z-10 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
+<div class="fixed bottom-0 left-0 -z-10 w-[600px] h-[600px] bg-tertiary/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 translate-y-1/2"></div>
+</body></html>

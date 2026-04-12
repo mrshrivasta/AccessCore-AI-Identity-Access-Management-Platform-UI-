@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Session Management | AccessCore AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#404752",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "outline-variant": "#434655",
+                        "primary-container": "#2563eb",
+                        "primary": "#b4c5ff",
+                        "surface-dim": "#101419",
+                        "surface": "#101419",
+                        "on-secondary-container": "#afb5c2",
+                        "inverse-primary": "#0053db",
+                        "on-secondary": "#2a313b",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e0e2ea",
+                        "surface-container-highest": "#31353b",
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "on-tertiary-fixed": "#25005a",
+                        "on-tertiary": "#3f008e",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "inverse-surface": "#e0e2ea",
+                        "secondary": "#c0c7d3",
+                        "on-primary-container": "#eeefff",
+                        "outline": "#8d90a0",
+                        "surface-variant": "#31353b",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0a0e13",
+                        "surface-container": "#1c2025",
+                        "secondary-fixed": "#dce3f0",
+                        "background": "#101419",
+                        "primary-fixed": "#dbe1ff",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary": "#d2bbff",
+                        "surface-container-high": "#262a30",
+                        "on-tertiary-container": "#f7edff",
+                        "surface-bright": "#36393f",
+                        "on-background": "#e0e2ea",
+                        "surface-tint": "#b4c5ff",
+                        "on-primary": "#002a78",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary-fixed": "#eaddff",
+                        "tertiary-container": "#8343f4",
+                        "on-secondary-fixed": "#151c25",
+                        "surface-container-low": "#181c21",
+                        "inverse-on-surface": "#2d3136"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #101419; color: #e0e2ea; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .glass-card {
+            background: rgba(28, 32, 37, 0.8);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(141, 144, 160, 0.05);
+        }
+        .status-orb {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1c2025; }
+        ::-webkit-scrollbar-thumb { background: #404752; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<aside class="flex flex-col fixed left-0 top-0 h-full h-screen w-64 border-r border-slate-800/20 bg-slate-900/80 dark:bg-[#1c2025] z-50">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" data-icon="shield">shield</span>
+</div>
+<div>
+<h1 class="text-xl font-black tracking-tighter text-slate-100 dark:text-[#E0E2EA] font-headline">AccessCore AI</h1>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Enterprise IAM</p>
+</div>
+</div>
+<nav class="mt-4 flex-grow px-3 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="group">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="verified_user">verified_user</span>
+<span class="text-sm font-medium">Roles</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#2563EB] bg-blue-500/10 border-l-2 border-[#2563EB] font-bold transition-all" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="security" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="text-sm font-medium">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 dark:text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition-colors duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-white/5">
+<button class="w-full py-3 bg-primary-container text-on-primary-container rounded font-bold text-sm flex items-center justify-center gap-2 active:opacity-80 transition-all scale-98">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Security Policy
+            </button>
+</div>
+</aside>
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-8 h-16 z-40 bg-slate-950/90 dark:bg-[#101419]/90 backdrop-blur-xl border-b border-white/5">
+<div class="flex items-center gap-8">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" data-icon="search">search</span>
+<input class="bg-surface-container-lowest border-none ring-1 ring-white/10 rounded-lg pl-10 pr-4 py-1.5 text-sm w-80 focus:ring-primary/40 focus:ring-2 transition-all outline-none" placeholder="Search sessions or identities..." type="text"/>
+</div>
+<nav class="hidden md:flex gap-6">
+<a class="text-sm font-semibold text-[#2563EB] border-b-2 border-[#2563EB] h-16 flex items-center" href="#">Global View</a>
+<a class="text-sm font-medium text-slate-400 hover:text-slate-100 h-16 flex items-center transition-colors" href="#">Logs</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:text-slate-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-slate-400 hover:text-slate-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="w-px h-6 bg-white/10 mx-2"></div>
+<div class="flex items-center gap-3">
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-white/10" data-alt="professional portrait of a security architect in a dark studio setting with subtle blue rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP6MDuGrBc2tmJL4kfoJAMyBVmElbE70XdUUcPdQJP1ViTisXTdMwdRjxgYA6d9IBEec791Lt67xQa8k60NDaHoDkX-kTNNi6BvurXs2H-fBXi5Yk2B6PeZyTyOevjawh86YxWBViCwd1Vcl6tZ0Hjkwc1dnDC4h12uLXCkQylUrPGZISs74nQKLJnLupDh0Cn8mom4c5m5xPGPaio4GuZQqkjv_QBYqeulsH4AylPtdkA7OohL1EgFamLxRQ1_19MYIDuXxoAAm0"/>
+<span class="text-sm font-semibold text-slate-100">Admin User</span>
+</div>
+</div>
+</header>
+<main class="ml-64 pt-24 px-8 pb-12">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-3xl font-extrabold font-headline tracking-tight text-on-surface">Session Management</h2>
+<p class="text-outline text-sm mt-1">Real-time monitoring and authorization control for active user sessions.</p>
+</div>
+<button class="px-6 py-2.5 bg-error-container/20 border border-error/30 text-error hover:bg-error-container/40 transition-all font-semibold rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="block">block</span>
+                Revoke All Sessions
+            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="glass-card p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="lan">lan</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="pulse">pulse_alert</span>
+</div>
+<span class="text-sm font-medium text-outline uppercase tracking-wider">Total Active Sessions</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black font-headline text-on-surface">1,284</span>
+<span class="text-xs font-bold text-primary">+12% from last hour</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-error" data-icon="warning">warning</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded bg-error-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-error" data-icon="gpp_maybe">gpp_maybe</span>
+</div>
+<span class="text-sm font-medium text-outline uppercase tracking-wider">High-Risk Sessions</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black font-headline text-error">7</span>
+<span class="text-xs font-bold text-outline">Action required</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="timer">timer</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="schedule">schedule</span>
+</div>
+<span class="text-sm font-medium text-outline uppercase tracking-wider">Avg. Session Duration</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black font-headline text-on-surface">42<span class="text-xl font-normal text-outline ml-1">m</span></span>
+<span class="text-xs font-bold text-tertiary">-5% decrease</span>
+</div>
+</div>
+</div>
+<section class="bg-surface-container-high/40 rounded-2xl overflow-hidden glass-card">
+<div class="px-8 py-6 flex justify-between items-center bg-surface-container-high/60">
+<h3 class="text-lg font-bold font-headline">Live Session List</h3>
+<div class="flex gap-4">
+<button class="p-2 text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+<button class="p-2 text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-outline text-xs uppercase tracking-widest border-b border-white/5">
+<th class="px-8 py-4 font-semibold">User Identity</th>
+<th class="px-8 py-4 font-semibold">Login Time</th>
+<th class="px-8 py-4 font-semibold">IP Address</th>
+<th class="px-8 py-4 font-semibold">Location</th>
+<th class="px-8 py-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-surface-bright/20 transition-colors group">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center border border-white/10">
+<img class="w-full h-full rounded-full object-cover" data-alt="headshot of a male developer with glasses and a friendly expression, professional lighting, dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi37UCo9zeD6C20uKlw9oRvFwMamS_jDYyfuqebSs0qG6r5YeYbVUg4VrX_VinRLAwuuP0p4o2wIBDBoI0mB3FheJGYLqaTVX9u3pyF47PLWBQB5jPqvBq38jLEuEQS9fhWzSA6hOKqFvWXSlh7bYR4aZrR_lTMQ_kDySOGPQ7T1Eg7t0evhwEXDwVEKvxdStz6xG5OtLJT6CU0Nve3CukMopnKwEFGncFk9obYWfPmLEyN3iqRVx453qoLpFJycpN4rusiESeS1g"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Marcus Chen</p>
+<p class="text-[11px] text-outline">marcus.c@accesscore.ai</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-2">
+<div class="status-orb bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+<span class="text-sm font-medium">10:42 AM <span class="text-outline text-xs font-normal ml-1">(2h 15m ago)</span></span>
+</div>
+</td>
+<td class="px-8 py-4">
+<span class="font-mono text-xs text-primary-fixed-dim bg-primary/10 px-2 py-1 rounded">192.168.1.124</span>
+</td>
+<td class="px-8 py-4 text-sm text-outline">
+                                San Francisco, US
+                            </td>
+<td class="px-8 py-4 text-right">
+<button class="text-xs font-bold text-error uppercase tracking-tighter hover:bg-error-container/10 px-3 py-1.5 rounded transition-all opacity-0 group-hover:opacity-100">Revoke Access</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright/20 transition-colors group">
+<td class="px-8 py-4 border-l-2 border-error">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center border border-error/20">
+<img class="w-full h-full rounded-full object-cover" data-alt="portrait of a focused female IT professional, cinematic lighting, corporate dark interior background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiwyi1Ns5vF63a6NR60M4EtoMcppEJpEjzunUB13ceVTXXkSWcoGXXyBLOtH6BLA1vJYLvC2JiUKljbL8SrCCN7RDc2OZntI8cTBLTi07iOsyKNo7wwdivbZMcngWmMQJIbt5adAyYnmhUsWsFol7ydZ5DqmYFt1nv0nLpB2vGE6uUy0Y2FxJW65VTOdBizcs0RZTefoGw1xJuOhwepSfCOOrhyr-bEfFpgP9TPZl3qlK6QEZSAzK_4zdWh2M3Moqx_vBQQFdRw8g"/>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<p class="text-sm font-bold text-on-surface">Sarah Jenkins</p>
+<span class="material-symbols-outlined text-xs text-error" data-icon="report" style="font-variation-settings: 'FILL' 1;">report</span>
+</div>
+<p class="text-[11px] text-outline">s.jenkins@accesscore.ai</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-2">
+<div class="status-orb bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]"></div>
+<span class="text-sm font-medium">01:15 PM <span class="text-error text-xs font-normal ml-1">(Now)</span></span>
+</div>
+</td>
+<td class="px-8 py-4">
+<span class="font-mono text-xs text-error bg-error/10 px-2 py-1 rounded">45.22.190.11</span>
+</td>
+<td class="px-8 py-4 text-sm text-outline">
+                                Moscow, RU <span class="text-[10px] text-error font-bold uppercase ml-1">Anomalous</span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="text-xs font-bold text-error uppercase tracking-tighter bg-error-container/20 hover:bg-error-container/40 px-3 py-1.5 rounded transition-all">Revoke Access</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright/20 transition-colors group">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-outline" data-icon="person">person</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">David Vance</p>
+<p class="text-[11px] text-outline">d.vance@contractor.ai</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-2">
+<div class="status-orb bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+<span class="text-sm font-medium">11:55 AM <span class="text-outline text-xs font-normal ml-1">(1h ago)</span></span>
+</div>
+</td>
+<td class="px-8 py-4">
+<span class="font-mono text-xs text-primary-fixed-dim bg-primary/10 px-2 py-1 rounded">172.16.254.1</span>
+</td>
+<td class="px-8 py-4 text-sm text-outline">
+                                London, UK
+                            </td>
+<td class="px-8 py-4 text-right">
+<button class="text-xs font-bold text-error uppercase tracking-tighter hover:bg-error-container/10 px-3 py-1.5 rounded transition-all opacity-0 group-hover:opacity-100">Revoke Access</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright/20 transition-colors group">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center border border-white/10">
+<img class="w-full h-full rounded-full object-cover" data-alt="profile photo of a female executive in a modern office, soft bokeh lighting, teal and navy tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmPciVSwKgACFnqnqVpsNUonAG3l4M50Ai0y-3J-L2qemzgMklYpN11B9taWiOebI7ysBGlNFOv-9AcsTdLNPCIKOTF75zYCwKbIUQvLvwDWzTn1PIIX0DBqAMXRehjKWdwfxrk44bUcH0cMvGSJMG1mnbrc9Ci_XrU28KIXOyPND_cK3otREItOQJix-eGE7xGitrn7nbFoNKYquQDDgm-B7jJRyvEhtHrJ6cU7-X513QP-JiEwyx0wp3Ye3JTqdVIix_8NJFxew"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Elena Rodriguez</p>
+<p class="text-[11px] text-outline">elena.r@accesscore.ai</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-2">
+<div class="status-orb bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+<span class="text-sm font-medium">09:12 AM <span class="text-outline text-xs font-normal ml-1">(4h ago)</span></span>
+</div>
+</td>
+<td class="px-8 py-4">
+<span class="font-mono text-xs text-primary-fixed-dim bg-primary/10 px-2 py-1 rounded">203.0.113.45</span>
+</td>
+<td class="px-8 py-4 text-sm text-outline">
+                                Madrid, ES
+                            </td>
+<td class="px-8 py-4 text-right">
+<button class="text-xs font-bold text-error uppercase tracking-tighter hover:bg-error-container/10 px-3 py-1.5 rounded transition-all opacity-0 group-hover:opacity-100">Revoke Access</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-6 bg-surface-container-low/50 flex justify-between items-center">
+<div class="text-xs text-outline font-medium">Showing <span class="text-on-surface">4</span> of 1,284 sessions</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-white/10 rounded text-sm hover:bg-white/5 transition-colors disabled:opacity-30" disabled="">Previous</button>
+<button class="px-3 py-1 border border-white/10 rounded text-sm hover:bg-white/5 transition-colors">Next</button>
+</div>
+</div>
+</section>
+</main>
+</body></html>

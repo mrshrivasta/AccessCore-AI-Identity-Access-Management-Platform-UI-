@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Device Trust Management - AccessCore AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#00174b",
+                      "surface-dim": "#101419",
+                      "tertiary-fixed": "#eaddff",
+                      "surface-container-highest": "#31353b",
+                      "surface-container": "#1c2025",
+                      "surface-container-low": "#181c21",
+                      "background": "#101419",
+                      "on-background": "#e0e2ea",
+                      "inverse-surface": "#e0e2ea",
+                      "surface-bright": "#36393f",
+                      "on-tertiary-container": "#f7edff",
+                      "on-surface": "#e0e2ea",
+                      "tertiary": "#d2bbff",
+                      "secondary": "#c0c7d3",
+                      "on-secondary-container": "#afb5c2",
+                      "on-surface-variant": "#c3c6d7",
+                      "surface-tint": "#b4c5ff",
+                      "tertiary-container": "#8343f4",
+                      "on-tertiary": "#3f008e",
+                      "secondary-fixed-dim": "#c0c7d3",
+                      "outline": "#8d90a0",
+                      "inverse-primary": "#0053db",
+                      "secondary-fixed": "#dce3f0",
+                      "error-container": "#93000a",
+                      "primary": "#b4c5ff",
+                      "inverse-on-surface": "#2d3136",
+                      "on-secondary-fixed": "#151c25",
+                      "surface": "#101419",
+                      "outline-variant": "#434655",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-secondary": "#2a313b",
+                      "primary-fixed": "#dbe1ff",
+                      "on-tertiary-fixed-variant": "#5a00c6",
+                      "surface-container-lowest": "#0a0e13",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-error": "#690005",
+                      "tertiary-fixed-dim": "#d2bbff",
+                      "on-primary": "#002a78",
+                      "surface-variant": "#31353b",
+                      "error": "#ffb4ab",
+                      "on-error-container": "#ffdad6",
+                      "primary-container": "#2563eb",
+                      "on-secondary-fixed-variant": "#404752",
+                      "surface-container-high": "#262a30",
+                      "on-tertiary-fixed": "#25005a",
+                      "secondary-container": "#404752",
+                      "on-primary-container": "#eeefff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          }
+        }
+      </script>
+<style>
+        body {
+            background-color: #101419;
+            color: #e0e2ea;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(24, 28, 33, 0.8);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(141, 144, 160, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .status-orb {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px currentColor;
+        }
+    </style>
+</head>
+<body class="selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#101419] dark:bg-[#101419] backdrop-blur-xl bg-opacity-80 border-b border-white/5 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-blue-500 tracking-tighter font-['Manrope']">AccessCore AI</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 font-medium hover:text-white transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 font-medium hover:text-white transition-colors" href="#">Alerts</a>
+<a class="text-blue-400 font-bold border-b-2 border-blue-500 pb-1" href="#">Devices</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-slate-400 p-2 hover:bg-white/5 rounded-lg cursor-pointer transition-all">notifications_active</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 p-2 hover:bg-white/5 rounded-lg cursor-pointer transition-all">shield_with_heart</span>
+<span class="material-symbols-outlined text-slate-400 p-2 hover:bg-white/5 rounded-lg cursor-pointer transition-all">settings</span>
+<div class="h-8 w-px bg-white/10 mx-2"></div>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 text-sm font-bold active:scale-95 duration-200">Secure Logout</button>
+</div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col py-8 z-40 bg-[#1c2025] dark:bg-[#1c2025] border-r border-white/5 shadow-2xl pt-24">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+<img alt="System Administrator" class="rounded-full bg-surface-container-highest" data-alt="close-up portrait of a professional system administrator in a high-tech control room environment with blue ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYC9aiFhsPulK9aMgeTsMI4TQBy8rjZM92u4AwQfTl8-GHeUeB7NgPVeOsFt883J6qtv9PPZ_jLF11KvKhockpeKyLuOCrio6jG4CwW5--GSz8hf-arQGOyiNsPe30tX1T6vUMVZXhaS9cqbqWMdHwr1jdV6rVhv6R1lbqddMN8aal9jVuvq4aezMyr4FI5oLjT3zarYROz1wY477UNOHYy6yMixr8aigZ73Sb07oDYYt71z98PQJXhBQ-HOdR4mr8xDT08hmIR-c"/>
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-blue-500">The Sentinel</p>
+<p class="text-[10px] text-slate-500">Global IAM Authority</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl">analytics</span>
+<span class="font-['Inter'] text-sm tracking-normal">Risk Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl">psychology</span>
+<span class="font-['Inter'] text-sm tracking-normal">Anomaly Detection</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl">radar</span>
+<span class="font-['Inter'] text-sm tracking-normal">Threat Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-600/10 text-blue-400 border-l-4 border-blue-500 shadow-[inset_10px_0_20px_rgba(37,99,235,0.1)] transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-['Inter'] text-sm tracking-normal">Device Trust</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl">gavel</span>
+<span class="font-['Inter'] text-sm tracking-normal">Policy Engine</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl">history</span>
+<span class="font-['Inter'] text-sm tracking-normal">Audit Logs</span>
+</a>
+</nav>
+<div class="px-6 py-4">
+<button class="w-full py-3 bg-tertiary-container text-on-tertiary-container text-xs font-bold uppercase tracking-wider rounded shadow-lg active:opacity-80 transition-all">
+                New Security Policy
+            </button>
+</div>
+<div class="px-4 mt-auto border-t border-white/5 pt-4">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 text-xs hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 text-xs hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">sensors</span>
+<span>System Status</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 px-8 pb-12">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+<div class="space-y-1">
+<div class="flex items-center gap-2 text-tertiary text-xs font-bold tracking-widest uppercase mb-2">
+<span class="material-symbols-outlined text-sm">security</span>
+                    Hardware Governance
+                </div>
+<h1 class="text-4xl font-extrabold font-headline tracking-tighter text-on-surface">Device Trust Management</h1>
+<p class="text-slate-400 max-w-2xl font-body">Real-time inventory and compliance monitoring for all enterprise hardware assets. Enforce trust policies and manage device life cycles.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">search</span>
+<input class="bg-surface-container-lowest border border-white/10 rounded-lg pl-10 pr-4 py-2.5 text-sm focus:ring-1 focus:ring-primary focus:border-primary w-64 transition-all" placeholder="Filter by device or owner..." type="text"/>
+</div>
+<button class="flex items-center gap-2 bg-surface-container-high px-4 py-2.5 rounded-lg border border-white/5 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span class="text-sm font-medium">Filters</span>
+</button>
+</div>
+</header>
+<!-- Stats Overview Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between">
+<span class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-4">Total Assets</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black font-headline">1,248</span>
+<span class="text-blue-400 text-xs font-bold flex items-center bg-blue-400/10 px-2 py-1 rounded">+12.4%</span>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between">
+<span class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-4">Compliance Score</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black font-headline">94.2%</span>
+<div class="flex gap-0.5">
+<div class="w-1 h-4 bg-blue-500"></div>
+<div class="w-1 h-3 bg-blue-500/50"></div>
+<div class="w-1 h-5 bg-blue-500"></div>
+<div class="w-1 h-4 bg-blue-500"></div>
+</div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl border-l-4 border-error/50 flex flex-col justify-between">
+<span class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-4">Threat Alerts</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black font-headline text-error">12</span>
+<span class="status-orb text-error"></span>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between overflow-hidden relative">
+<span class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-4">Trust Distribution</span>
+<div class="flex items-center gap-1.5 h-2 w-full bg-white/5 rounded-full mb-2 overflow-hidden">
+<div class="h-full bg-blue-500" style="width: 70%"></div>
+<div class="h-full bg-tertiary" style="width: 20%"></div>
+<div class="h-full bg-error" style="width: 10%"></div>
+</div>
+<div class="flex justify-between text-[10px] font-bold text-slate-500 uppercase tracking-tighter">
+<span>Trusted</span>
+<span>Managed</span>
+<span>Unknown</span>
+</div>
+</div>
+</section>
+<!-- Main Device List -->
+<div class="glass-panel rounded-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50 text-slate-400 text-[10px] font-black uppercase tracking-widest border-b border-white/5">
+<th class="px-6 py-4">Device Identity</th>
+<th class="px-6 py-4">Current Owner</th>
+<th class="px-6 py-4">OS Version</th>
+<th class="px-6 py-4">Compliance Status</th>
+<th class="px-6 py-4">Trust Level</th>
+<th class="px-6 py-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<!-- Row 1: Trusted -->
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-white/5 rounded flex items-center justify-center text-slate-400 group-hover:text-blue-400 transition-colors">
+<span class="material-symbols-outlined">laptop_mac</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">MBP-2024-SYS-01</p>
+<p class="text-[10px] text-slate-500 font-mono tracking-wider">SN: C02DWX7P0G</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User avatar" class="w-6 h-6 rounded-full bg-tertiary/20" data-alt="close-up professional headshot of a software engineer wearing glasses and a minimalist dark hoodie" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWP3lxmWaVTdPX_Lyj2e2r4578qx-b8gu-WLiAmjS8_PqvWavi8jdE0P-m5PXLUsgbE1L2SnDZmexHg5MO91HoDlS4o0JOHdK8OfJNGe4yHuG6I2ftiOenntImPknKD0FxDbC4qUpqsyk54eT9K2sESINQrrBWHwAjdO0YOYmwGtSh2W0HF4lFGTJ4vvypU_E7Qp3FhrqwsT8OhwR2JjPSqPBJJJck9cQGGZHqwhwR8E_GGfAvpEXKTvcJQ5mE3GLBca93oQuawLQ"/>
+<span class="text-sm font-medium">Jordan Vance</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">macOS 14.5 (Sonoma)</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400">ENCRYPTED</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400">FIREWALL ON</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="status-orb text-blue-500"></span>
+<span class="text-xs font-bold text-blue-400">Trusted</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 hover:bg-white/10 rounded-lg transition-all text-slate-500 hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Managed -->
+<tr class="group hover:bg-surface-bright transition-colors bg-white/[0.01]">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-white/5 rounded flex items-center justify-center text-slate-400 group-hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">IPH-CORP-921</p>
+<p class="text-[10px] text-slate-500 font-mono tracking-wider">SN: F6KLX82PN6</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User avatar" class="w-6 h-6 rounded-full bg-blue-500/20" data-alt="professional portrait of an executive woman in her 40s in a corporate office setting with soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFomX1LcIUuct9v048X-Skpwq6Bab0rAeYFZxfgVuKAEJqnqr9WRRVbBDm31ZO0ij_Gyje0wP9-TVUopYxqgqQ5tIXR5w-wEUPdgq4aTdIrXNXVjT8Wi349rkBw58nFDUEiKC5fP-P0oPKbFmqrrXKfQJruzpQJBh25YW2YHUr1_-vjrmI_SS95Uymp3LexCzyEscGPTjgCu0C3iI3-yvG5C1Wbhp-I2DKworfj_DNq9BC5XbKPNNZkR6R2n6Happzd-HJAxVF9ag"/>
+<span class="text-sm font-medium">Arin Mercer</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">iOS 17.4.1</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400">ENCRYPTED</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-on-secondary-container">E-SIM ACTIVE</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="status-orb text-tertiary"></span>
+<span class="text-xs font-bold text-tertiary">Managed</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 hover:bg-white/10 rounded-lg transition-all text-slate-500 hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Blocked -->
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="px-6 py-4 relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error/40"></div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-error-container/20 rounded flex items-center justify-center text-error">
+<span class="material-symbols-outlined">desktop_windows</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">WIN-DEV-902-EXT</p>
+<p class="text-[10px] text-error/70 font-mono tracking-wider">SN: UNKNOWN-SID</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center text-[8px] font-bold">??</div>
+<span class="text-sm font-medium italic text-slate-500">Unassigned / Guest</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">Windows 10 Home</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-error-container/40 text-error">NO ENCRYPTION</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-error-container/40 text-error">OUTDATED</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="status-orb text-error"></span>
+<span class="text-xs font-bold text-error">Blocked</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="inline-flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="px-3 py-1.5 bg-error-container text-on-error-container text-[10px] font-bold rounded uppercase active:scale-95 transition-all">Wipe</button>
+<button class="px-3 py-1.5 bg-surface-container-highest text-on-surface text-[10px] font-bold rounded uppercase active:scale-95 transition-all">Authorize</button>
+</div>
+<button class="p-2 hover:bg-white/10 rounded-lg transition-all text-slate-500 hover:text-white md:hidden lg:inline-block">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Unknown -->
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-white/5 rounded flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">tablet_android</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">TBL-PERSONAL-X</p>
+<p class="text-[10px] text-slate-500 font-mono tracking-wider">SN: T91B00ZZ21</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User avatar" class="w-6 h-6 rounded-full bg-primary/20" data-alt="portrait of a young digital marketing professional with creative energy in a bright minimalist workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDOrxwZZ71ys1LgxrySMjYJunOqrN_XcKb8gomzkNMMR3S5npBIGHck3hls6ywyemEbW27O4_TIpklUqI_JDpzvhZfefjfz7v5P1WcfN7H0F_rUwmOANqaKm_oJakFTdXIMESlsznhuH7MGm5Zk7DIx_mE1M3DM4EPCaFyWYy129E_zAP8QsV2nH9lSMr844D3x8jk4lyOUJJ49BrmMQdiiOzFxybJ3W86r9J_PoAx936WKi0EphojDmMTH9xUZFuZ-IIZY4W9dFs"/>
+<span class="text-sm font-medium">Sami Reed</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">Android 14 (Patch 2024.01)</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-on-secondary-container">BYOD POLICY</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="status-orb bg-slate-600 shadow-none"></span>
+<span class="text-xs font-bold uppercase">Unknown</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 hover:bg-white/10 rounded-lg transition-all text-slate-500 hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer/Pagination -->
+<div class="px-6 py-4 bg-surface-container-high/20 border-t border-white/5 flex items-center justify-between">
+<span class="text-xs text-slate-500">Showing 4 of 1,248 assets in The Sentinel vault</span>
+<div class="flex items-center gap-2">
+<button class="p-1.5 hover:bg-white/5 rounded text-slate-400 hover:text-white disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<span class="text-xs font-bold px-3 py-1 bg-primary/10 text-primary rounded">1</span>
+<button class="p-1.5 hover:bg-white/5 rounded text-slate-400 hover:text-white">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Detail Side Panel (Preview) -->
+<div class="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 space-y-6">
+<div class="glass-panel p-6 rounded-xl">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold font-headline">Recent Trust Transitions</h3>
+<span class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Global Activity</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-3 hover:bg-white/[0.02] rounded-lg transition-all border-l-2 border-primary">
+<span class="material-symbols-outlined text-primary p-1 bg-primary/10 rounded mt-0.5">verified</span>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-0.5">
+<p class="text-sm font-bold">MBP-2024-SYS-01: Compliance Verified</p>
+<span class="text-[10px] text-slate-500">2m ago</span>
+</div>
+<p class="text-xs text-slate-400">Firmware integrity check passed. Trust level remains high.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 hover:bg-white/[0.02] rounded-lg transition-all border-l-2 border-error">
+<span class="material-symbols-outlined text-error p-1 bg-error/10 rounded mt-0.5">warning</span>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-0.5">
+<p class="text-sm font-bold">WIN-DEV-902-EXT: Auto-Blocked</p>
+<span class="text-[10px] text-slate-500">14m ago</span>
+</div>
+<p class="text-xs text-slate-400">Unauthorized access attempt from unknown workstation. IP flagged.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Health Trends Component -->
+<div class="glass-panel p-6 rounded-xl border border-white/5 bg-gradient-to-br from-surface-container to-surface-container-low">
+<h3 class="text-lg font-bold font-headline mb-6">Asset Health Trends</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs text-slate-400">Security Patching</span>
+<span class="text-xs font-bold text-blue-400">88%</span>
+</div>
+<div class="w-full bg-white/5 h-1.5 rounded-full">
+<div class="bg-blue-500 h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs text-slate-400">Disk Encryption</span>
+<span class="text-xs font-bold text-blue-400">99%</span>
+</div>
+<div class="w-full bg-white/5 h-1.5 rounded-full">
+<div class="bg-blue-500 h-full rounded-full" style="width: 99%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs text-slate-400">Managed OS Version</span>
+<span class="text-xs font-bold text-tertiary">64%</span>
+</div>
+<div class="w-full bg-white/5 h-1.5 rounded-full">
+<div class="bg-tertiary h-full rounded-full" style="width: 64%"></div>
+</div>
+</div>
+<div class="pt-4 border-t border-white/5 mt-4">
+<div class="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/5">
+<div>
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Global Health Index</p>
+<p class="text-xl font-black text-on-surface">Optimized</p>
+</div>
+<div class="w-10 h-10 rounded-full border-4 border-blue-500/20 border-t-blue-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-400 text-sm">bolt</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Suppressing as per mandate for detailed management screens, but shown here for UI completeness as requested if the screen was home-like, but suppressed for 'Details/Transactional' focus) -->
+</body></html>

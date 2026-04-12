@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alerts Configuration | AccessCore AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#31353b",
+                        "outline-variant": "#434655",
+                        "inverse-surface": "#e0e2ea",
+                        "surface-tint": "#b4c5ff",
+                        "on-surface": "#e0e2ea",
+                        "on-primary": "#002a78",
+                        "secondary-container": "#404752",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1c2025",
+                        "error-container": "#93000a",
+                        "on-secondary": "#2a313b",
+                        "outline": "#8d90a0",
+                        "surface": "#101419",
+                        "surface-dim": "#101419",
+                        "on-background": "#e0e2ea",
+                        "surface-container-low": "#181c21",
+                        "on-tertiary-container": "#f7edff",
+                        "primary": "#b4c5ff",
+                        "inverse-on-surface": "#2d3136",
+                        "secondary": "#c0c7d3",
+                        "surface-bright": "#36393f",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container-lowest": "#0a0e13",
+                        "inverse-primary": "#0053db",
+                        "on-tertiary-fixed": "#25005a",
+                        "tertiary": "#d2bbff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary": "#3f008e",
+                        "on-secondary-container": "#afb5c2",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "surface-variant": "#31353b",
+                        "secondary-fixed": "#dce3f0",
+                        "on-secondary-fixed-variant": "#404752",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#8343f4",
+                        "surface-container-high": "#262a30",
+                        "on-surface-variant": "#c3c6d7",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "on-secondary-fixed": "#151c25",
+                        "on-primary-container": "#eeefff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "background": "#101419",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "tertiary-fixed": "#eaddff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #101419; color: #e0e2ea; font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(24, 28, 33, 0.8); backdrop-filter: blur(12px); }
+        .status-orb { width: 8px; height: 8px; border-radius: 50%; filter: blur(2px); }
+        input[type="checkbox"] { background-color: #0a0e13; border-color: rgba(141, 144, 160, 0.2); border-radius: 2px; }
+        input[type="checkbox"]:checked { background-color: #2563eb; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-xl flex justify-between items-center px-6 py-3 border-b border-white/5 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-slate-100 font-headline">AccessCore AI</span>
+<div class="hidden md:flex items-center gap-6 font-manrope tracking-tight font-semibold">
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Identity</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Access</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Audit</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400 hover:bg-slate-800/50 p-2 rounded-full cursor-pointer transition-all duration-200" data-icon="help">help</span>
+<span class="material-symbols-outlined text-slate-400 hover:bg-slate-800/50 p-2 rounded-full cursor-pointer transition-all duration-200" data-icon="settings">settings</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-white/10 active:scale-95 transition-transform cursor-pointer">
+<img alt="User avatar for security administrator" data-alt="close-up portrait of a digital security professional avatar with minimalist geometric background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDs_B_rJo-NvL_SMLPEQ81WDhyCkEtJaQcDWFrf8vqHnSkDctmav_TJGnEFJITwTNWeK-_-KcdU_tD6OU5-zhQK6q4SzUmlvWd7q27Qn9asuqsMk6K4asK8t6TNhxM1PC32tqhzNd9O3mZnzugDnkkBA0YO9zvO6GHKaYIxYaurfHIHw1mOrnea-QuZj_KmkE_trZajy3aIFKPXa_SLe8W247uvNIi5DKnXiUV-JnOzqvRQxm0rnBYSlMtm3m-Dx4AUcwzjqZF92w"/>
+</div>
+</div>
+</nav>
+<!-- Sidebar -->
+<aside class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 pt-20 bg-slate-900 border-r border-white/5 shadow-2xl z-40">
+<div class="px-6 py-4 mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-500" data-icon="security">security</span>
+<div>
+<p class="text-lg font-black text-blue-500 font-headline leading-tight">Sentinel Core</p>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-medium">IAM Infrastructure</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 font-manrope text-sm font-medium">
+<div class="text-slate-500 py-3 px-6 flex items-center gap-3 hover:bg-slate-800/30 hover:text-slate-300 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-xl" data-icon="security">security</span>
+                Security Center
+            </div>
+<div class="text-slate-500 py-3 px-6 flex items-center gap-3 hover:bg-slate-800/30 hover:text-slate-300 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+                Notifications
+            </div>
+<div class="bg-slate-800/50 text-blue-400 border-l-2 border-blue-500 py-3 px-6 flex items-center gap-3 cursor-pointer">
+<span class="material-symbols-outlined text-xl" data-icon="settings_suggest">settings_suggest</span>
+                Alert Config
+            </div>
+<div class="text-slate-500 py-3 px-6 flex items-center gap-3 hover:bg-slate-800/30 hover:text-slate-300 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-xl" data-icon="receipt_long">receipt_long</span>
+                Audit Logs
+            </div>
+<div class="text-slate-500 py-3 px-6 flex items-center gap-3 hover:bg-slate-800/30 hover:text-slate-300 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-xl" data-icon="vpn_key">vpn_key</span>
+                API Keys
+            </div>
+</nav>
+<div class="p-6">
+<div class="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 flex items-center gap-3">
+<div class="status-orb bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]"></div>
+<span class="text-xs text-blue-400 font-semibold uppercase tracking-wider">System Status: Secure</span>
+</div>
+</div>
+<div class="border-t border-white/5 py-4">
+<div class="text-slate-500 py-2 px-6 flex items-center gap-3 hover:text-slate-300 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-lg" data-icon="contact_support">contact_support</span>
+<span class="text-xs">Support</span>
+</div>
+<div class="text-slate-500 py-2 px-6 flex items-center gap-3 hover:text-slate-300 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-lg" data-icon="menu_book">menu_book</span>
+<span class="text-xs">Documentation</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 pb-32 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Header -->
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold font-headline tracking-tighter text-on-surface mb-2">Alerts Configuration</h1>
+<p class="text-outline text-lg max-w-2xl">Define how and when your security team is notified of critical system events and identity transitions.</p>
+</header>
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Settings Groups -->
+<div class="xl:col-span-8 space-y-8">
+<!-- Notification Channels Section -->
+<section class="bg-surface-container-high rounded-xl p-8 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)]">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-tertiary" data-icon="hub">hub</span>
+<h2 class="text-xl font-bold font-headline">Notification Channels</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Channel 1: Email -->
+<div class="bg-surface-container-low p-5 rounded-lg flex items-center justify-between hover:bg-surface-bright transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<div>
+<h3 class="font-semibold text-on-surface">Email Integration</h3>
+<p class="text-xs text-outline">Primary admin mailbox</p>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</div>
+<!-- Channel 2: Slack -->
+<div class="bg-surface-container-low p-5 rounded-lg flex items-center justify-between hover:bg-surface-bright transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+</div>
+<div>
+<h3 class="font-semibold text-on-surface">Slack Webhook</h3>
+<p class="text-xs text-outline">#security-alerts channel</p>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</div>
+<!-- Channel 3: SMS -->
+<div class="bg-surface-container-low p-5 rounded-lg flex items-center justify-between hover:bg-surface-bright transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="sms">sms</span>
+</div>
+<div>
+<h3 class="font-semibold text-on-surface">SMS Alerts</h3>
+<p class="text-xs text-outline">Twilio Global Gateway</p>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</div>
+<!-- Channel 4: Webhook -->
+<div class="bg-surface-container-low p-5 rounded-lg flex items-center justify-between hover:bg-surface-bright transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="api">api</span>
+</div>
+<div>
+<h3 class="font-semibold text-on-surface">Custom Webhook</h3>
+<p class="text-xs text-outline">SIEM/SOAR Endpoint</p>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trigger Rules Section -->
+<section class="bg-surface-container-high rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)]">
+<div class="p-8 border-b border-white/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="rule">rule</span>
+<h2 class="text-xl font-bold font-headline">Trigger Rules</h2>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-lowest text-outline text-xs uppercase tracking-widest font-semibold">
+<tr>
+<th class="px-8 py-4">Event Type</th>
+<th class="px-8 py-4">Severity</th>
+<th class="px-8 py-4">Delivery Channels</th>
+<th class="px-8 py-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5 font-inter text-sm">
+<!-- Rule 1 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-error shadow-[0_0_8px_rgba(255,180,171,0.4)]"></div>
+<span class="font-medium text-on-surface">Failed Login Attempt</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<select class="bg-surface-container-lowest border-none text-xs rounded-lg px-3 py-1 text-error font-semibold focus:ring-1 focus:ring-error transition-all">
+<option>Low</option>
+<option>Medium</option>
+<option selected="">High</option>
+<option>Critical</option>
+</select>
+</td>
+<td class="px-8 py-5">
+<div class="flex gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="form-checkbox" type="checkbox"/>
+<span class="text-xs text-outline">Mail</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="form-checkbox" type="checkbox"/>
+<span class="text-xs text-outline">Slack</span>
+</label>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-outline hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Rule 2 -->
+<tr class="bg-surface-container-low/50 hover:bg-surface-bright transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(210,187,255,0.4)]"></div>
+<span class="font-medium text-on-surface">Permission Change</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<select class="bg-surface-container-lowest border-none text-xs rounded-lg px-3 py-1 text-tertiary font-semibold focus:ring-1 focus:ring-tertiary transition-all">
+<option>Low</option>
+<option selected="">Medium</option>
+<option>High</option>
+<option>Critical</option>
+</select>
+</td>
+<td class="px-8 py-5">
+<div class="flex gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="form-checkbox" type="checkbox"/>
+<span class="text-xs text-outline">Mail</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="form-checkbox" type="checkbox"/>
+<span class="text-xs text-outline">Slack</span>
+</label>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-outline hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Rule 3 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(180,197,255,0.4)]"></div>
+<span class="font-medium text-on-surface">API Key Rotation</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<select class="bg-surface-container-lowest border-none text-xs rounded-lg px-3 py-1 text-primary font-semibold focus:ring-1 focus:ring-primary transition-all">
+<option selected="">Low</option>
+<option>Medium</option>
+<option>High</option>
+<option>Critical</option>
+</select>
+</td>
+<td class="px-8 py-5">
+<div class="flex gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="form-checkbox" type="checkbox"/>
+<span class="text-xs text-outline">Mail</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="form-checkbox" type="checkbox"/>
+<span class="text-xs text-outline">Slack</span>
+</label>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-outline hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Rule 4 -->
+<tr class="bg-surface-container-low/50 hover:bg-surface-bright transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-error shadow-[0_0_8px_rgba(255,180,171,0.6)] animate-pulse"></div>
+<span class="font-medium text-on-surface">Admin Access Granted</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<select class="bg-surface-container-lowest border-none text-xs rounded-lg px-3 py-1 text-error font-semibold focus:ring-1 focus:ring-error transition-all">
+<option>Low</option>
+<option>Medium</option>
+<option>High</option>
+<option selected="">Critical</option>
+</select>
+</td>
+<td class="px-8 py-5">
+<div class="flex gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="form-checkbox" type="checkbox"/>
+<span class="text-xs text-outline">Mail</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="form-checkbox" type="checkbox"/>
+<span class="text-xs text-outline">SMS</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="form-checkbox" type="checkbox"/>
+<span class="text-xs text-outline">Webhook</span>
+</label>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-outline hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Right Column: Advanced Settings -->
+<div class="xl:col-span-4 space-y-8">
+<!-- Advanced Thresholds Card -->
+<section class="bg-surface-container-high rounded-xl p-8 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)] border-l-2 border-primary-container">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary" data-icon="settings_input_component">settings_input_component</span>
+<h2 class="text-lg font-bold font-headline">Advanced Thresholds</h2>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-outline mb-2">Consecutive Failures Limit</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-outline/10 rounded-lg py-2 px-4 text-on-surface focus:ring-primary focus:border-primary transition-all" type="number" value="5"/>
+<span class="absolute right-4 top-2.5 text-xs text-outline-variant">Attempts</span>
+</div>
+<p class="mt-2 text-xs text-outline-variant">Notify only after this many consecutive failures occur within 5 minutes.</p>
+</div>
+<div class="pt-4 border-t border-white/5">
+<label class="flex items-center justify-between mb-4 cursor-pointer group">
+<span class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Business Hours Only</span>
+<div class="relative inline-flex items-center">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</label>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-[10px] uppercase tracking-wider text-outline mb-1">Start Time</label>
+<input class="w-full bg-surface-container-lowest border-outline/10 rounded-lg py-1 px-2 text-xs text-on-surface focus:ring-primary" type="time" value="09:00"/>
+</div>
+<div>
+<label class="block text-[10px] uppercase tracking-wider text-outline mb-1">End Time</label>
+<input class="w-full bg-surface-container-lowest border-outline/10 rounded-lg py-1 px-2 text-xs text-on-surface focus:ring-primary" type="time" value="18:00"/>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-white/5">
+<label class="block text-sm font-medium text-outline mb-2">Audit Retention Policy</label>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline-variant" data-icon="history">history</span>
+<span class="text-sm font-semibold text-primary">90 Days</span>
+<span class="text-xs text-outline-variant">(Standard Tier)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Help/Doc Card -->
+<section class="bg-surface-container-high rounded-xl p-8 relative overflow-hidden group">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-700"></div>
+<h3 class="text-on-surface font-bold mb-3 relative z-10">Best Practices</h3>
+<ul class="text-xs text-outline space-y-3 relative z-10">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-blue-500 text-sm" data-icon="check_circle">check_circle</span>
+                            Always set Critical alerts to SMS for offline reachability.
+                        </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-blue-500 text-sm" data-icon="check_circle">check_circle</span>
+                            Test webhooks periodically to ensure SOAR ingestion is active.
+                        </li>
+</ul>
+<a class="mt-6 inline-flex items-center text-xs font-bold text-primary group-hover:underline" href="#">
+                        View Full Documentation
+                        <span class="material-symbols-outlined text-xs ml-1" data-icon="open_in_new">open_in_new</span>
+</a>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer Action Bar -->
+<div class="fixed bottom-0 left-0 lg:left-64 right-0 glass-panel border-t border-white/10 px-8 py-4 flex items-center justify-between z-50">
+<div class="hidden md:flex items-center gap-4 text-xs text-outline">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="info">info</span>
+<span>Unsaved changes detected in 2 sections</span>
+</div>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-2.5 rounded text-sm font-semibold text-outline hover:text-on-surface hover:bg-surface-container-highest transition-all">
+                Discard
+            </button>
+<button class="flex-1 md:flex-none px-8 py-2.5 bg-primary-container text-on-primary-container rounded shadow-[0_4px_12px_rgba(37,99,235,0.3)] font-bold text-sm hover:translate-y-[-1px] active:scale-95 transition-all">
+                Save Changes
+            </button>
+</div>
+</div>
+</body></html>

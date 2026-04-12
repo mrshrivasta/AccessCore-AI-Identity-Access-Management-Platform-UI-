@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AccessCore AI - Reporting Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "on-primary-fixed": "#00174b",
+                        "inverse-on-surface": "#2d3136",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary": "#d2bbff",
+                        "surface-container-low": "#181c21",
+                        "on-secondary-fixed-variant": "#404752",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary-container": "#f7edff",
+                        "on-secondary-container": "#afb5c2",
+                        "outline": "#8d90a0",
+                        "surface-dim": "#101419",
+                        "surface-container-high": "#262a30",
+                        "secondary-fixed": "#dce3f0",
+                        "surface-tint": "#b4c5ff",
+                        "surface-bright": "#36393f",
+                        "on-surface": "#e0e2ea",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#2563eb",
+                        "surface-container": "#1c2025",
+                        "surface": "#101419",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "on-surface-variant": "#c3c6d7",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-lowest": "#0a0e13",
+                        "surface-variant": "#31353b",
+                        "secondary": "#c0c7d3",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#8343f4",
+                        "on-error": "#690005",
+                        "on-primary": "#002a78",
+                        "inverse-surface": "#e0e2ea",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary-container": "#404752",
+                        "primary": "#b4c5ff",
+                        "inverse-primary": "#0053db",
+                        "on-tertiary": "#3f008e",
+                        "on-secondary-fixed": "#151c25",
+                        "surface-container-highest": "#31353b",
+                        "on-tertiary-fixed": "#25005a",
+                        "on-secondary": "#2a313b",
+                        "tertiary-fixed": "#eaddff",
+                        "outline-variant": "#434655",
+                        "error": "#ffb4ab",
+                        "background": "#101419",
+                        "on-background": "#e0e2ea"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #101419; color: #e0e2ea; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(24, 28, 33, 0.8); backdrop-filter: blur(12px); }
+        .signature-glow { box-shadow: 0 0 40px rgba(37, 99, 235, 0.15); }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #1c2025; }
+        ::-webkit-scrollbar-thumb { background: #404752; border-radius: 2px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface overflow-hidden">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1c2025] border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.4)] flex flex-col py-6 z-[60]">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-blue-500 tracking-tighter font-['Manrope']">AccessCore</h1>
+<p class="text-[10px] text-slate-500 tracking-widest uppercase font-bold">AI IAM Sentinel</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Manrope'] tracking-tight headline-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+<span class="font-['Manrope'] tracking-tight headline-sm">Identities</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="security_update_good">security_update_good</span>
+<span class="font-['Manrope'] tracking-tight headline-sm">Roles</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="shield_person">shield_person</span>
+<span class="font-['Manrope'] tracking-tight headline-sm">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="vpn_key">vpn_key</span>
+<span class="font-['Manrope'] tracking-tight headline-sm">Auth</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="gpp_maybe">gpp_maybe</span>
+<span class="font-['Manrope'] tracking-tight headline-sm">Risk</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-blue-400 bg-[#31353b] border-l-2 border-blue-600 font-bold transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-['Manrope'] tracking-tight headline-sm">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-[#262a30] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Manrope'] tracking-tight headline-sm">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="p-4 rounded-xl bg-surface-container-high border border-white/5">
+<p class="text-xs text-outline mb-2">System Status</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-[#ffb4ab] blur-[2px]"></div>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Sentinel Active</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 z-50 bg-[#101419]/80 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-8">
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-sm">search</span>
+<input class="bg-surface-container-lowest border border-white/10 rounded-lg pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-1 ring-blue-500/50 focus:border-blue-500 outline-none transition-all" placeholder="Search insights..." type="text"/>
+</div>
+<nav class="flex gap-4">
+<a class="text-blue-400 border-b-2 border-blue-500 font-['Inter'] text-sm font-medium py-5" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:text-blue-400 transition-all focus-within:ring-1 ring-blue-500/50 rounded p-1">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-slate-400 hover:text-blue-400 transition-all focus-within:ring-1 ring-blue-500/50 rounded p-1">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+<button class="text-slate-400 hover:text-blue-400 transition-all focus-within:ring-1 ring-blue-500/50 rounded p-1">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<div class="h-8 w-px bg-white/10"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden lg:block">
+<p class="text-xs font-bold text-on-surface">Alex Sentinel</p>
+<p class="text-[10px] text-outline">Admin Access</p>
+</div>
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border border-primary-container/30" data-alt="Close up portrait of a professional male tech lead with a focused expression, neutral background, studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsHv2UGDlhbG28iikvgxieEqGdNKd0xoOW9xQPI5U0QjhadrL-2uArfEfLSTB7jcVTnPSeAQLm0j_qLuWlUVFVZyJhZ7JXRkUzYUU9e4oj7Kp9L5WTCPpSFoq1Rp8BmFKrD4sn9eOxj1AWOFcOwiyec1WYPxduyY3P3adc3XNyVCpi1dLM3D5DaiAxOI4Z9G_fC6x34rr4pII1Gzqpc7j7cKb439SiB_-xG161knqSIC6-0RncFVsMlQhF9KJV5tgd4uam5rTVoeo"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 h-screen overflow-y-auto bg-surface">
+<div class="p-8 space-y-8">
+<!-- Hero Section: Reporting Insights -->
+<section class="relative overflow-hidden rounded-xl p-8 bg-surface-container-high border border-white/5 signature-glow">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+<div class="w-full h-full bg-gradient-to-l from-blue-600 to-transparent"></div>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-end md:items-center gap-6">
+<div>
+<h2 class="text-3xl font-extrabold font-headline tracking-tighter text-on-surface mb-2">Reporting Insights</h2>
+<p class="text-outline max-w-md">Real-time intelligence and compliance auditing. Monitor access patterns across the global identity fabric.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-5 py-2 bg-primary-container hover:bg-blue-700 text-white text-sm font-bold rounded flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                            Create New Report
+                        </button>
+<button class="px-5 py-2 bg-secondary-container/20 hover:bg-secondary-container/30 text-secondary text-sm font-bold rounded border border-white/5 transition-all">
+                            Export All
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+<div class="bg-surface-container-lowest/50 p-6 rounded-lg border border-white/5">
+<p class="text-[10px] uppercase tracking-widest text-outline mb-1">Total Reports Generated</p>
+<h3 class="text-2xl font-bold font-headline">1,284</h3>
+<div class="flex items-center gap-1 mt-2 text-[#b4c5ff]">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+<span class="text-[10px] font-bold">+12% vs last month</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest/50 p-6 rounded-lg border border-white/5">
+<p class="text-[10px] uppercase tracking-widest text-outline mb-1">Scheduled Exports Active</p>
+<h3 class="text-2xl font-bold font-headline">42</h3>
+<div class="flex items-center gap-1 mt-2 text-outline">
+<span class="material-symbols-outlined text-xs">schedule</span>
+<span class="text-[10px] font-bold">Next run in 2h 40m</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest/50 p-6 rounded-lg border border-white/5 relative overflow-hidden">
+<p class="text-[10px] uppercase tracking-widest text-outline mb-1">Compliance Health Score</p>
+<h3 class="text-2xl font-bold font-headline text-blue-400">98%</h3>
+<div class="w-full bg-white/5 h-1.5 rounded-full mt-3">
+<div class="bg-blue-500 h-full w-[98%] rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Visualization Grid -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Large Line Chart Container -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container p-6 rounded-xl border border-white/5">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h4 class="text-lg font-bold font-headline tracking-tight">Access Requests vs. Approvals</h4>
+<p class="text-xs text-outline">Activity volume across last 30 days</p>
+</div>
+<div class="flex gap-2">
+<span class="flex items-center gap-1.5 text-[10px] font-bold text-outline uppercase tracking-tighter">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span> Requests
+                            </span>
+<span class="flex items-center gap-1.5 text-[10px] font-bold text-outline uppercase tracking-tighter ml-4">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Approvals
+                            </span>
+</div>
+</div>
+<!-- Chart Placeholder Visual -->
+<div class="h-64 relative flex items-end justify-between px-2">
+<div class="absolute inset-0 flex flex-col justify-between opacity-10">
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+</div>
+<!-- Mockup SVG Chart -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 1000 200">
+<path d="M0,150 Q100,80 200,120 T400,60 T600,140 T800,40 T1000,90" fill="none" stroke="#2563eb" stroke-linecap="round" stroke-width="3"></path>
+<path d="M0,160 Q100,100 200,140 T400,90 T600,170 T800,70 T1000,110" fill="none" stroke="#d2bbff" stroke-dasharray="4" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+<!-- Days Labels -->
+<div class="absolute bottom-[-24px] left-0 right-0 flex justify-between text-[10px] text-outline font-bold px-2">
+<span>01 MAY</span>
+<span>10 MAY</span>
+<span>20 MAY</span>
+<span>30 MAY</span>
+</div>
+</div>
+</div>
+<!-- Bar Chart: Distribution -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container p-6 rounded-xl border border-white/5 flex flex-col">
+<h4 class="text-lg font-bold font-headline tracking-tight mb-1">Report Distribution</h4>
+<p class="text-xs text-outline mb-8">By primary system category</p>
+<div class="space-y-6 flex-1 justify-center flex flex-col">
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-wider">
+<span>Compliance</span>
+<span class="text-blue-400">540</span>
+</div>
+<div class="w-full bg-white/5 h-2 rounded-full overflow-hidden">
+<div class="bg-blue-600 h-full w-[65%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-wider">
+<span>Identity</span>
+<span class="text-tertiary">420</span>
+</div>
+<div class="w-full bg-white/5 h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full w-[50%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-wider">
+<span>Security</span>
+<span class="text-outline">324</span>
+</div>
+<div class="w-full bg-white/5 h-2 rounded-full overflow-hidden">
+<div class="bg-outline-variant h-full w-[38%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Content: Recent Reports & Quick Actions -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Recent Reports List -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container rounded-xl overflow-hidden border border-white/5">
+<div class="p-6 border-b border-white/5 flex justify-between items-center">
+<h4 class="text-lg font-bold font-headline tracking-tight">Recent Reports</h4>
+<button class="text-xs font-bold text-blue-400 hover:underline">View Audit Log</button>
+</div>
+<div class="divide-y divide-white/5">
+<!-- Report Item -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-bright transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-blue-400">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">SOC2 Quarterly Compliance Audit</p>
+<p class="text-xs text-outline">Generated by System Sentinel • 2h ago</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-blue-500 blur-[2px]"></div>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-blue-400">Completed</span>
+</div>
+<button class="p-2 rounded hover:bg-white/5 text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+</div>
+<!-- Report Item -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-bright transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">sync</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Global Privileged Access Review</p>
+<p class="text-xs text-outline">Initiated by Alex Sentinel • 15m ago</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></div>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-tertiary">Processing</span>
+</div>
+<button class="p-2 rounded hover:bg-white/5 text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Report Item -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-bright transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-error">
+<span class="material-symbols-outlined">report_problem</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">AWS IAM Role Entropy Check</p>
+<p class="text-xs text-outline">Timeout error in API gateway • 4h ago</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-error blur-[2px]"></div>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-error">Failed</span>
+</div>
+<button class="p-2 rounded hover:bg-white/5 text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-sm">refresh</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions / Templates -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<h4 class="text-lg font-bold font-headline tracking-tight">Quick Actions</h4>
+<div class="grid grid-cols-2 gap-4">
+<button class="bg-surface-container-high border border-white/5 p-4 rounded-xl text-left hover:border-blue-500/50 hover:bg-surface-bright transition-all group">
+<div class="w-8 h-8 rounded bg-blue-500/10 flex items-center justify-center text-blue-500 mb-3 group-hover:bg-blue-500 group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">shield</span>
+</div>
+<p class="text-xs font-bold text-on-surface">Dormant Users</p>
+<p class="text-[10px] text-outline mt-1">Scan inactive accounts</p>
+</button>
+<button class="bg-surface-container-high border border-white/5 p-4 rounded-xl text-left hover:border-blue-500/50 hover:bg-surface-bright transition-all group">
+<div class="w-8 h-8 rounded bg-tertiary/10 flex items-center justify-center text-tertiary mb-3 group-hover:bg-tertiary group-hover:text-on-tertiary transition-all">
+<span class="material-symbols-outlined text-sm">vpn_lock</span>
+</div>
+<p class="text-xs font-bold text-on-surface">VPN Anomalies</p>
+<p class="text-[10px] text-outline mt-1">Geographical login spikes</p>
+</button>
+<button class="bg-surface-container-high border border-white/5 p-4 rounded-xl text-left hover:border-blue-500/50 hover:bg-surface-bright transition-all group">
+<div class="w-8 h-8 rounded bg-secondary-container/20 flex items-center justify-center text-secondary mb-3 group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">assignment_late</span>
+</div>
+<p class="text-xs font-bold text-on-surface">Policy Violations</p>
+<p class="text-[10px] text-outline mt-1">Compliance drift scan</p>
+</button>
+<button class="bg-surface-container-high border border-white/5 p-4 rounded-xl text-left hover:border-blue-500/50 hover:bg-surface-bright transition-all group">
+<div class="w-8 h-8 rounded bg-outline/10 flex items-center justify-center text-outline mb-3 group-hover:bg-outline group-hover:text-surface transition-all">
+<span class="material-symbols-outlined text-sm">key_visualizer</span>
+</div>
+<p class="text-xs font-bold text-on-surface">SSH Key Audit</p>
+<p class="text-[10px] text-outline mt-1">Verify public key hygiene</p>
+</button>
+</div>
+<div class="p-6 rounded-xl bg-gradient-to-br from-primary-container/20 to-tertiary-container/10 border border-white/10 mt-6 relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-xs font-bold text-blue-300 uppercase tracking-widest mb-2">Pro Feature</p>
+<h5 class="text-lg font-bold font-headline mb-2 leading-tight">AI Forensics Predictor</h5>
+<p class="text-xs text-outline mb-4">Leverage machine learning to predict potential privilege escalations before they occur.</p>
+<button class="text-xs font-bold text-white bg-primary-container px-4 py-2 rounded">Enable AI Analysis</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-8xl opacity-5 text-white">auto_awesome</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Hidden on Reports Dashboard per guidelines, but defined for completeness if needed elsewhere) -->
+<!-- Suppression logic applied: Reports is a focus/transactional view -->
+</body></html>

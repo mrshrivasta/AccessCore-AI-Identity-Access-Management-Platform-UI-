@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AccessCore AI - User Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#8d90a0",
+                    "on-tertiary-fixed-variant": "#5a00c6",
+                    "surface-container-low": "#181c21",
+                    "secondary-fixed-dim": "#c0c7d3",
+                    "on-error": "#690005",
+                    "primary-container": "#2563eb",
+                    "tertiary-fixed": "#eaddff",
+                    "primary": "#b4c5ff",
+                    "primary-fixed": "#dbe1ff",
+                    "secondary-container": "#404752",
+                    "on-tertiary-fixed": "#25005a",
+                    "tertiary": "#d2bbff",
+                    "on-tertiary": "#3f008e",
+                    "surface-container-highest": "#31353b",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary": "#002a78",
+                    "inverse-surface": "#e0e2ea",
+                    "surface-variant": "#31353b",
+                    "tertiary-fixed-dim": "#d2bbff",
+                    "surface-container-lowest": "#0a0e13",
+                    "on-primary-fixed": "#00174b",
+                    "outline-variant": "#434655",
+                    "surface-tint": "#b4c5ff",
+                    "surface": "#101419",
+                    "tertiary-container": "#8343f4",
+                    "surface-dim": "#101419",
+                    "on-secondary-container": "#afb5c2",
+                    "on-surface": "#e0e2ea",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#262a30",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "error": "#ffb4ab",
+                    "inverse-on-surface": "#2d3136",
+                    "on-tertiary-container": "#f7edff",
+                    "on-error-container": "#ffdad6",
+                    "secondary": "#c0c7d3",
+                    "inverse-primary": "#0053db",
+                    "surface-container": "#1c2025",
+                    "on-secondary-fixed-variant": "#404752",
+                    "on-secondary": "#2a313b",
+                    "background": "#101419",
+                    "on-secondary-fixed": "#151c25",
+                    "surface-bright": "#36393f",
+                    "secondary-fixed": "#dce3f0",
+                    "on-surface-variant": "#c3c6d7",
+                    "on-primary-container": "#eeefff",
+                    "on-background": "#e0e2ea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #31353b; }
+        ::-webkit-scrollbar-thumb { background: #c0c7d3; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1c2025] flex flex-col py-6 shadow-2xl z-50">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h1 class="text-blue-500 font-black font-headline tracking-tighter leading-none">AccessCore</h1>
+<p class="text-[10px] text-slate-400 font-label tracking-widest uppercase mt-1">Sentinel IAM</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-100 hover:bg-[#262a30] transition-all duration-300 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-label text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-100 hover:bg-[#262a30] transition-all duration-300 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-[20px]">security</span>
+<span class="font-label text-sm">Security Insights</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-blue-400 bg-[#31353b] border-l-2 border-blue-600 transition-all duration-300 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label text-sm font-semibold">User Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-100 hover:bg-[#262a30] transition-all duration-300 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="font-label text-sm">Activity Logs</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<button class="w-full bg-primary-container text-white py-3 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 mb-6 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Request
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-100 hover:bg-[#262a30] transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span class="font-label text-sm">Admin Portal</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-100 hover:bg-[#262a30] transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="font-label text-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-50 bg-[#101419]/80 backdrop-blur-xl flex items-center justify-between px-6 py-3 shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(141,144,160,0.05)]">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative max-w-md w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full bg-[#0a0e13] border-none text-sm py-2 pl-10 pr-4 rounded focus:ring-1 focus:ring-primary-container text-on-surface" placeholder="Search system identities..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:bg-[#31353b] p-2 rounded transition-colors active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-400 hover:bg-[#31353b] p-2 rounded transition-colors active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-slate-400 hover:bg-[#31353b] p-2 rounded transition-colors active:scale-95">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="h-8 w-px bg-outline-variant/20"></div>
+<div class="flex items-center gap-3">
+<img alt="User profile avatar" class="w-8 h-8 rounded-full border border-outline-variant/30" data-alt="Close up portrait of a professional male executive in a dark tech environment with blue ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF5r7XhG8BZsbvkOZFGjU1y6EcpnWYpPhaYR8igTBjdZX-6f_zJGh9zUNx-xyLCTfy4Nto1Dg6DxWDm9Cah7piFpfWpzfG87KZa8VDILlKXZFnvYHjR39HDX2s9yUF-CPcwXMWi0so84QSyEywa4XR5SmleOZFcuv5WxwcTxSVQarcSZHkCEMh7_guUctRFUpBCA0D-R__Iacgh7DR6nkv5WnRiXh76mrtTfQmfJ26BpRIqpGfx_5zQ82Q7fJ_0fbk51p0MQXMzsI"/>
+<span class="text-slate-100 font-semibold text-sm font-headline">AccessCore AI</span>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-8 space-y-8">
+<!-- Header Section -->
+<section class="flex items-end justify-between">
+<div>
+<h2 class="text-3xl font-bold font-headline tracking-tight text-on-surface">User Identities</h2>
+<p class="text-slate-400 mt-2 font-body max-w-2xl">Manage system-wide access controls, monitor authentication status, and enforce security policies across all organizational roles.</p>
+</div>
+<button class="bg-primary-container text-white px-6 py-3 rounded flex items-center gap-2 font-semibold shadow-[0_10px_20px_rgba(37,99,235,0.3)] active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                    Add User
+                </button>
+</section>
+<!-- Filters & Stats Bento -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="col-span-1 md:col-span-3 bg-surface-container-high rounded-xl p-6 shadow-2xl relative overflow-hidden">
+<div class="flex flex-wrap items-center gap-4 relative z-10">
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] uppercase tracking-widest text-slate-500 font-bold ml-1">Role Type</label>
+<select class="bg-surface-container-lowest border border-outline-variant/20 text-on-surface text-sm rounded px-3 py-2 outline-none focus:border-primary transition-colors">
+<option>All Roles</option>
+<option>Admin</option>
+<option>Developer</option>
+<option>Viewer</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] uppercase tracking-widest text-slate-500 font-bold ml-1">Account Status</label>
+<select class="bg-surface-container-lowest border border-outline-variant/20 text-on-surface text-sm rounded px-3 py-2 outline-none focus:border-primary transition-colors">
+<option>All Statuses</option>
+<option>Active</option>
+<option>Suspended</option>
+<option>Pending</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] uppercase tracking-widest text-slate-500 font-bold ml-1">Department</label>
+<select class="bg-surface-container-lowest border border-outline-variant/20 text-on-surface text-sm rounded px-3 py-2 outline-none focus:border-primary transition-colors">
+<option>Engineering</option>
+<option>Cybersecurity</option>
+<option>Operations</option>
+<option>Legal</option>
+</select>
+</div>
+<div class="mt-auto pb-0.5">
+<button class="text-primary text-sm font-semibold hover:underline px-2">Clear Filters</button>
+</div>
+</div>
+<!-- Aesthetic Gradient -->
+<div class="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-primary/5 to-transparent"></div>
+</div>
+<div class="bg-surface-container-high rounded-xl p-6 shadow-2xl flex flex-col justify-between border-l-4 border-primary-container">
+<div>
+<p class="text-slate-400 text-xs font-label uppercase tracking-widest">Total Identities</p>
+<h4 class="text-4xl font-bold font-headline mt-1">1,284</h4>
+</div>
+<div class="flex items-center gap-2 text-primary-fixed-dim text-xs">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>12 new this week</span>
+</div>
+</div>
+</section>
+<!-- Data Table Section -->
+<section class="bg-surface-container rounded-xl shadow-2xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 border-b border-outline-variant/10">User</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 border-b border-outline-variant/10">Role</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 border-b border-outline-variant/10">Status</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 border-b border-outline-variant/10">Last Login</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 border-b border-outline-variant/10 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright/20 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-bold overflow-hidden">
+<img alt="Adrian Chen" class="w-full h-full object-cover" data-alt="Professional headshot of a person with short dark hair in a modern corporate setting with cool blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSoARk49GERO3sJVf7pK9ibVmZmhbyVlmJkEWIvLLH4H2M7RbWpe9-hf5hFqWoE-ZaYTEM--LWV8YFLOzpYKLSqWf0yNr63TvYdCkitWaqatx5u3OMxg176SJb6GSSfDhkTjEwkeXJ4E3YnKDMp87SEa03Ty62qLQZ1LEGLHjHnP49GoWx2GQ6hm9GEGWUCsxLZ37JJRpHf0Zum6yCylLyb1uLgT5UFiCFncb73VoeK6pMUxNkbm1V1ejH-Kj8siOjrI-eaDjztP8"/>
+</div>
+<div>
+<div class="text-sm font-semibold text-on-surface">Adrian Chen</div>
+<div class="text-xs text-slate-500">adrian.c@accesscore.ai</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-medium px-2 py-1 rounded bg-on-tertiary-fixed-variant/10 text-tertiary border border-tertiary/20">Admin</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+<span class="text-xs text-on-surface">Active</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs text-slate-400">2 mins ago</div>
+<div class="text-[10px] text-slate-600">IP: 192.168.1.45</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors hover:bg-primary/10 rounded" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors hover:bg-primary/10 rounded" title="Edit User">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-error transition-colors hover:bg-error/10 rounded" title="Reset Password">
+<span class="material-symbols-outlined text-[20px]">lock_reset</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low/30 hover:bg-surface-bright/20 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-bold overflow-hidden border border-outline-variant/10">
+<span class="text-xs">EH</span>
+</div>
+<div>
+<div class="text-sm font-semibold text-on-surface">Elena Holtz</div>
+<div class="text-xs text-slate-500">e.holtz@accesscore.ai</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-medium px-2 py-1 rounded bg-secondary-container/30 text-secondary border border-secondary/20">Developer</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+<span class="text-xs text-on-surface">Active</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs text-slate-400">14 hours ago</div>
+<div class="text-[10px] text-slate-600">IP: 104.12.8.21</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors hover:bg-primary/10 rounded">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors hover:bg-primary/10 rounded">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-error transition-colors hover:bg-error/10 rounded">
+<span class="material-symbols-outlined text-[20px]">lock_reset</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright/20 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-bold overflow-hidden">
+<img alt="Sarah Jenkins" class="w-full h-full object-cover" data-alt="Professional studio portrait of a woman wearing glasses and a blazer against a dark background with blue highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaVI6BHu0U9C2Xw1DzWIHGqUFIKTGEGyuJ8l2kKkBJZDu_Pe71tqIwBNdmMJ7P6nRmdY7SJJR-ccQfjfbocQF8TrxL2wqxjolenIBLD-Ohmw8e1jp8FqweXkiDZg4tujfNcLwftvBb71ogjIinAZsOrAnCuCLKIoKmlqSADxcmHBKclPSIU8zxgAgkfPsZgdQtjaBw0hMmv2YnCRd9QZpVgOGjD7MYIvuJDqBEUdCUEGMZLRghAGIjBzxHtTjI-RjFtQttmrZZrRg"/>
+</div>
+<div>
+<div class="text-sm font-semibold text-on-surface">Sarah Jenkins</div>
+<div class="text-xs text-slate-500">s.jenkins@accesscore.ai</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-medium px-2 py-1 rounded bg-outline-variant/20 text-slate-400 border border-outline-variant/30">Viewer</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-error shadow-[0_0_8px_rgba(255,180,171,0.6)]"></div>
+<span class="text-xs text-on-surface">Suspended</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs text-slate-400">Mar 12, 2024</div>
+<div class="text-[10px] text-slate-600">Violation: Session Expired</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors hover:bg-primary/10 rounded">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors hover:bg-primary/10 rounded">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-error transition-colors hover:bg-error/10 rounded">
+<span class="material-symbols-outlined text-[20px]">lock_reset</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-container-low/30 hover:bg-surface-bright/20 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-bold overflow-hidden border border-outline-variant/10">
+<span class="text-xs">MK</span>
+</div>
+<div>
+<div class="text-sm font-semibold text-on-surface">Marcus Knight</div>
+<div class="text-xs text-slate-500">m.knight@accesscore.ai</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-medium px-2 py-1 rounded bg-secondary-container/30 text-secondary border border-secondary/20">Developer</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]"></div>
+<span class="text-xs text-on-surface">Pending</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs text-slate-400">Never</div>
+<div class="text-[10px] text-slate-600">Awaiting Approval</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors hover:bg-primary/10 rounded">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors hover:bg-primary/10 rounded">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-error transition-colors hover:bg-error/10 rounded">
+<span class="material-symbols-outlined text-[20px]">lock_reset</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="bg-surface-container-low/50 px-6 py-4 flex items-center justify-between border-t border-outline-variant/10">
+<div class="text-xs text-slate-500 font-label">
+                        Showing <span class="text-on-surface font-bold">1-4</span> of <span class="text-on-surface font-bold">1,284</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded text-slate-500 hover:bg-surface-container-highest transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary-container text-white text-xs font-bold">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-highest text-slate-400 text-xs font-bold transition-colors">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-highest text-slate-400 text-xs font-bold transition-colors">3</button>
+<span class="text-slate-600 px-1">...</span>
+<button class="w-8 h-8 rounded hover:bg-surface-container-highest text-slate-400 text-xs font-bold transition-colors">321</button>
+<button class="p-1.5 rounded text-slate-500 hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="mt-auto p-8 border-t border-outline-variant/5">
+<div class="flex justify-between items-center text-[10px] uppercase tracking-[0.2em] text-slate-600 font-bold">
+<div>© 2024 AccessCore AI Systems</div>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Security Policy</a>
+<a class="hover:text-primary transition-colors" href="#">API Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">System Status</a>
+</div>
+</div>
+</footer>
+</main>
+</body></html>
